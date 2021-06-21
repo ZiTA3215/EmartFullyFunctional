@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ecommerce">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Ecommerce">
+        <activity android:name=".actvities.PaymentActiviy"></activity>
+        <activity android:name=".actvities.AddAddressActivity" />
+        <activity android:name=".actvities.AddressActivity" />
+        <activity android:name=".actvities.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".actvities.RegistrationActivity" />
+        <activity android:name=".actvities.OnBoardingActivity" />
+        <activity android:name=".actvities.MainActivity" />
+        <activity android:name=".actvities.DetailedActivity" />
+        <activity android:name=".actvities.CartActivity" />
+        <activity
+            android:name=".actvities.ShowAllActivity"
+            android:label="@string/title_activity_show_all" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
