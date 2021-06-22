@@ -1,5 +1,6 @@
 package com.example.ecommerce.actvities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,8 +14,16 @@ import android.widget.Button;
 import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.AddressAdapter;
 import com.example.ecommerce.models.AddressModel;
+import com.example.ecommerce.models.MyCartModel;
+import com.example.ecommerce.models.NewProductsModel;
+import com.example.ecommerce.models.PopularProductModel;
+import com.example.ecommerce.models.ShowAllModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +38,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
     FirebaseAuth auth;
     Button paymentBtn;
     Toolbar toolbar;
+    String mAddress = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,17 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        //get data from detaliled activity
+
+        Object obj= getIntent().getSerializableExtra("item");
+
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -48,18 +69,50 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         addressModelList = new ArrayList<>();
+        addressAdapter = new AddressAdapter(getApplicationContext(),addressModelList,this);
+        recyclerView.setAdapter(addressAdapter);
 
-        /*
+        firestore.collection("CurrentUser").document(auth.getCurrentUser().getUid())
+                .collection("Address").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-        addressAdapter = new AddressAdapter(getApplicationContext(), addressModelList,this);
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot doc : task.getResult().getDocuments()) {
 
-         */
+                        AddressModel addressModel = doc.toObject(AddressModel.class);
+                        addressModelList.add(addressModel);
+                        addressAdapter.notifyDataSetChanged();
+                    }
+
+                }
+                }
+            });
+
+
+
 
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(AddressActivity.this,PaymentActiviy.class));
+                double amount = 0.0;
+
+                if(obj instanceof NewProductsModel){
+                    NewProductsModel newProductsModel = (NewProductsModel) obj;
+                    amount = newProductsModel.getPrice();
+                }if(obj instanceof PopularProductModel){
+                    PopularProductModel popularProductModel = (PopularProductModel) obj;
+                    amount = popularProductModel.getPrice();
+
+                    }if(obj instanceof ShowAllModel) {
+                    ShowAllModel showAllModel = (ShowAllModel) obj;
+                    amount = showAllModel.getPrice();
+                }
+
+                Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
+                intent.putExtra("amount", amount);
+                startActivity(intent);
 
             }
         });
@@ -74,6 +127,8 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
 
     @Override
     public void setAddress(String address) {
+
+        mAddress = address;
 
     }
 }

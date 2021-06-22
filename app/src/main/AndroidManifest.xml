@@ -33,6 +33,13 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+//API Key for Razorpay we will implement paypal soon  //
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_2VyH8BxETWEgB0"/>
+
     </application>
 
 </manifest>
