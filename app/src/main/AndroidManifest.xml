@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce">
-        <activity android:name=".actvities.PaymentActiviy"></activity>
+        <activity android:name=".CheckoutActivity"></activity>
+        <activity android:name=".actvities.PaymentActiviy" />
         <activity android:name=".actvities.AddAddressActivity" />
         <activity android:name=".actvities.AddressActivity" />
         <activity android:name=".actvities.LoginActivity">
@@ -33,13 +34,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-//API Key for Razorpay we will implement paypal soon  //
-
-        <meta-data
-            android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_2VyH8BxETWEgB0"/>
-
     </application>
 
 </manifest>

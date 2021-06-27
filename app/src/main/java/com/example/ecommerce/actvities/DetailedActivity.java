@@ -206,7 +206,7 @@ public class DetailedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (totalQuantity > 10){
+                if (totalQuantity > 1){
 
                     totalQuantity--;
                     quantity.setText(String.valueOf(totalQuantity));

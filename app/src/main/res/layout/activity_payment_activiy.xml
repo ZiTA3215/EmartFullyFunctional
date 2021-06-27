@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Payment Detailed"/>
+        app:title="Payment"/>
 
 
 
@@ -129,6 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Check Out"
+        android:onClick="payWithStripe"
         android:textStyle="bold"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
