@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ecommerce.CheckoutActivity;
 import com.example.ecommerce.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -78,8 +79,9 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         public void signup(View view){
-            startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
-            finish();
+            Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+            startActivity(intent);
+
         }
 
     }

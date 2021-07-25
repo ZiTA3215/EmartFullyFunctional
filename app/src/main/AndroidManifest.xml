@@ -17,15 +17,14 @@
         <activity android:name=".actvities.PaymentActiviy" />
         <activity android:name=".actvities.AddAddressActivity" />
         <activity android:name=".actvities.AddressActivity" />
-        <activity android:name=".actvities.LoginActivity">
+        <activity android:name=".actvities.RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".actvities.RegistrationActivity" />
-        <activity android:name=".actvities.OnBoardingActivity" />
+        <activity android:name=".actvities.LoginActivity" />
         <activity android:name=".actvities.MainActivity" />
         <activity android:name=".actvities.DetailedActivity" />
         <activity android:name=".actvities.CartActivity" />
