@@ -3,9 +3,18 @@ package com.example.ecommerce.models;
 public class AddressModel {
 
     String userAddress;
+    String documentId;
     boolean isSelected;
 
     public AddressModel() {
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getUserAddress() {

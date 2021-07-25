@@ -35,7 +35,7 @@ import java.util.HashMap;
 public class DetailedActivity extends AppCompatActivity {
 
     ImageView detailedImg;
-    TextView rating, name, description, price, quantity;
+    TextView name, description, price, quantity;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
 
@@ -97,7 +97,7 @@ public class DetailedActivity extends AppCompatActivity {
         detailedImg = findViewById(R.id.detailed_img);
         quantity = findViewById(R.id.quantity);
         name = findViewById(R.id.detailed_name);
-        rating = findViewById(R.id.rating);
+
         description = findViewById(R.id.detailed_desc);
         price = findViewById(R.id.detailed_price);
         addToCart = findViewById(R.id.add_to_cart);
@@ -110,7 +110,6 @@ public class DetailedActivity extends AppCompatActivity {
         if (newProductsModel != null) {
             Glide.with(getApplicationContext()).load(newProductsModel.getImg_url()).into(detailedImg);
             name.setText(newProductsModel.getName());
-            rating.setText(newProductsModel.getRating());
             description.setText(newProductsModel.getDescription());
             price.setText(String.valueOf(newProductsModel.getPrice()));
             name.setText(newProductsModel.getName());
@@ -125,7 +124,6 @@ public class DetailedActivity extends AppCompatActivity {
         if (popularProductModel != null) {
             Glide.with(getApplicationContext()).load(popularProductModel.getImg_url()).into(detailedImg);
             name.setText(popularProductModel.getName());
-            rating.setText(popularProductModel.getRating());
             description.setText(popularProductModel.getDescription());
             price.setText(String.valueOf(popularProductModel.getPrice()));
             name.setText(popularProductModel.getName());
@@ -140,7 +138,6 @@ public class DetailedActivity extends AppCompatActivity {
         if (showAllModel != null) {
             Glide.with(getApplicationContext()).load(showAllModel.getImg_url()).into(detailedImg);
             name.setText(showAllModel.getName());
-            rating.setText(showAllModel.getRating());
             description.setText(showAllModel.getDescription());
             price.setText(String.valueOf(showAllModel.getPrice()));
             name.setText(showAllModel.getName());

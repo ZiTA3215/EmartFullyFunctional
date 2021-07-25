@@ -5,7 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/box_inset_layout_padding"
+    android:background="@color/black"
     tools:context=".actvities.LoginActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_marginRight="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/emart2"
+            android:id="@+id/emart"/>
+
+        <!-- Include other widget or layout tags here. These are considered
+                "child views" or "children" of the linear layout -->
+
+
+    </LinearLayout>
+
 
 
     <TextView
@@ -13,14 +36,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign In"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
+
+
 
 
     <EditText
@@ -56,8 +82,11 @@
         android:layout_height="wrap_content"
         android:onClick="signin"
         android:text="Sign In"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
         android:textAllCaps="false"
         android:textStyle="bold"
+        android:outlineAmbientShadowColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -71,6 +100,7 @@
         android:layout_height="wrap_content"
         android:text="Dont Have An Account?"
         android:textSize="17dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.65"
@@ -86,6 +116,7 @@
         android:text="Sign up"
         android:textSize="17dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/Button"
         app:layout_constraintTop_toTopOf="@+id/Button"

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".actvities.DetailedActivity">
 
 
     <ImageView
         android:id="@+id/detailed_img"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:orientation="horizontal"
         android:src="@drawable/ic_launcher_background"
@@ -30,7 +30,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:translationY="-50dp"
+        android:translationY="-10dp"
         android:id="@+id/cardview"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -65,28 +65,7 @@
                     android:textStyle="bold"
                     android:text="Product Name"
                     android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="4.0"
-                    android:layout_toStartOf="@+id/my_rating"
-                    android:textSize="16sp"
-                    android:layout_marginTop="8dp"/>
-
-
-                <RatingBar
-                    android:id="@+id/my_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_alignParentRight="true"/>
+                
 
 
 
@@ -214,31 +193,7 @@
         app:layout_constraintVertical_bias="0.079"
         app:layout_constraintWidth_percent=".8" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:id="@+id/bottombar"
-            app:menu="@menu/bottom_menu"
-            app:itemTextColor="@color/black"
-            android:background="@color/white"
-            app:itemIconTint="@color/black"
-            android:layout_alignParentBottom="true"
-            android:layout_height="56dp">
-
-
-
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-
-
-
-
-    </RelativeLayout>
 
 
 

@@ -80,7 +80,10 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot doc : task.getResult().getDocuments()) {
 
+                        String documentId = doc.getId();
+
                         AddressModel addressModel = doc.toObject(AddressModel.class);
+                        addressModel.setDocumentId(documentId);
                         addressModelList.add(addressModel);
                         addressAdapter.notifyDataSetChanged();
                     }

@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/grey_font"
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         app:title="My Cart"
         android:theme="?attr/actionBarTheme"/>
