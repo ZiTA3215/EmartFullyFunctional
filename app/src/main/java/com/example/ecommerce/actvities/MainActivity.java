@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.ecommerce.R;
 import com.example.ecommerce.fragments.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
+    BottomNavigationView bottomNavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         auth = FirebaseAuth.getInstance();
         toolbar = findViewById(R.id.home_toolbar);
+        bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
@@ -37,7 +42,46 @@ public class MainActivity extends AppCompatActivity {
 
         homeFragment = new HomeFragment();
         loadFragment(homeFragment);
+
+        bottomNavigationView = findViewById(R.id.bottombar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+                    case R.id.explore:
+
+
+                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+
+                        return true;
+
+                    case R.id.settings:
+                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+
+
+                        return true;
+
+                    case R.id.account:
+
+                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+
+
+                        return true;
+
+
+
+                    default:
+                        return false;
+                }
+
+
+
+            }
+        });
     }
+
 
     private void loadFragment(Fragment homeFragment) {
 
@@ -48,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu,  menu);
+
+
         return true;
     }
 
@@ -56,20 +102,29 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id== R.id.menu_logout){
+        if (id == R.id.menu_logout) {
 
             auth.signOut();
             startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
             finish();
 
-        }else if (id == R.id.menu_my_cart){
+        } else if (id == R.id.menu_my_cart) {
             startActivity(new Intent(MainActivity.this, CartActivity.class));
 
         }
 
+
         return true;
+
+
+
+
     }
+
+
+
 }
+
 
 
 

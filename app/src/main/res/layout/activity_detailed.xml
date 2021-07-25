@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".actvities.DetailedActivity">
 
 
     <ImageView
         android:id="@+id/detailed_img"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:scaleType="centerCrop"
+        android:orientation="horizontal"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/detailed_toolbar"
+        android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Product Detailed"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf= "parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.cardview.widget.CardView
         android:translationY="-50dp"
@@ -34,10 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/black"
         android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailed_img">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,13 +64,13 @@
                     android:textSize="25sp"
                     android:textStyle="bold"
                     android:text="Product Name"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:text="4.0"
                     android:layout_toStartOf="@+id/my_rating"
                     android:textSize="16sp"
@@ -91,6 +97,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="This is a test description of a descriptioin that we will use later when we are ready to move this project to production"/>
 
 
@@ -102,7 +109,7 @@
                     android:textSize="21sp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
                     android:fontFamily="@font/amethysta"/>
 
@@ -118,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:text="$"
                     android:textStyle="bold"
-                    android:textColor="@color/purple_200"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/amethysta"/>
 
                 <TextView
@@ -127,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:text="20"
                     android:textStyle="bold"
-                    android:textColor="@color/purple_200"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/amethysta"/>
 
             </LinearLayout>
@@ -144,12 +151,13 @@
                     android:layout_marginRight="7dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/plusicon"
+                    android:src="@android:drawable/ic_input_add"
                     android:id="@+id/add_item"/>
                 <TextView
                     android:id="@+id/quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="1" android:textSize="30sp"
                     android:textStyle="bold"/>
 
@@ -157,7 +165,7 @@
                     android:layout_marginLeft="7dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/iconminus"
+                    android:src="@android:drawable/ic_delete"
                     android:id="@+id/remove_item">
 
 
@@ -170,7 +178,9 @@
 
 
 
+
     </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/add_to_cart"
@@ -204,5 +214,36 @@
         app:layout_constraintVertical_bias="0.079"
         app:layout_constraintWidth_percent=".8" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:id="@+id/bottombar"
+            app:menu="@menu/bottom_menu"
+            app:itemTextColor="@color/black"
+            android:background="@color/white"
+            app:itemIconTint="@color/black"
+            android:layout_alignParentBottom="true"
+            android:layout_height="56dp">
+
+
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

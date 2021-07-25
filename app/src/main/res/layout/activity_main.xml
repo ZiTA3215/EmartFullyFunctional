@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".actvities.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_font"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf= "parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/home_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_toolbar"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:id="@+id/bottombar"
+        app:menu="@menu/bottom_menu"
+        app:itemTextColor="@color/black"
+        android:background="@color/white"
+        app:itemIconTint="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_height="56dp">
+
+
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/home_container"
+        android:layout_above="@+id/bottombar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/home_toolbar">
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

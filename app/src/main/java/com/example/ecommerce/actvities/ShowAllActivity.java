@@ -16,6 +16,7 @@ import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,16 +31,23 @@ public class ShowAllActivity extends AppCompatActivity {
     ShowAllAdapter showAllAdapter;
     List<ShowAllModel> showAllModelList;
     Toolbar toolbar;
-FirebaseFirestore firestore;
+    BottomNavigationView bottomNavigationView;
+
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all);
+        bottomNavigationView = findViewById(R.id.bottombar);
 
         toolbar = findViewById(R.id.show_all_toolbar);
+        bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,9 +196,9 @@ FirebaseFirestore firestore;
                     });
 
 
-        }if (type !=null && type.equalsIgnoreCase("shoes")){
+        }if (type !=null && type.equalsIgnoreCase("Tech")){
 
-            firestore.collection("ShowAll").whereEqualTo("type", "shoes")
+            firestore.collection("ShowAll").whereEqualTo("type", "Tech")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

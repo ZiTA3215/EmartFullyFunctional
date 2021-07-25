@@ -31,7 +31,7 @@ import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
-    int overAllTotalAmount;
+
     TextView overAllAmount;
 
     Toolbar toolbar;
@@ -60,9 +60,7 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        //get data from my cart adapter
-        LocalBroadcastManager.getInstance(this)
-                .registerReceiver( mMessageReciever, new IntentFilter("MyTotalAmount"));
+
 
         overAllAmount = findViewById(R.id.textView3);
 
@@ -80,24 +78,44 @@ public class CartActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot doc : task.getResult().getDocuments()) {
 
+                        String documentId = doc.getId();
+
+
+
+
+
+
+
+
                         MyCartModel myCartModel = doc.toObject(MyCartModel.class);
+                        myCartModel.setDocumentId(documentId);
                         cartModelList.add(myCartModel);
                         cartAdapter.notifyDataSetChanged();
                     }
 
+                    calculateTotalAmount(cartModelList);
+
+
                 }
+
+
+
             }
         });
     }
-   public BroadcastReceiver mMessageReciever = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
 
-            int totalBill = intent.getIntExtra("totalAmount", 0);
+    private void calculateTotalAmount(List<MyCartModel> cartModelList) {
 
-                    overAllAmount.setText("Total Amount :"+ totalBill+"$");
+        double totalAmount = 0.0;
+        for (MyCartModel myCartModel : cartModelList){
 
+            totalAmount += myCartModel.getTotalPrice();
         }
-    };
+
+        overAllAmount.setText("Total Amount :" + totalAmount);
+    }
+
+
+
 
 }

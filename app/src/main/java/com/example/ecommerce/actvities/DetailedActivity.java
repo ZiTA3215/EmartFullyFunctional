@@ -3,9 +3,13 @@ package com.example.ecommerce.actvities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +23,7 @@ import com.example.ecommerce.models.PopularProductModel;
 import com.example.ecommerce.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,6 +40,7 @@ public class DetailedActivity extends AppCompatActivity {
     ImageView addItems, removeItems;
 
     Toolbar toolbar;
+    BottomNavigationView bottomNavigationView;
 
     int totalQuantity = 1;
     int totalPrice = 0;
@@ -59,7 +65,8 @@ public class DetailedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
 
-        toolbar = findViewById(R.id.detailed_toolbar);
+        toolbar = findViewById(R.id.home_toolbar);
+        bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -219,7 +226,7 @@ public class DetailedActivity extends AppCompatActivity {
 
     private void addToCart() {
 
-        String saveCurrentTime,saveCurrentDate;
+        String saveCurrentTime, saveCurrentDate;
         Calendar callForDate = Calendar.getInstance();
 
         SimpleDateFormat currentDate = new SimpleDateFormat("MM DD, yyyy");
@@ -228,9 +235,9 @@ public class DetailedActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(callForDate.getTime());
 
-        final HashMap<String,Object> cartMap = new HashMap<>();
+        final HashMap<String, Object> cartMap = new HashMap<>();
 
-        cartMap.put("productName",name.getText().toString());
+        cartMap.put("productName", name.getText().toString());
         cartMap.put("productPrice", price.getText().toString());
         cartMap.put("currentTime", saveCurrentTime);
         cartMap.put("currentDate", saveCurrentDate);
@@ -246,8 +253,88 @@ public class DetailedActivity extends AppCompatActivity {
                 finish();
 
             }
+
+
+
         });
+
+        bottomNavigationView = findViewById(R.id.bottombar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+                    case R.id.explore:
+
+
+                        startActivity(new Intent(DetailedActivity.this, CartActivity.class));
+
+                        return true;
+
+                    case R.id.settings:
+                        startActivity(new Intent(DetailedActivity.this, CartActivity.class));
+
+
+                        return true;
+
+                    case R.id.account:
+
+                        startActivity(new Intent(DetailedActivity.this, CartActivity.class));
+
+
+                        return true;
+
+
+
+                    default:
+                        return false;
+                }
+
+
+
+            }
+        });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,  menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu_logout) {
+
+            auth.signOut();
+            startActivity(new Intent(DetailedActivity.this, RegistrationActivity.class));
+            finish();
+
+        } else if (id == R.id.menu_my_cart) {
+            startActivity(new Intent(DetailedActivity.this, CartActivity.class));
+
+        }
+
+
+        return true;
+
+
+
 
     }
 
+
+
 }
+
+
+
+
+
+

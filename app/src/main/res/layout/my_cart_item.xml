@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:padding="7dp"
-        android:background="#FB9FDE"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -176,5 +176,13 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_menu_delete"/>
+
     </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>

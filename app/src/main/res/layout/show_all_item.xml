@@ -25,7 +25,7 @@
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <TextView
-                android:textColor="#673AB7"
+                android:textColor="@color/black"
                 android:fontFamily="@font/amethysta"
                 android:id="@+id/item_cost"
                 android:layout_width="match_parent"
