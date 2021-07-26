@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +29,14 @@ import com.example.ecommerce.actvities.ShowAllActivity;
 import com.example.ecommerce.adapters.CategoryAdapter;
 import com.example.ecommerce.adapters.NewProductsAdapter;
 import com.example.ecommerce.adapters.PopularProductAdapter;
+import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.models.CategoryModel;
 import com.example.ecommerce.models.NewProductsModel;
 import com.example.ecommerce.models.PopularProductModel;
+import com.example.ecommerce.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -53,6 +59,12 @@ public class HomeFragment extends Fragment {
     //Category recyclerview
     CategoryAdapter categoryAdapter;
     List<CategoryModel> categoryModelList;
+
+    ///////////////////////////Search View
+    EditText search_box;
+    private List<ShowAllModel> showAllModelList;
+    private RecyclerView recyclerViewSearch;
+    private ShowAllAdapter showAllAdapter;
 
     //new products Recycler view
     NewProductsAdapter newProductsAdapter;
@@ -230,6 +242,65 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
+        ///////SearchView
+        recyclerViewSearch = root.findViewById(R.id.search_rec);
+        search_box = root.findViewById(R.id.search_box);
+        showAllModelList = new ArrayList<>();
+        showAllAdapter = new ShowAllAdapter(getContext(),showAllModelList);
+        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearch.setAdapter(showAllAdapter);
+        recyclerViewSearch.setHasFixedSize(true);
+        search_box.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (s.toString().isEmpty()){
+                    showAllModelList.clear();
+                    showAllAdapter.notifyDataSetChanged();
+                }else{
+
+                    searchProdcut(s.toString());
+                }
+
+            }
+        });
+
         return root;
     }
+
+    private void searchProdcut(String type) {
+
+        if (!type.isEmpty()){
+            db.collection("AllProducts").whereEqualTo("type", type).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful() && task.getResult()!= null){
+
+                                showAllModelList.clear();
+                                showAllAdapter.notifyDataSetChanged();
+                                for(DocumentSnapshot doc : task.getResult().getDocuments()){
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+                                }
+
+                            }
+                        }
+                    });
+        }
+    }
+
+
 }
