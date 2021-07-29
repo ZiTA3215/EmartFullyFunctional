@@ -53,19 +53,19 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.explore:
 
 
-                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+                        startActivity(new Intent(MainActivity.this, ShowAllActivity.class));
 
                         return true;
 
                     case R.id.settings:
-                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+                        startActivity(new Intent(MainActivity.this, AddAddressActivity.class));
 
 
                         return true;
 
                     case R.id.account:
 
-                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
 
 
                         return true;

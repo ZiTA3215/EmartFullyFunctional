@@ -35,7 +35,7 @@ import java.util.HashMap;
 public class DetailedActivity extends AppCompatActivity {
 
     ImageView detailedImg;
-    TextView  name, description, price, quantity;
+    TextView rating, name, description, price, quantity;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
 
@@ -79,7 +79,7 @@ public class DetailedActivity extends AppCompatActivity {
 
 
         firestore = FirebaseFirestore.getInstance();
-        auth=FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         final Object obj = getIntent().getSerializableExtra("detailed");
 
@@ -127,7 +127,7 @@ public class DetailedActivity extends AppCompatActivity {
             price.setText(String.valueOf(popularProductModel.getPrice()));
             name.setText(popularProductModel.getName());
 
-            totalPrice =popularProductModel.getPrice() * totalQuantity;
+            totalPrice = popularProductModel.getPrice() * totalQuantity;
 
 
         }
@@ -148,23 +148,23 @@ public class DetailedActivity extends AppCompatActivity {
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(DetailedActivity.this, AddressActivity.class);
+                Intent intent = new Intent(DetailedActivity.this, AddressActivity.class);
 
-               if(newProductsModel != null){
-                   intent.putExtra("item",newProductsModel);
-               }
+                if (newProductsModel != null) {
+                    intent.putExtra("item", newProductsModel);
+                }
 
-               if(popularProductModel !=null){
-                   intent.putExtra("item",popularProductModel);
+                if (popularProductModel != null) {
+                    intent.putExtra("item", popularProductModel);
 
-               }
+                }
 
-                if(showAllModel !=null) {
+                if (showAllModel != null) {
                     intent.putExtra("item", showAllModel);
 
                 }
 
-               startActivity(intent);
+                startActivity(intent);
             }
         });
         //Add To Cart
@@ -182,21 +182,22 @@ public class DetailedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (totalQuantity<10){
+                if (totalQuantity < 10) {
 
                     totalQuantity++;
                     quantity.setText(String.valueOf(totalQuantity));
 
-                    if (newProductsModel != null){
+                    if (newProductsModel != null) {
                         totalPrice = newProductsModel.getPrice() * totalQuantity;
 
                     }
 
-                    if (popularProductModel != null){
+                    if (popularProductModel != null) {
                         totalPrice = popularProductModel.getPrice() * totalQuantity;
 
 
-                    }if (showAllModel != null){
+                    }
+                    if (showAllModel != null) {
                         totalPrice = showAllModel.getPrice() * totalQuantity;
                     }
 
@@ -209,7 +210,7 @@ public class DetailedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (totalQuantity > 1){
+                if (totalQuantity > 1) {
 
                     totalQuantity--;
                     quantity.setText(String.valueOf(totalQuantity));
@@ -251,22 +252,12 @@ public class DetailedActivity extends AppCompatActivity {
             }
 
 
-
         });
-
-
-
-
-
-
 
 
     }
 
-
-
 }
-
 
 
 

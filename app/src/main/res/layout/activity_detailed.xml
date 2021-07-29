@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".actvities.DetailedActivity">
+
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
 
 
     <ImageView
@@ -17,7 +31,11 @@
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/home_toolbar" />
+
+
+
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home_toolbar"
@@ -30,7 +48,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:translationY="-10dp"
+        android:translationY="0dp"
         android:id="@+id/cardview"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -130,7 +148,7 @@
                     android:layout_marginRight="7dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@android:drawable/ic_input_add"
+                    android:src="@drawable/plusicon"
                     android:id="@+id/add_item"/>
                 <TextView
                     android:id="@+id/quantity"
@@ -144,12 +162,59 @@
                     android:layout_marginLeft="7dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@android:drawable/ic_delete"
+                    android:src="@drawable/iconminus"
                     android:id="@+id/remove_item">
 
 
+
                 </ImageView>
+
+
+
+
+
+
+
+
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/add_to_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/mycart"
+                    android:text="Add To Cart"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/black"/>
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/buy_now"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
+                    android:text="Buy Now"
+                    android:textAllCaps="false"
+                    android:backgroundTint="#C119870D"/>
+
+
+
+
+            </RelativeLayout>
+
+
 
 
 
@@ -158,40 +223,11 @@
 
 
 
+
+
+
+
     </androidx.cardview.widget.CardView>
-
-
-    <Button
-        android:id="@+id/add_to_cart"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/mycart"
-        android:padding="15dp"
-        android:text="Add To Cart"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardview"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent=".8" />
-
-    <Button
-        android:id="@+id/buy_now"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
-        android:padding="15dp"
-        android:text="Buy Now"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_to_cart"
-        app:layout_constraintVertical_bias="0.079"
-        app:layout_constraintWidth_percent=".8" />
 
 
 
@@ -201,4 +237,15 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</ScrollView>
+
+
+
+
+
 
