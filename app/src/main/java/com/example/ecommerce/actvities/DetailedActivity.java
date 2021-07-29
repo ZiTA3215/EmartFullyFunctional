@@ -258,8 +258,3 @@ public class DetailedActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-

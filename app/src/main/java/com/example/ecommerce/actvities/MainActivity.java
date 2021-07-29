@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.logo3_launcher_round);
 
 
         homeFragment = new HomeFragment();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.settings:
-                        startActivity(new Intent(MainActivity.this, AddAddressActivity.class));
+                        startActivity(new Intent(MainActivity.this, MainActivity.class));
 
 
                         return true;

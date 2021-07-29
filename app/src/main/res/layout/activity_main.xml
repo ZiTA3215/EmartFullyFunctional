@@ -11,7 +11,7 @@
         android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf= "parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +22,9 @@
         android:layout_width="match_parent"
         android:id="@+id/bottombar"
         app:menu="@menu/bottom_menu"
-        app:itemTextColor="@color/black"
-        android:background="@color/white"
-        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/white"
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_height="56dp">
 
