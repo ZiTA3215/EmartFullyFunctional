@@ -12,15 +12,17 @@
 
 
 
-    <item android:id="@+id/settings"
-        android:title="Home"
-        android:iconTint="@color/white"
-        android:icon="@drawable/ic_baseline_home_24"
-        app:showAsAction="always"/>
+
 
     <item android:id="@+id/account"
         android:title="Account"
         android:icon="@drawable/ic_baseline_account_circle"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/settings"
+        android:title="Home"
+        android:iconTint="@color/white"
+        android:icon="@android:drawable/ic_menu_manage"
         app:showAsAction="always"/>
 
 
