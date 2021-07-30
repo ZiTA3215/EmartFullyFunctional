@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/amethysta"
-
+                android:text="Categories"
                 android:textColor="@color/white"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
                         android:fontFamily="@font/amethysta"
-                        android:text="New"
+                        android:text="New Products"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
@@ -166,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="9dp"
                     android:fontFamily="@font/amethysta"
-                    android:text="Popular"
+                    android:text="Popular Products"
                     android:textColor="@color/white"
                     android:textSize="21sp"
                     android:textStyle="bold" />
