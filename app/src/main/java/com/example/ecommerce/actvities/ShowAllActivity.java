@@ -91,7 +91,7 @@ public class ShowAllActivity extends AppCompatActivity {
 
         }
 
-        if (type !=null && type.equalsIgnoreCase("men")){
+        if (type !=null && type.equalsIgnoreCase("Men")){
 
             firestore.collection("ShowAll").whereEqualTo("type", "men")
                     .get()
@@ -112,7 +112,7 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
 
 
-        }if (type !=null && type.equalsIgnoreCase("woman")){
+        }if (type !=null && type.equalsIgnoreCase("Woman")){
 
             firestore.collection("ShowAll").whereEqualTo("type", "woman")
                     .get()
@@ -133,9 +133,9 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
 
 
-        } if (type !=null && type.equalsIgnoreCase("watch")){
+        } if (type !=null && type.equalsIgnoreCase("Pets")){
 
-        firestore.collection("ShowAll").whereEqualTo("type", "watch")
+        firestore.collection("ShowAll").whereEqualTo("type", "pets")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -175,30 +175,10 @@ public class ShowAllActivity extends AppCompatActivity {
                     });
 
 
-        }if (type !=null && type.equalsIgnoreCase("kids")){
-
-            firestore.collection("ShowAll").whereEqualTo("type", "kids")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                            if (task.isSuccessful()){
-                                for (DocumentSnapshot doc:task.getResult().getDocuments()){
-
-                                    ShowAllModel showAllModel=doc.toObject(ShowAllModel.class);
-                                    showAllModelList.add(showAllModel);
-                                    showAllAdapter.notifyDataSetChanged();
-                                }
-                            }
-
-                        }
-                    });
-
 
         }if (type !=null && type.equalsIgnoreCase("Tech")){
 
-            firestore.collection("ShowAll").whereEqualTo("type", "Tech")
+            firestore.collection("ShowAll").whereEqualTo("type", "tech")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

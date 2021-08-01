@@ -20,7 +20,7 @@
         app:showAsAction="always"/>
 
     <item android:id="@+id/settings"
-        android:title="Home"
+        android:title="Settings"
         android:iconTint="@color/white"
         android:icon="@android:drawable/ic_menu_manage"
         app:showAsAction="always"/>

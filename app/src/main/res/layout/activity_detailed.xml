@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".actvities.DetailedActivity">
 
 
@@ -40,11 +40,21 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/home_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_height="60dp"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf= "parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/emart7_launcher_round"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerInside"/>
+
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <androidx.cardview.widget.CardView
@@ -148,7 +158,7 @@
                         android:layout_marginRight="7dp"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/plusicon"
+                        android:src="@drawable/greensign"
                         android:id="@+id/add_item"/>
                     <TextView
                         android:id="@+id/quantity"
@@ -162,7 +172,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/iconminus"
+                        android:src="@drawable/redsign"
                         android:id="@+id/remove_item">
 
 
@@ -187,9 +197,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:drawableLeft="@drawable/mycart"
+                        android:drawableTint="@color/black"
                         android:text="Add To Cart"
+                        android:textColor="@color/black"
                         android:textAllCaps="false"
-                        android:backgroundTint="@color/black"/>
+                        android:backgroundTint="@color/white"/>
 
 
 

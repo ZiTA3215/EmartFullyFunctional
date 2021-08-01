@@ -69,6 +69,7 @@ public class DetailedActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_home_24);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
