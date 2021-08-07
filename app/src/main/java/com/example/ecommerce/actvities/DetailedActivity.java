@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.example.ecommerce.R;
@@ -34,7 +35,8 @@ import java.util.HashMap;
 
 public class DetailedActivity extends AppCompatActivity {
 
-    ImageView detailedImg;
+    ImageView imageView1, imageView2, imageView3, imageView4;
+    ViewFlipper viewFlipper;
     TextView rating, name, description, price, quantity;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
@@ -95,7 +97,11 @@ public class DetailedActivity extends AppCompatActivity {
         }
 
 
-        detailedImg = findViewById(R.id.detailed_img);
+        imageView1 = (ImageView) findViewById(R.id.imageview1);
+        imageView2 = (ImageView) findViewById(R.id.imageview2);
+        imageView3 = (ImageView) findViewById(R.id.imageview3);
+        imageView4 = (ImageView) findViewById(R.id.imageview4);
+        viewFlipper = (ViewFlipper) findViewById(R.id.detailed_img);
         quantity = findViewById(R.id.quantity);
         name = findViewById(R.id.detailed_name);
         description = findViewById(R.id.detailed_desc);
@@ -105,10 +111,14 @@ public class DetailedActivity extends AppCompatActivity {
         addItems = findViewById(R.id.add_item);
         removeItems = findViewById(R.id.remove_item);
 
+
         //New Products
 
         if (newProductsModel != null) {
-            Glide.with(getApplicationContext()).load(newProductsModel.getImg_url()).into(detailedImg);
+            Glide.with(getApplicationContext()).load(newProductsModel.getImg_url()).into(imageView1);
+            Glide.with(getApplicationContext()).load(newProductsModel.getImg_url2()).into(imageView2);
+            Glide.with(getApplicationContext()).load(newProductsModel.getImg_url3()).into(imageView3);
+            Glide.with(getApplicationContext()).load(newProductsModel.getImg_url4()).into(imageView4);
             name.setText(newProductsModel.getName());
             description.setText(newProductsModel.getDescription());
             price.setText(String.valueOf(newProductsModel.getPrice()));
@@ -122,7 +132,10 @@ public class DetailedActivity extends AppCompatActivity {
         //Popular Products
 
         if (popularProductModel != null) {
-            Glide.with(getApplicationContext()).load(popularProductModel.getImg_url()).into(detailedImg);
+            Glide.with(getApplicationContext()).load(popularProductModel.getImg_url()).into(imageView1);
+            Glide.with(getApplicationContext()).load(popularProductModel.getImg_url2()).into(imageView2);
+            Glide.with(getApplicationContext()).load(popularProductModel.getImg_url3()).into(imageView3);
+            Glide.with(getApplicationContext()).load(popularProductModel.getImg_url4()).into(imageView4);
             name.setText(popularProductModel.getName());
             description.setText(popularProductModel.getDescription());
             price.setText(String.valueOf(popularProductModel.getPrice()));
@@ -136,7 +149,10 @@ public class DetailedActivity extends AppCompatActivity {
         //Show All products
 
         if (showAllModel != null) {
-            Glide.with(getApplicationContext()).load(showAllModel.getImg_url()).into(detailedImg);
+            Glide.with(getApplicationContext()).load(showAllModel.getImg_url()).into(imageView1);
+            Glide.with(getApplicationContext()).load(showAllModel.getImg_url2()).into(imageView2);
+            Glide.with(getApplicationContext()).load(showAllModel.getImg_url3()).into(imageView3);
+            Glide.with(getApplicationContext()).load(showAllModel.getImg_url4()).into(imageView4);
             name.setText(showAllModel.getName());
             description.setText(showAllModel.getDescription());
             price.setText(String.valueOf(showAllModel.getPrice()));
@@ -145,6 +161,8 @@ public class DetailedActivity extends AppCompatActivity {
             totalPrice = showAllModel.getPrice() * totalQuantity;
 
         }
+
+
         //Buy Now
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,6 +273,20 @@ public class DetailedActivity extends AppCompatActivity {
 
         });
 
+
+    }
+
+    public void previousView(View v) {
+        viewFlipper.setInAnimation(this, R.anim.slide_in_right);
+        viewFlipper.setOutAnimation(this, R.anim.slide_out_left);
+        viewFlipper.showPrevious();
+
+    }
+
+    public void nextView(View v) {
+        viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
+        viewFlipper.showNext();
 
     }
 

@@ -19,11 +19,7 @@
         android:icon="@drawable/ic_baseline_account_circle"
         app:showAsAction="always"/>
 
-    <item android:id="@+id/settings"
-        android:title="Settings"
-        android:iconTint="@color/white"
-        android:icon="@android:drawable/ic_menu_manage"
-        app:showAsAction="always"/>
+
 
 
 

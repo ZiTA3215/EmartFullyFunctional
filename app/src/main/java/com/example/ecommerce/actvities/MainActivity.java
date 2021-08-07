@@ -58,11 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
                         return true;
 
-                    case R.id.settings:
-                        startActivity(new Intent(MainActivity.this, MainActivity.class));
 
 
-                        return true;
+
 
                     case R.id.account:
 

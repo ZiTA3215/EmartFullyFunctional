@@ -11,6 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.models.ShowAllModel;
@@ -45,6 +48,19 @@ public class ShowAllActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
+        //image slider
+        ImageSlider imageSlider = findViewById(R.id.image_slider2);
+        List<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.emart2, "Discount On All Items", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.shop1, "Everything Online", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.shop2, "Zero Fees", ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(slideModels);
+
+
 
 
 
@@ -198,6 +214,7 @@ public class ShowAllActivity extends AppCompatActivity {
 
 
         }
+
 
     }
 }
