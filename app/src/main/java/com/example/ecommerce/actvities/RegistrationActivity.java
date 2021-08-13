@@ -13,10 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -24,6 +26,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth auth;
 
     SharedPreferences sharedPreferences;
+
+    FirebaseDatabase database;
 
 
 
@@ -35,6 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
         //getSupportActionBar().hide();
 
 
@@ -47,6 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
+
 
         /*
 
@@ -112,6 +118,10 @@ public class RegistrationActivity extends AppCompatActivity {
                         .addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                UserModel userModel = new UserModel(username,useremail,userpasswrord);
+                                String id = task.getResult().getUser().getUid();
+                                database.getReference().child("Users").child(id).setValue(userModel);
 
                                 if (task.isSuccessful()){
                                     Toast.makeText(RegistrationActivity.this, "Succesfully Registered", Toast.LENGTH_SHORT).show();

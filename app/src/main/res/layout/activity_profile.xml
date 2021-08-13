@@ -1,225 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".actvities.ProfileActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_profile_toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent">
+
+
+
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/grey_font"
-        android:minHeight="?attr/actionBarSize"
-        app:title="Profile"
-        android:theme="?attr/actionBarTheme"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <RelativeLayout
-        android:id="@+id/rellay1"
-        android:layout_width="match_parent"
+
+
+
+
+
+
+
+
+    <EditText
+        android:layout_width="0dp"
+        android:id="@+id/profile_name"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp">
+        android:background="@drawable/edit_text_bg"
+        android:hint="Your Name"
+        android:padding="13dp"
+        android:layout_marginTop="20dp"
+        android:drawableTint="@color/black"
+        android:drawableLeft="@drawable/ic_baseline_account_circle"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintWidth_percent=".8"/>
 
-        <RelativeLayout
-            android:id="@+id/imgUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ic_baseline_account_circle">
-
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_margin="9dp"
-                android:adjustViewBounds="true"
-                android:padding="3dp"
-                android:scaleType="centerInside"
-                />
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgUser"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15sp"
-            android:fontFamily="sans-serif-light"
-            android:text="User"
-            android:textColor="@color/white"
-            android:textSize="32sp" />
-
-
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif"
-            android:text=""
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_baseline_account_circle" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/linlay1"
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="0dp"
+        android:id="@+id/profile_email"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rellay1"
-        android:orientation="horizontal"/>
+        android:background="@drawable/edit_text_bg"
+        android:hint="Your Email"
+        android:padding="13dp"
+        android:layout_marginTop="20dp"
+        android:drawableTint="@color/black"
+        android:drawableLeft="@drawable/ic_baseline_account_circle"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        app:layout_constraintWidth_percent=".8"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_phonenumber"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Phone Number"
+        android:padding="13dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@android:drawable/stat_sys_phone_call"
+        android:drawableTint="@color/black"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email"
+        app:layout_constraintWidth_percent=".8"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:id="@+id/profile_address"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Your Address"
+        android:padding="13dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@android:drawable/ic_menu_mylocation"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/black"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_phonenumber"
+        app:layout_constraintWidth_percent=".8"/>
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_address"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Button
+        android:id="@+id/update2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Create/Update Profile Picture +"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update"
+        app:layout_constraintWidth_percent=".8" />
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linlay1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:textColor="@color/black"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/black" />
-
-            </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
