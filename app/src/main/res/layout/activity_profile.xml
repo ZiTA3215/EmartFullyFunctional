@@ -69,29 +69,13 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_name"
         app:layout_constraintWidth_percent=".8"/>
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/profile_phonenumber"
-        android:background="@drawable/edit_text_bg"
-        android:hint="Phone Number"
-        android:padding="13dp"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@android:drawable/stat_sys_phone_call"
-        android:drawableTint="@color/black"
-        android:drawablePadding="10dp"
-        android:elevation="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_email"
-        app:layout_constraintWidth_percent=".8"/>
 
     <EditText
         android:layout_width="0dp"
-        android:id="@+id/profile_address"
+        android:id="@+id/profile_password"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
-        android:hint="Your Address"
+        android:hint="Your Password"
         android:padding="13dp"
         android:layout_marginTop="20dp"
         android:drawableLeft="@android:drawable/ic_menu_mylocation"
@@ -100,7 +84,7 @@
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_phonenumber"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email"
         app:layout_constraintWidth_percent=".8"/>
 
     <Button
@@ -111,7 +95,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_address"
+        app:layout_constraintTop_toBottomOf="@+id/profile_password"
         app:layout_constraintWidth_percent=".8" />
 
     <Button

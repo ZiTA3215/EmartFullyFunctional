@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     Button update;
     Button update2;
-    EditText name, email, number, address;
+    EditText name, email, password;
 
     Uri imageURI;
 
@@ -60,14 +60,18 @@ public class ProfileActivity extends AppCompatActivity {
         profileimg = findViewById(R.id.profile_image);
         name = findViewById(R.id.profile_name);
         email = findViewById(R.id.profile_email);
-        number = findViewById(R.id.profile_phonenumber);
-        address = findViewById(R.id.profile_address);
+        password = findViewById(R.id.profile_password);
 
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         UserModel userModel = snapshot.getValue(UserModel.class);
+
+                        email.setText(userModel.getUseremail());
+                        name.setText(userModel.getUsername());
+                        password.setText(userModel.getUserpassword());
+
 
                         Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(profileimg);
 
