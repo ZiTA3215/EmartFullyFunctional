@@ -48,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseDatabase database;
 
+    UserModel userModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +102,10 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 uploadiamge();
                 updateUserProfile();
+
+
+               
+
 
 
             }
