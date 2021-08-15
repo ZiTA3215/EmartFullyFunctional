@@ -43,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText name, email, password;
 
     Uri imageURI;
+    Toolbar toolbar;
 
     FirebaseStorage storage;
     FirebaseAuth auth;
@@ -64,6 +65,17 @@ public class ProfileActivity extends AppCompatActivity {
         name = findViewById(R.id.profile_name);
         email = findViewById(R.id.profile_email);
         password = findViewById(R.id.profile_password);
+        toolbar = findViewById(R.id.my_profile_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -142,7 +154,7 @@ public class ProfileActivity extends AppCompatActivity {
             reference.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getBaseContext(), "uploaded successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Uploaded successfully your User account will be updated shortly", Toast.LENGTH_SHORT).show();
 
                     reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
@@ -159,14 +171,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
- ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
-        new ActivityResultCallback<Uri>() {
-            @Override
-            public void onActivityResult(Uri result) {
-                if(result != null){
-                    profileimg.setImageURI(result);
-                    imageURI = result;
+    ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
+                    if(result != null){
+                        profileimg.setImageURI(result);
+                        imageURI = result;
+                    }
                 }
-            }
-        });
+            });
 }

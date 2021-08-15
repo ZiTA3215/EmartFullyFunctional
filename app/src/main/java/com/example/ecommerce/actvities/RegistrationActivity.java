@@ -126,15 +126,15 @@ public class RegistrationActivity extends AppCompatActivity {
                                 database.getReference().child("Users").child(id).setValue(userModel);
 
                                 if (task.isSuccessful()){
-                                    Toast.makeText(RegistrationActivity.this, "Succesfully Registered", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
-                                }else {
+                Toast.makeText(RegistrationActivity.this, "Succesfully Registered", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
+            }else {
 
-                                    Toast.makeText(RegistrationActivity.this, "Registration Failed" + task.getException(), Toast.LENGTH_SHORT).show();
-                                }
+                Toast.makeText(RegistrationActivity.this, "Registration Failed" + task.getException(), Toast.LENGTH_SHORT).show();
+            }
 
-                            }
-                        });
+        }
+});
 
 
 
