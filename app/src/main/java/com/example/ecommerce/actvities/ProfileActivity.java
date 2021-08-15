@@ -47,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     FirebaseAuth auth;
     FirebaseDatabase database;
+    DatabaseReference reference;
 
     UserModel userModel;
 
@@ -103,8 +104,20 @@ public class ProfileActivity extends AppCompatActivity {
                 uploadiamge();
                 updateUserProfile();
 
+                database = FirebaseDatabase.getInstance();
+                reference = database.getReference("Users");
 
-               
+                String username = name.getText().toString();
+                String useremail = email.getText().toString();
+                String userpasswrord = password.getText().toString();
+
+
+
+                UserModel userModel = new UserModel( username,useremail,userpasswrord);
+                reference.child(username).setValue(userModel);
+
+
+
 
 
 
