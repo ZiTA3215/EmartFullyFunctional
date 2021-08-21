@@ -72,6 +72,7 @@
     android:orientation="vertical">
 
     <include layout="@layout/detailrecycle"/>
+    <include layout="@layout/showallrecyle"/>
 
 </LinearLayout>
 

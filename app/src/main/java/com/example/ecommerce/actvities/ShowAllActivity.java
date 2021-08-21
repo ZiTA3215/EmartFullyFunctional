@@ -50,13 +50,20 @@ public class ShowAllActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         //image slider
         ImageSlider imageSlider = findViewById(R.id.image_slider2);
         List<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.emart2, "Discount On All Items", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.shop1, "Everything Online", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.shop2, "Zero Fees", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.shopall5, "Shop All Items", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.shopall2, "Order Online", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.shopall4, "Fast and Easy", ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels);
 

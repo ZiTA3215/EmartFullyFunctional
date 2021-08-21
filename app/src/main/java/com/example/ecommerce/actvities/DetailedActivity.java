@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +20,11 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.ecommerce.R;
+import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.models.NewProductsModel;
 import com.example.ecommerce.models.PopularProductModel;
 import com.example.ecommerce.models.ShowAllModel;
@@ -29,11 +35,15 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class DetailedActivity extends AppCompatActivity {
@@ -43,6 +53,9 @@ public class DetailedActivity extends AppCompatActivity {
     TextView rating, name, description, price, quantity;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
+    RecyclerView recyclerView;
+    ShowAllAdapter showAllAdapter;
+    List<ShowAllModel> showAllModelList;
 
     Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
@@ -70,14 +83,24 @@ public class DetailedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
 
-       Toolbar toolbar = findViewById(R.id.home_toolbar);
-       AppBarLayout appBarLayout = findViewById(R.id.appbar);
+        Toolbar toolbar = findViewById(R.id.home_toolbar);
+        AppBarLayout appBarLayout = findViewById(R.id.appbar);
 
         bottomNavigationView = findViewById(R.id.bottombar);
         setSupportActionBar(toolbar);
+        //image slider
+        ImageSlider imageSlider = findViewById(R.id.image_slider2);
+        List<SlideModel> slideModels = new ArrayList<>();
+
+        slideModels.add(new SlideModel(R.drawable.shopall3, "Similar Items", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.emart2, "Everything Online", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.free, "Fast Shipping", ScaleTypes.CENTER_CROP));
+
+        imageSlider.setImageList(slideModels);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_home_24);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("eMart");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -92,15 +115,16 @@ public class DetailedActivity extends AppCompatActivity {
 
             boolean isShow = false;
             int scrollRange = -1;
+
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
-                if (scrollRange == -1){
+                if (scrollRange == -1) {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
-                if (scrollRange + verticalOffset == 0){
+                if (scrollRange + verticalOffset == 0) {
                     collapsingToolbarLayout.setTitle("eMart");
-                }else {
+                } else {
                     collapsingToolbarLayout.setTitle("");
                     isShow = true;
                 }
@@ -109,11 +133,7 @@ public class DetailedActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
+        String type = getIntent().getStringExtra("type");
 
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -144,6 +164,12 @@ public class DetailedActivity extends AppCompatActivity {
         buyNow = findViewById(R.id.buy_now);
         addItems = findViewById(R.id.add_item);
         removeItems = findViewById(R.id.remove_item);
+
+        recyclerView = findViewById(R.id.show_all_rec);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        showAllModelList = new ArrayList<>();
+        showAllAdapter = new ShowAllAdapter(this, showAllModelList);
+        recyclerView.setAdapter(showAllAdapter);
 
 
         //New Products
@@ -195,6 +221,151 @@ public class DetailedActivity extends AppCompatActivity {
             totalPrice = showAllModel.getPrice() * totalQuantity;
 
         }
+
+
+        if(type ==null||type.isEmpty())
+
+        {
+
+            firestore.collection("ShowAll")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                        }
+                    });
+
+
+        }
+
+        if(type !=null&&type.equalsIgnoreCase("Men"))
+
+        {
+
+            firestore.collection("ShowAll").whereEqualTo("type", "men")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                        }
+                    });
+
+
+        }if(type !=null&&type.equalsIgnoreCase("Woman"))
+
+        {
+
+            firestore.collection("ShowAll").whereEqualTo("type", "woman")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                        }
+                    });
+
+
+        } if(type !=null&&type.equalsIgnoreCase("Pets"))
+
+        {
+
+            firestore.collection("ShowAll").whereEqualTo("type", "pets")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                        }
+                    });
+
+
+        }if(type !=null&&type.equalsIgnoreCase("camera"))
+
+        {
+
+            firestore.collection("ShowAll").whereEqualTo("type", "camera")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                        }
+                    });
+
+
+        }if(type !=null&&type.equalsIgnoreCase("Tech"))
+
+        {
+
+            firestore.collection("ShowAll").whereEqualTo("type", "tech")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+
+                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                    showAllModelList.add(showAllModel);
+                                    showAllAdapter.notifyDataSetChanged();
+
+                                }
+                            }
+
+                        }
+                    });
+
+        }
+
+
 
 
         //Buy Now
@@ -310,6 +481,9 @@ public class DetailedActivity extends AppCompatActivity {
 
     }
 
+
+
+
     public void previousView(View v) {
         viewFlipper.setInAnimation(this, R.anim.slide_in_right);
         viewFlipper.setOutAnimation(this, R.anim.slide_out_left);
@@ -325,3 +499,7 @@ public class DetailedActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
