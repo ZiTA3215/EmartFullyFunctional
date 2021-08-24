@@ -57,7 +57,7 @@ public class DetailedActivity extends AppCompatActivity {
     ShowAllAdapter showAllAdapter;
     List<ShowAllModel> showAllModelList;
 
-    Toolbar toolbar;
+
     BottomNavigationView bottomNavigationView;
 
     int totalQuantity = 1;
@@ -83,51 +83,42 @@ public class DetailedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
 
-        Toolbar toolbar = findViewById(R.id.home_toolbar);
-        AppBarLayout appBarLayout = findViewById(R.id.appbar);
+
+      
 
         bottomNavigationView = findViewById(R.id.bottombar);
-        setSupportActionBar(toolbar);
-        //image slider
-        ImageSlider imageSlider = findViewById(R.id.image_slider2);
-        List<SlideModel> slideModels = new ArrayList<>();
-
-        slideModels.add(new SlideModel(R.drawable.shopall3, "Similar Items", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.emart2, "Everything Online", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.free, "Fast Shipping", ScaleTypes.CENTER_CROP));
-
-        imageSlider.setImageList(slideModels);
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
-        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle("eMart");
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.explore:
 
 
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                        startActivity(new Intent(DetailedActivity.this, ShowAllActivity.class));
 
-            boolean isShow = false;
-            int scrollRange = -1;
+                        return true;
 
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
+                    case R.id.menu_my_cart:
+
+                        startActivity(new Intent(DetailedActivity.this, CartActivity.class));
+
+                        return true;
+
+
+                    case R.id.menu_home:
+
+                        startActivity(new Intent(DetailedActivity.this, MainActivity.class));
+
+                        return true;
+
+
+                    default:
+                        return false;
                 }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle("eMart");
-                } else {
-                    collapsingToolbarLayout.setTitle("");
-                    isShow = true;
-                }
+
 
             }
         });
@@ -223,9 +214,7 @@ public class DetailedActivity extends AppCompatActivity {
         }
 
 
-        if(type ==null||type.isEmpty())
-
-        {
+        if (type == null || type.isEmpty()) {
 
             firestore.collection("ShowAll")
                     .get()
@@ -248,9 +237,7 @@ public class DetailedActivity extends AppCompatActivity {
 
         }
 
-        if(type !=null&&type.equalsIgnoreCase("Men"))
-
-        {
+        if (type != null && type.equalsIgnoreCase("Men")) {
 
             firestore.collection("ShowAll").whereEqualTo("type", "men")
                     .get()
@@ -271,9 +258,8 @@ public class DetailedActivity extends AppCompatActivity {
                     });
 
 
-        }if(type !=null&&type.equalsIgnoreCase("Woman"))
-
-        {
+        }
+        if (type != null && type.equalsIgnoreCase("Woman")) {
 
             firestore.collection("ShowAll").whereEqualTo("type", "woman")
                     .get()
@@ -294,9 +280,8 @@ public class DetailedActivity extends AppCompatActivity {
                     });
 
 
-        } if(type !=null&&type.equalsIgnoreCase("Pets"))
-
-        {
+        }
+        if (type != null && type.equalsIgnoreCase("Pets")) {
 
             firestore.collection("ShowAll").whereEqualTo("type", "pets")
                     .get()
@@ -317,9 +302,8 @@ public class DetailedActivity extends AppCompatActivity {
                     });
 
 
-        }if(type !=null&&type.equalsIgnoreCase("camera"))
-
-        {
+        }
+        if (type != null && type.equalsIgnoreCase("camera")) {
 
             firestore.collection("ShowAll").whereEqualTo("type", "camera")
                     .get()
@@ -340,9 +324,8 @@ public class DetailedActivity extends AppCompatActivity {
                     });
 
 
-        }if(type !=null&&type.equalsIgnoreCase("Tech"))
-
-        {
+        }
+        if (type != null && type.equalsIgnoreCase("Tech")) {
 
             firestore.collection("ShowAll").whereEqualTo("type", "tech")
                     .get()
@@ -364,8 +347,6 @@ public class DetailedActivity extends AppCompatActivity {
                     });
 
         }
-
-
 
 
         //Buy Now
@@ -482,8 +463,6 @@ public class DetailedActivity extends AppCompatActivity {
     }
 
 
-
-
     public void previousView(View v) {
         viewFlipper.setInAnimation(this, R.anim.slide_in_right);
         viewFlipper.setOutAnimation(this, R.anim.slide_out_left);
@@ -499,6 +478,15 @@ public class DetailedActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
