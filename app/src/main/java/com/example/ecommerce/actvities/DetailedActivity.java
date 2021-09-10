@@ -49,7 +49,6 @@ import java.util.Objects;
 public class DetailedActivity extends AppCompatActivity {
 
     ImageView imageView1, imageView2, imageView3, imageView4;
-    ViewFlipper viewFlipper;
     TextView rating, name, description, price, quantity;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
@@ -142,11 +141,11 @@ public class DetailedActivity extends AppCompatActivity {
         }
 
 
-        imageView1 = (ImageView) findViewById(R.id.imageview1);
-        imageView2 = (ImageView) findViewById(R.id.imageview2);
-        imageView3 = (ImageView) findViewById(R.id.imageview3);
-        imageView4 = (ImageView) findViewById(R.id.imageview4);
-        viewFlipper = (ViewFlipper) findViewById(R.id.detailed_img);
+        imageView1 = (ImageView) findViewById(R.id.image_view1);
+        imageView2 = (ImageView) findViewById(R.id.image_view2);
+        imageView3 = (ImageView) findViewById(R.id.image_view3);
+        imageView4 = (ImageView) findViewById(R.id.image_view4);
+
         quantity = findViewById(R.id.quantity);
         name = findViewById(R.id.detailed_name);
         description = findViewById(R.id.detailed_desc);
@@ -463,19 +462,7 @@ public class DetailedActivity extends AppCompatActivity {
     }
 
 
-    public void previousView(View v) {
-        viewFlipper.setInAnimation(this, R.anim.slide_in_right);
-        viewFlipper.setOutAnimation(this, R.anim.slide_out_left);
-        viewFlipper.showPrevious();
 
-    }
-
-    public void nextView(View v) {
-        viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
-        viewFlipper.showNext();
-
-    }
 
 }
 

@@ -29,6 +29,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/images_detailed"/>
+
     <include layout="@layout/detailrecycle"/>
     <include layout="@layout/showallrecyle"/>
 
