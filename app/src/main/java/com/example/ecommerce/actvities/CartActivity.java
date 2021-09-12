@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ecommerce.R;
@@ -38,6 +40,11 @@ public class CartActivity extends AppCompatActivity {
 
 
     TextView overAllAmount;
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    ImageView imageView;
+    int num = 0;
+
 
     Toolbar toolbar;
     RecyclerView recyclerView;
@@ -73,12 +80,22 @@ public class CartActivity extends AppCompatActivity {
 
         overAllAmount = findViewById(R.id.textView3);
 
+        imageView = (ImageView) findViewById(R.id.image_view1);
+
+
+
+
+
         recyclerView = findViewById(R.id.cart_rec);
         paymentBtn = findViewById(R.id.buy_now);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartModelList = new ArrayList<>();
         cartAdapter = new MyCartAdapter(this, cartModelList);
         recyclerView.setAdapter(cartAdapter);
+
+
+
+
 
         firestore.collection("AddToCart").document(auth.getCurrentUser().getUid())
                 .collection("User").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -130,6 +147,9 @@ public class CartActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
+
                 paymentBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -171,6 +191,8 @@ public class CartActivity extends AppCompatActivity {
 
         overAllAmount.setText("Total Amount :" + totalAmount);
     }
+
+
 
 }
 

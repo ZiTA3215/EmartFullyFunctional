@@ -4,25 +4,25 @@ import java.io.Serializable;
 
 public class MyCartModel {
 
-    String currentTime;
-    String currentDate;
+
     String productName;
-    String productPrice;
     String totalQuantity;
     int totalPrice;
+    String img_url;
 
     String documentId;
 
     public MyCartModel() {
     }
 
-    public MyCartModel(String currentTime, String currentDate, String productName, String productPrice, String totalQuantity, int totalPrice) {
-        this.currentTime = currentTime;
-        this.currentDate = currentDate;
+
+
+    public MyCartModel(String productName, String totalQuantity, int totalPrice, String img_url) {
+
         this.productName = productName;
-        this.productPrice = productPrice;
         this.totalQuantity = totalQuantity;
         this.totalPrice = totalPrice;
+        this.img_url = img_url;
     }
 
     public String getDocumentId() {
@@ -33,21 +33,6 @@ public class MyCartModel {
         this.documentId = documentId;
     }
 
-    public String getCurrentTime() {
-        return currentTime;
-    }
-
-    public void setCurrentTime(String currentTime) {
-        this.currentTime = currentTime;
-    }
-
-    public String getCurrentDate() {
-        return currentDate;
-    }
-
-    public void setCurrentDate(String currentDate) {
-        this.currentDate = currentDate;
-    }
 
     public String getProductName() {
         return productName;
@@ -57,13 +42,6 @@ public class MyCartModel {
         this.productName = productName;
     }
 
-    public String getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
-    }
 
     public String getTotalQuantity() {
         return totalQuantity;
@@ -79,5 +57,13 @@ public class MyCartModel {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -145,6 +146,10 @@ public class DetailedActivity extends AppCompatActivity {
         imageView2 = (ImageView) findViewById(R.id.image_view2);
         imageView3 = (ImageView) findViewById(R.id.image_view3);
         imageView4 = (ImageView) findViewById(R.id.image_view4);
+
+
+
+
 
         quantity = findViewById(R.id.quantity);
         name = findViewById(R.id.detailed_name);
@@ -430,13 +435,17 @@ public class DetailedActivity extends AppCompatActivity {
         String saveCurrentTime, saveCurrentDate;
         Calendar callForDate = Calendar.getInstance();
 
-        SimpleDateFormat currentDate = new SimpleDateFormat("MM DD, yyyy");
+        SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
         saveCurrentDate = currentDate.format(callForDate.getTime());
+
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(callForDate.getTime());
 
         final HashMap<String, Object> cartMap = new HashMap<>();
+
+
+
 
         cartMap.put("productName", name.getText().toString());
         cartMap.put("productPrice", price.getText().toString());
@@ -444,6 +453,9 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("currentDate", saveCurrentDate);
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
+
+
+
 
         firestore.collection("AddToCart").document(auth.getCurrentUser().getUid())
                 .collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

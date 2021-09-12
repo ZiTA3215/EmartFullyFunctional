@@ -16,19 +16,19 @@
             <ImageView
                 android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="-30dp"
                 android:id="@+id/image_view2"
                 />
             <ImageView
                 android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="-30dp"
                 android:id="@+id/image_view3"
                 />
             <ImageView
                 android:layout_width="400dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="-30dp"
                 android:id="@+id/image_view4"
               />
 
