@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent"
     tools:context=".actvities.ProfileActivity">
 
@@ -10,30 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/my_profile_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            app:title="My Profile"
-            android:theme="?attr/actionBarTheme"/>
+            app:layout_constraintTop_toTopOf="parent">
 
 
+            <TextView
+                android:id="@+id/toolbartitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="72dp"
+                android:gravity="center"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="bold" />
 
 
-
-
-
+        </androidx.appcompat.widget.Toolbar>
 
         <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="15dp"
         app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,11 +114,13 @@
         android:id="@+id/update"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:drawableLeft="@android:drawable/ic_menu_upload_you_tube"
-        android:drawableTint="@color/white"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_password"
         app:layout_constraintWidth_percent=".8" />
@@ -117,9 +128,12 @@
     <Button
         android:id="@+id/update2"
         android:layout_width="300dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         android:drawableLeft="@android:drawable/ic_menu_camera"
-        android:text="Create/Update Profile Picture +"
+        android:drawableTint="@color/black"
+        android:text="Add Profile Picture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

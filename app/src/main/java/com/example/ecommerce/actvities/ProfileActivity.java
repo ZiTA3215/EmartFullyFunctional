@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.my_profile_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +76,6 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
