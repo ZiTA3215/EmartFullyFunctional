@@ -24,14 +24,35 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top|center_horizontal">
+
+
+
+
             <TextView
                 android:textColor="@color/black"
                 android:fontFamily="@font/amethysta"
                 android:id="@+id/item_cost"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:textSize="18sp"
                 android:text="$ 34.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="$"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/item_nam"
