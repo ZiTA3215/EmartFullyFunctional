@@ -30,6 +30,15 @@
                 android:orientation="horizontal"
                 android:gravity="top|center_horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Price: $"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/amethysta"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
 
 
 
@@ -37,19 +46,14 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/amethysta"
                 android:id="@+id/item_cost"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textSize="18sp"
                 android:text="$ 34.0" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="$"
-                    android:textSize="9dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+
 
 
             </LinearLayout>
