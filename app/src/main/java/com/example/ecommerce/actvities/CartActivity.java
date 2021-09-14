@@ -79,7 +79,7 @@ public class CartActivity extends AppCompatActivity {
 
 
 
-        overAllAmount = findViewById(R.id.textView3);
+        overAllAmount = findViewById(R.id.textView33);
 
         imageView = (ImageView) findViewById(R.id.image_view1);
 
@@ -190,7 +190,7 @@ public class CartActivity extends AppCompatActivity {
             totalAmount += myCartModel.getTotalPrice();
         }
 
-        overAllAmount.setText("Total Amount :" + totalAmount);
+        overAllAmount.setText("Total Price: $" + totalAmount);
     }
 
 

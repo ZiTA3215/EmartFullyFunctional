@@ -38,7 +38,7 @@
 
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView33"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -73,10 +73,11 @@
             android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
             android:padding="15dp"
+            android:outlineAmbientShadowColor="#C119870D"
             android:text="Buy Now"
             android:textAllCaps="false"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/textView3"
+            app:layout_constraintTop_toBottomOf="@id/textView33"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent=".9"
