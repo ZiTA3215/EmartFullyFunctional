@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    android:background="@color/black"
+    tools:context=".actvities.StartActivity">
+
+
+    <ImageView
+        android:id="@+id/emart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@mipmap/finalicon2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Include other widget or layout tags here. These are considered
+                    "child views" or "children" of the linear layout -->
+
+
+
+
+    <Button
+            android:id="@+id/joinnow"
+            android:layout_width="match_parent"
+            app:layout_constraintWidth_percent=".4"
+            android:layout_height="wrap_content"
+            android:onClick="joinnow"
+            android:text="Join Now"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:outlineAmbientShadowColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emart"
+            app:layout_constraintVertical_bias="0.146" />
+
+    <Button
+        android:id="@+id/loginstart"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:onClick="loginstart"
+        android:outlineAmbientShadowColor="@color/black"
+        android:text="Already have an Account? Login!"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/joinnow"
+        app:layout_constraintVertical_bias="0.146"
+        app:layout_constraintWidth_percent=".4" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
