@@ -145,7 +145,7 @@ public class DetailedActivity extends AppCompatActivity {
         imageView1 = (ImageView) findViewById(R.id.image_view1);
         imageView2 = (ImageView) findViewById(R.id.image_view2);
         imageView3 = (ImageView) findViewById(R.id.image_view3);
-        imageView4 = (ImageView) findViewById(R.id.image_view4);
+
 
 
 
@@ -173,7 +173,7 @@ public class DetailedActivity extends AppCompatActivity {
             Glide.with(getApplicationContext()).load(newProductsModel.getImg_url()).into(imageView1);
             Glide.with(getApplicationContext()).load(newProductsModel.getImg_url2()).into(imageView2);
             Glide.with(getApplicationContext()).load(newProductsModel.getImg_url3()).into(imageView3);
-            Glide.with(getApplicationContext()).load(newProductsModel.getImg_url4()).into(imageView4);
+
             name.setText(newProductsModel.getName());
             description.setText(newProductsModel.getDescription());
             price.setText(String.valueOf(newProductsModel.getPrice()));
@@ -190,7 +190,7 @@ public class DetailedActivity extends AppCompatActivity {
             Glide.with(getApplicationContext()).load(popularProductModel.getImg_url()).into(imageView1);
             Glide.with(getApplicationContext()).load(popularProductModel.getImg_url2()).into(imageView2);
             Glide.with(getApplicationContext()).load(popularProductModel.getImg_url3()).into(imageView3);
-            Glide.with(getApplicationContext()).load(popularProductModel.getImg_url4()).into(imageView4);
+
             name.setText(popularProductModel.getName());
             description.setText(popularProductModel.getDescription());
             price.setText(String.valueOf(popularProductModel.getPrice()));
@@ -207,7 +207,7 @@ public class DetailedActivity extends AppCompatActivity {
             Glide.with(getApplicationContext()).load(showAllModel.getImg_url()).into(imageView1);
             Glide.with(getApplicationContext()).load(showAllModel.getImg_url2()).into(imageView2);
             Glide.with(getApplicationContext()).load(showAllModel.getImg_url3()).into(imageView3);
-            Glide.with(getApplicationContext()).load(showAllModel.getImg_url4()).into(imageView4);
+
             name.setText(showAllModel.getName());
             description.setText(showAllModel.getDescription());
             price.setText(String.valueOf(showAllModel.getPrice()));
@@ -453,6 +453,7 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("currentDate", saveCurrentDate);
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
+
 
 
 
