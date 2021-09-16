@@ -38,9 +38,9 @@ import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
-
+int overAllTotalAmount;
     TextView overAllAmount;
-    SwipeRefreshLayout swipeRefreshLayout;
+
 
     ImageView imageView;
     int num = 0;
@@ -50,6 +50,7 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Button paymentBtn;
     private List<AddressModel> addressModelList;
+
 
 
     List<MyCartModel> cartModelList;
@@ -83,16 +84,18 @@ public class CartActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.image_view1);
 
-
+        Object obj= getIntent().getSerializableExtra("price");
 
 
 
         recyclerView = findViewById(R.id.cart_rec);
-        paymentBtn = findViewById(R.id.buy_now);
+        paymentBtn = findViewById(R.id.buy_now2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cartModelList = new ArrayList<>();
         cartAdapter = new MyCartAdapter(this, cartModelList);
         recyclerView.setAdapter(cartAdapter);
+        cartAdapter.notifyDataSetChanged();
+
 
 
 
@@ -156,23 +159,12 @@ public class CartActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         startActivity(new Intent(CartActivity.this,AddressActivity.class));
 
-                        double amount = 0.0;
 
-                        if(obj instanceof NewProductsModel){
-                            NewProductsModel newProductsModel = (NewProductsModel) obj;
-                            amount = newProductsModel.getPrice();
-                        }if(obj instanceof PopularProductModel){
-                            PopularProductModel popularProductModel = (PopularProductModel) obj;
-                            amount = popularProductModel.getPrice();
 
-                        }if(obj instanceof ShowAllModel) {
-                            ShowAllModel showAllModel = (ShowAllModel) obj;
-                            amount = showAllModel.getPrice();
-                        }
 
-                        Intent intent = new Intent(CartActivity.this, PaymentActiviy.class);
-                        intent.putExtra("amount", amount);
-                        startActivity(intent);
+
+
+
                     }
                 });
 
@@ -192,6 +184,11 @@ public class CartActivity extends AppCompatActivity {
 
         overAllAmount.setText("Total Price: $" + totalAmount);
     }
+
+
+
+
+
 
 
 

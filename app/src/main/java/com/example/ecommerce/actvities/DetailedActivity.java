@@ -49,7 +49,7 @@ import java.util.Objects;
 
 public class DetailedActivity extends AppCompatActivity {
 
-    ImageView imageView1, imageView2, imageView3, imageView4;
+    ImageView imageView1, imageView2, imageView3;
     TextView rating, name, description, price, quantity;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
@@ -453,6 +453,7 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("currentDate", saveCurrentDate);
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
+
 
 
 

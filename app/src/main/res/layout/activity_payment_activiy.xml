@@ -4,18 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".actvities.PaymentActiviy">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/payment_toolbar"
-        android:background="#8FF7FD"
+        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Payment"/>
+        >
+        <TextView
+            android:id="@+id/carttoolbartitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="72dp"
+            android:gravity="center"
+            android:text="Payment"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+
+    </androidx.appcompat.widget.Toolbar>
 
 
 
@@ -28,13 +42,15 @@
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/payment_toolbar"
-        app:srcCompat="@drawable/card_prev" />
+        app:srcCompat="@drawable/paypal" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:text="Subtotal"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +60,8 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_marginTop="12dp"
         android:text="Discount"
         android:textSize="18sp"
@@ -54,6 +72,8 @@
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Shipping"
@@ -64,6 +84,8 @@
     <TextView
         android:id="@+id/sub_total"
         android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:text="$ 0"
@@ -73,6 +95,8 @@
 
     <TextView
         android:id="@+id/textView17"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -84,6 +108,8 @@
 
     <TextView
         android:id="@+id/textView18"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -108,6 +134,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_marginTop="18dp"
         android:text="Total"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +145,8 @@
         android:id="@+id/total_amt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="76dp"
         android:text="$ 00"
@@ -130,10 +160,12 @@
         android:layout_marginTop="44dp"
         android:text="Check Out"
         android:onClick="payWithStripe"
+        android:backgroundTint="#C119870D"
         android:textStyle="bold"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
+        android:outlineAmbientShadowColor="#C119870D"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 

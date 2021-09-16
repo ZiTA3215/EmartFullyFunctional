@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.ecommerce.R;
+import com.example.ecommerce.actvities.CartActivity;
 import com.example.ecommerce.models.MyCartModel;
 import com.example.ecommerce.models.NewProductsModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +31,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
     Context context;
     List<MyCartModel> list;
-    int totalAmount = 0;
+
     FirebaseFirestore firestore;
     FirebaseAuth auth;
 
@@ -71,11 +72,28 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
                                     list.remove(list.get(position));
                                     notifyDataSetChanged();
 
+                                    ((CartActivity)context).recreate();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                     Toast.makeText(context, "Item Deleted", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
+
 
                             }
                         });
@@ -83,12 +101,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
             }
         });
 
-        //Total Amount pass to cart Activity
-        totalAmount = totalAmount + list.get(position).getTotalPrice();
-        Intent intent = new Intent("MyTotalAmount");
-        intent.putExtra("totalAmount", totalAmount);
-
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
 
     }
@@ -115,6 +127,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
         }
     }
+
+
 
 
 }
