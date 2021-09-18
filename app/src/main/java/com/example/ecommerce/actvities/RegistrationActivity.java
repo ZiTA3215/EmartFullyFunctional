@@ -25,7 +25,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText name, email, password;
     private FirebaseAuth auth;
 
-    SharedPreferences sharedPreferences;
+
 
     FirebaseDatabase database;
 
@@ -42,40 +42,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        //getSupportActionBar().hide();
-
-
-
-        if (auth.getCurrentUser() !=null){
-
-            startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
-            finish();
-        }
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
 
-
-        /*
-
-        sharedPreferences = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
-        boolean isFirstTime = sharedPreferences.getBoolean("FirstTime", true);
-
-        if (isFirstTime){
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("firsttime", false);
-            editor.commit();
-
-            //Currently determines where the application starts just change Main activity to onboarding
-
-            Intent intent = new Intent(RegistrationActivity.this,OnBoardingActivity.class);
-
-            startActivity(intent);
-            finish();
-        }
-
-*/
 
     }
 
@@ -136,10 +106,6 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 });
 
-
-
-
-                    startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
                 }
 
                 public void signin (View view){
