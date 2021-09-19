@@ -1,6 +1,6 @@
 package com.example.ecommerce.fragments;
 
-import android.app.ProgressDialog;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment {
 
     LinearLayout linearLayout;
 
-    ProgressDialog progressDialog;
+    ProgressBar progressDialog;
 
     RecyclerView catRecyclerview , newProductRecyclerview, popularRecyclerview;
 
@@ -95,7 +96,7 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressBar(getActivity());
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
         popularRecyclerview = root.findViewById(R.id.popular_rec);
@@ -150,10 +151,7 @@ public class HomeFragment extends Fragment {
 
         imageSlider.setImageList(slideModels);
 
-        progressDialog.setTitle("Welcome to Emart");
-        progressDialog.setMessage("please wait...");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
+
 
         //Category
         catRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -175,7 +173,7 @@ public class HomeFragment extends Fragment {
 
                                 linearLayout.setVisibility(View.VISIBLE);
 
-                                progressDialog.dismiss();
+
 
                             }
                         } else {
