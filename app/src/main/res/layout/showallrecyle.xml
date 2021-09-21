@@ -5,45 +5,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black">
 
-
-
-
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/popular_products"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="9dp"
-                android:fontFamily="@font/amethysta"
-                android:text="Similar Items "
-                android:textColor="@color/white"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+        android:layout_height="match_parent">
 
 
 
 
-        </RelativeLayout>
+
+    <TextView
+        android:id="@+id/popular_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amethysta"
+        android:text="Similar Items "
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/show_all_rec"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_margin="7dp"
             android:layout_marginTop="6dp"
-            android:padding="5dp" />
-    </LinearLayout>
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popular_products"
+           
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
 
-</androidx.core.widget.NestedScrollView>
+

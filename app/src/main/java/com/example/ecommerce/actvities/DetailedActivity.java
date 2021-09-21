@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,10 @@ import java.util.Objects;
 
 public class DetailedActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
+
+    ImageView imagehome;
+
     ImageView imageView1, imageView2, imageView3;
     TextView rating, name, description, price, quantity;
     Button addToCart, buyNow;
@@ -82,46 +87,20 @@ public class DetailedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
+        imagehome = findViewById(R.id.homebutton);
 
+        toolbar = findViewById(R.id.my_detailtoolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
-      
-
-        bottomNavigationView = findViewById(R.id.bottombar);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.explore:
-
-
-                        startActivity(new Intent(DetailedActivity.this, ShowAllActivity.class));
-
-                        return true;
-
-
-                    case R.id.menu_my_cart:
-
-                        startActivity(new Intent(DetailedActivity.this, CartActivity.class));
-
-                        return true;
-
-
-                    case R.id.menu_home:
-
-                        startActivity(new Intent(DetailedActivity.this, MainActivity.class));
-
-                        return true;
-
-
-                    default:
-                        return false;
-                }
-
-
+            public void onClick(View v) {
+                finish();
             }
         });
+
 
 
         String type = getIntent().getStringExtra("type");
@@ -428,7 +407,23 @@ public class DetailedActivity extends AppCompatActivity {
 
             }
         });
+
+        imagehome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(DetailedActivity.this, MainActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+
     }
+
+
 
     private void addToCart() {
 
