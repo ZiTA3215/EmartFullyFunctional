@@ -39,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     CircleImageView profileimg;
 
     Button update;
-    Button update2;
+    ImageView update2;
     EditText name, email, password;
 
     Uri imageURI;
@@ -64,7 +64,9 @@ public class ProfileActivity extends AppCompatActivity {
         profileimg = findViewById(R.id.profile_image);
         name = findViewById(R.id.profile_name);
         email = findViewById(R.id.profile_email);
+        email.setEnabled(false);
         password = findViewById(R.id.profile_password);
+        password.setEnabled(false);
         toolbar = findViewById(R.id.my_profile_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
