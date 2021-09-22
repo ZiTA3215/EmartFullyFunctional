@@ -128,6 +128,8 @@ public class ProfileActivity extends AppCompatActivity {
 
                 database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                         .child("username").setValue(username);
+                Toast.makeText(getBaseContext(), "Your Account Has Been Updated", Toast.LENGTH_SHORT).show();
+
 
 
 

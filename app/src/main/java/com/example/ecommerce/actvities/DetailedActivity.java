@@ -56,6 +56,7 @@ public class DetailedActivity extends AppCompatActivity {
 
     ImageView imageView1, imageView2, imageView3;
     TextView rating, name, description, price, quantity;
+    String imgurl, imgurl2, imgurl3;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
     RecyclerView recyclerView;
@@ -89,6 +90,7 @@ public class DetailedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detailed);
         imagehome = findViewById(R.id.homebutton);
 
+
         toolbar = findViewById(R.id.my_detailtoolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -100,7 +102,6 @@ public class DetailedActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
 
         String type = getIntent().getStringExtra("type");
@@ -124,10 +125,6 @@ public class DetailedActivity extends AppCompatActivity {
         imageView1 = (ImageView) findViewById(R.id.image_view1);
         imageView2 = (ImageView) findViewById(R.id.image_view2);
         imageView3 = (ImageView) findViewById(R.id.image_view3);
-
-
-
-
 
 
         quantity = findViewById(R.id.quantity);
@@ -420,9 +417,7 @@ public class DetailedActivity extends AppCompatActivity {
         });
 
 
-
     }
-
 
 
     private void addToCart() {
@@ -430,12 +425,38 @@ public class DetailedActivity extends AppCompatActivity {
         String saveCurrentTime, saveCurrentDate;
         Calendar callForDate = Calendar.getInstance();
 
+        if (popularProductModel != null) {
+            imgurl = popularProductModel.getImg_url();
+
+
+        }
+
+
+        if (showAllModel != null) {
+            imgurl = showAllModel.getImg_url();
+
+        }
+
+        if (newProductsModel != null) {
+            imgurl = newProductsModel.getImg_url();
+
+        }
+
+
+
+
+
+
+
+
+
         SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
         saveCurrentDate = currentDate.format(callForDate.getTime());
 
-
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(callForDate.getTime());
+
+
 
         final HashMap<String, Object> cartMap = new HashMap<>();
 
@@ -448,6 +469,10 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("currentDate", saveCurrentDate);
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
+        cartMap.put("img_url" , imgurl);
+
+
+
 
 
 
@@ -458,6 +483,7 @@ public class DetailedActivity extends AppCompatActivity {
                 .collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
+
                 Toast.makeText(DetailedActivity.this, "Added To A Cart", Toast.LENGTH_SHORT).show();
 
                 finish();

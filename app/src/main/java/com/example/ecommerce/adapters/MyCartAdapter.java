@@ -31,7 +31,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
     Context context;
     List<MyCartModel> list;
-
+    int totalAmount = 0;
     FirebaseFirestore firestore;
     FirebaseAuth auth;
 
@@ -45,11 +45,15 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.my_cart_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.my_cart_item,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
+
+
 
 
         holder.name.setText(list.get(position).getProductName());
@@ -68,32 +72,16 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
 
-                                if (task.isSuccessful()) {
+                                if (task.isSuccessful()){
                                     list.remove(list.get(position));
                                     notifyDataSetChanged();
 
                                     ((CartActivity)context).recreate();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     Toast.makeText(context, "Item Deleted", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(context,"Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
-
 
                             }
                         });
@@ -101,20 +89,24 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
             }
         });
 
+        //Total Amount pass to cart Activity
+        totalAmount = totalAmount + list.get(position).getTotalPrice();
+        Intent intent = new Intent("MyTotalAmount");
+        intent.putExtra("totalAmount", totalAmount);
+
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
 
     }
 
     @Override
-    public int getItemCount() {
-        return list.size();
-    }
+    public int getItemCount(){return list.size();}
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, totalQuantity, totalPrice;
+        TextView name,totalQuantity,totalPrice;
         ImageView deleteItem;
-
+        ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -122,13 +114,11 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
 
             totalQuantity = itemView.findViewById(R.id.total_quantity);
-            totalPrice = itemView.findViewById(R.id.cartprice);
+            totalPrice= itemView.findViewById(R.id.cartprice);
             deleteItem = itemView.findViewById(R.id.delete);
-
+            imageView = itemView.findViewById(R.id.detail_round);
         }
     }
-
-
 
 
 }
