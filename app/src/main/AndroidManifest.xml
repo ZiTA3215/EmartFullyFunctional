@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/finalicon2_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce">
-        <activity android:name=".actvities.RegistrationActivity"></activity>
+        <activity android:name=".actvities.ChangePassword"></activity>
+        <activity android:name=".actvities.ResetPassword" />
+        <activity android:name=".actvities.RegistrationActivity" />
         <activity android:name=".actvities.ProfileActivity" />
         <activity android:name=".actvities.CheckoutActivity" />
         <activity android:name=".actvities.PaymentActiviy" />

@@ -105,21 +105,19 @@
         app:layout_constraintWidth_percent=".8"/>
 
 
-    <EditText
-        android:layout_width="0dp"
+    <Button
+
         android:id="@+id/profile_password"
+        android:layout_width="200dp"
+        android:onClick="changepassword"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_bg"
-        android:hint="Your Password"
-        android:padding="13dp"
-        android:inputType="none"
-        android:focusable="false"
-        android:clickable="false"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@android:drawable/ic_lock_lock"
-        android:drawablePadding="10dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_settings_24"
         android:drawableTint="@color/black"
-        android:elevation="3dp"
+
+        android:outlineAmbientShadowColor="@color/white"
+        android:text="Change Password"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_email"

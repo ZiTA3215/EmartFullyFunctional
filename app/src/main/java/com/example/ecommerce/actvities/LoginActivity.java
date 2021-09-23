@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     EditText name, email, password;
+    TextView passwordreset;
     private FirebaseAuth auth;
 
     @Override
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
+        passwordreset = findViewById(R.id.text_view_forget_password);
     }
 
         public void signin(View view) {
@@ -82,5 +85,11 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
+
+    public void passwordresetbutton(View view) {
+
+        Intent intent = new Intent(LoginActivity.this, ResetPassword.class);
+        startActivity(intent);
     }
+}
 

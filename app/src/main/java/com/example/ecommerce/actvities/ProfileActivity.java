@@ -40,8 +40,9 @@ public class ProfileActivity extends AppCompatActivity {
     CircleImageView profileimg;
 
     Button update;
+    Button password;
     ImageView update2;
-    EditText name, email, password;
+    EditText name, email;
 
     Uri imageURI;
     Toolbar toolbar;
@@ -67,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.profile_email);
         email.setEnabled(false);
         password = findViewById(R.id.profile_password);
-        password.setEnabled(false);
+
         toolbar = findViewById(R.id.my_profile_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -87,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                         email.setText(userModel.getUseremail());
                         name.setText(userModel.getUsername());
-                        password.setText(userModel.getUserpassword());
+
 
 
                         Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(profileimg);
@@ -123,7 +124,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 String username = name.getText().toString();
                 String useremail = email.getText().toString();
-                String userpasswrord = password.getText().toString();
+
 
 
                 database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
@@ -139,6 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }
@@ -185,4 +187,10 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 }
             });
-}
+
+
+    public void changepassword(View view) {
+
+        startActivity(new Intent(ProfileActivity.this, ChangePassword.class));
+    }
+    }
