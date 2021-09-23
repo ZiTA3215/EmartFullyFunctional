@@ -28,6 +28,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.ecommerce.R;
 import com.example.ecommerce.actvities.ShowAllActivity;
 import com.example.ecommerce.adapters.CategoryAdapter;
+import com.example.ecommerce.adapters.ImageSliderAdapter;
 import com.example.ecommerce.adapters.NewProductsAdapter;
 import com.example.ecommerce.adapters.PopularProductAdapter;
 import com.example.ecommerce.adapters.ShowAllAdapter;
@@ -37,10 +38,15 @@ import com.example.ecommerce.models.PopularProductModel;
 import com.example.ecommerce.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +55,9 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     TextView catShowAll, popularShowAll, newProductShowAll;
+
+    SliderView sliderView;
+    int TotalCounts;
 
     LinearLayout linearLayout;
 
@@ -96,6 +105,8 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+        sliderView = root.findViewById(R.id.imageSlider);
+
         progressDialog = new ProgressBar(getActivity());
         catRecyclerview = root.findViewById(R.id.rec_category);
         newProductRecyclerview = root.findViewById(R.id.new_product_rec);
@@ -106,6 +117,23 @@ public class HomeFragment extends Fragment {
        catShowAll = root.findViewById(R.id.category_see_all);
         popularShowAll = root.findViewById(R.id.popular_see_all);
         newProductShowAll = root.findViewById(R.id.newProducts_see_all);
+
+        FirebaseDatabase.getInstance().getReference("ImagesLinks").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Long counts = snapshot.getChildrenCount();
+
+                TotalCounts= counts.intValue();
+
+                sliderView.setSliderAdapter(new ImageSliderAdapter(HomeFragment.this,TotalCounts));
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
        catShowAll.setOnClickListener(new View.OnClickListener() {
@@ -141,15 +169,7 @@ public class HomeFragment extends Fragment {
 
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);
-        //image slider
-        ImageSlider imageSlider = root.findViewById(R.id.image_slider);
-        List<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.emart2, "Discounts On All Items", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.shop1, "Everything Online", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.shopall2, "Best Products", ScaleTypes.CENTER_CROP));
-
-        imageSlider.setImageList(slideModels);
 
 
 
