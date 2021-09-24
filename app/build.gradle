@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+    implementation 'com.nex3z:notification-badge:1.0.4'
 
     /*this is data for payment method later i will learn how to implment paypal
     implementation 'com.razorpay:checkout:1.6.6'
