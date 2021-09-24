@@ -33,7 +33,7 @@
                 android:backgroundTint="@color/white"
                 android:elevation="3dp"
                 android:textColorHint="@color/white"
-                android:hint="Search For Items Here..."/>
+                android:hint="Search by Category..."/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

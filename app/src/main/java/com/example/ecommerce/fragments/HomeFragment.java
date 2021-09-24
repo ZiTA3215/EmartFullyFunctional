@@ -299,7 +299,7 @@ public class HomeFragment extends Fragment {
     private void searchProdcut(String type) {
 
         if (!type.isEmpty()){
-            db.collection("AllProducts").whereGreaterThanOrEqualTo("name", type).get()
+            db.collection("AllProducts").whereEqualTo("type", type).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
