@@ -5,10 +5,10 @@
 
 
     <item
-        android:id="@+id/menu_my_cart"
-        android:title="My Cart"
-        android:iconTint="@color/white"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:id="@+id/menu_my_account"
+        android:title="My Account"
+       android:iconTint="@color/white"
+        android:icon="@drawable/ic_baseline_account_circle"
         app:showAsAction="always"/>
 
     <item
