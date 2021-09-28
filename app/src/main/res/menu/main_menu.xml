@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
+    <item
+        android:id="@+id/menu_ewalth_discount"
+        android:title="My Account"
+        android:icon="@drawable/image001"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/menu_my_account"
         android:title="My Account"
