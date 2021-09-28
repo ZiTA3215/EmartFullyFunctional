@@ -43,7 +43,7 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ViewHold
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.mItemImage);
         holder.mcost.setText(String.valueOf(list.get(position).getPrice()));
-        holder.mName.setText(list.get(position).getName());
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,13 +65,12 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ViewHold
 
         private ImageView mItemImage;
         private  TextView mcost;
-        private TextView mName;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mItemImage= itemView.findViewById(R.id.item_image);
-            mName = itemView.findViewById(R.id.item_nam);
             mcost = itemView.findViewById(R.id.item_cost);
         }
     }

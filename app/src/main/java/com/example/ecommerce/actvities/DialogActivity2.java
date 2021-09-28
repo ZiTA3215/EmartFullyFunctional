@@ -41,7 +41,7 @@ public class DialogActivity2 extends AppCompatActivity {
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DialogActivity2.this, MainActivity.class));
+                startActivity(new Intent(DialogActivity2.this, VerifyActivity.class));
             }
 
 

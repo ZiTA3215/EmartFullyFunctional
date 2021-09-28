@@ -39,7 +39,6 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.newImg);
-        holder.newName.setText(list.get(position).getName());
         holder.newPrice.setText(String.valueOf(list.get(position).getPrice()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +66,6 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
             super(itemView);
 
             newImg = itemView.findViewById(R.id.new_img);
-            newName = itemView.findViewById(R.id.new_product_name);
             newPrice = itemView.findViewById(R.id.new_price);
         }
     }
