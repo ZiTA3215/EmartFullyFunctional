@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ecommerce" >
+    package="com.example.ecommerce">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application
-        xmlns:tools="http://schemas.android.com/tools"
+    <application xmlns:tools="http://schemas.android.com/tools"
         android:allowBackup="true"
         android:icon="@mipmap/finalicon2_round"
         android:label="eMart"
@@ -14,9 +13,9 @@
         android:roundIcon="@mipmap/finalicon2_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce"
-        tools:replace="allowBackup, label" >
-        <activity android:name=".actvities.DialogActivity2" >
-        </activity>
+        tools:replace="allowBackup, label">
+        <activity android:name=".actvities.VerifyActivity"></activity>
+        <activity android:name=".actvities.DialogActivity2"></activity>
         <activity android:name=".actvities.ChangePassword" />
         <activity android:name=".actvities.ResetPassword" />
         <activity android:name=".actvities.RegistrationActivity" />
@@ -25,7 +24,7 @@
         <activity android:name=".actvities.PaymentActiviy" />
         <activity android:name=".actvities.AddAddressActivity" />
         <activity android:name=".actvities.AddressActivity" />
-        <activity android:name=".actvities.StartActivity" >
+        <activity android:name=".actvities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
