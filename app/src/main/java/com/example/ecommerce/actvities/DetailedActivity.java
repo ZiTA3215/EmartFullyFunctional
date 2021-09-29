@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -53,6 +55,8 @@ public class DetailedActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     ImageView imagehome;
+
+    Context context;
 
     ImageView imageView1, imageView2, imageView3;
     TextView rating, name, description, price, quantity;
@@ -142,6 +146,8 @@ public class DetailedActivity extends AppCompatActivity {
         showAllAdapter = new ShowAllAdapter(this, showAllModelList);
         recyclerView.setAdapter(showAllAdapter);
 
+        context = this;
+
 
         //New Products
 
@@ -156,6 +162,125 @@ public class DetailedActivity extends AppCompatActivity {
             name.setText(newProductsModel.getName());
 
             totalPrice = newProductsModel.getPrice() * totalQuantity;
+
+            imageView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(newProductsModel.getImg_url()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+            imageView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(newProductsModel.getImg_url2()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+            imageView3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(newProductsModel.getImg_url3()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
 
 
         }
@@ -174,6 +299,127 @@ public class DetailedActivity extends AppCompatActivity {
 
             totalPrice = popularProductModel.getPrice() * totalQuantity;
 
+            imageView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(popularProductModel.getImg_url()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+            imageView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(popularProductModel.getImg_url2()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+            imageView3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(popularProductModel.getImg_url3()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+
+
 
         }
 
@@ -190,6 +436,127 @@ public class DetailedActivity extends AppCompatActivity {
             name.setText(showAllModel.getName());
 
             totalPrice = showAllModel.getPrice() * totalQuantity;
+
+            imageView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(showAllModel.getImg_url()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+            imageView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(showAllModel.getImg_url2()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+            imageView3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.dialog_for_detail);
+
+
+
+
+
+
+                    ImageView d_icon, exit;
+
+                    d_icon = dialog.findViewById(R.id.dialog_image);
+
+
+
+                    exit = dialog.findViewById(R.id.exit);
+
+
+                    Glide.with(getApplicationContext()).load(showAllModel.getImg_url3()).into(d_icon);
+
+
+                    exit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+                    dialog.show();
+
+                }
+            });
+
+
 
         }
 
