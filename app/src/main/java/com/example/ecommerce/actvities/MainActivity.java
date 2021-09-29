@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    case R.id.cart:
+                    case R.id.account:
 
-                        startActivity(new Intent(MainActivity.this, CartActivity.class));
+                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
 
 
                         return true;
@@ -110,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, StartActivity.class));
             finish();
 
-        } else if (id == R.id.menu_my_account) {
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+        } else if (id == R.id.menu_my_cart) {
+            startActivity(new Intent(MainActivity.this, CartActivity.class));
 
         }else if (id == R.id.menu_ewalth_discount){
             startActivity(new Intent(MainActivity.this, DialogActivity2.class));
