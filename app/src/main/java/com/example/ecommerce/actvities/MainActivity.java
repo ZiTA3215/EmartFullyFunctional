@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.emart7_launcher_round);
+
+        Intent intentbackgroundservice = new Intent(this, PushNotifications.class);
+        startService(intentbackgroundservice);
         
 
 
