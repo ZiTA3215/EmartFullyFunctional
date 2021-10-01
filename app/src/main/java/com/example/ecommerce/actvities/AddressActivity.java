@@ -121,7 +121,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                     }
 
 
-                
+
                 if (cartModelList != null && cartModelList.size() > 0) {
                     Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
                     intent.putExtra("cartModelList", (Serializable) cartModelList);
