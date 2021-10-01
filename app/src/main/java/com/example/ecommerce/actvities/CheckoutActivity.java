@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.ecommerce.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -25,6 +27,9 @@ import com.stripe.android.view.CardInputWidget;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import okhttp3.Call;
@@ -37,17 +42,28 @@ import okhttp3.Response;
 
 public class CheckoutActivity extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
-    private static final String BACKEND_URL = "http://127.0.0.1:4242/";
+    //private static final String BACKEND_URL = "http://10.0.2.2:4242/";
+    private static final String BACKEND_URL = "https://emart-backend-oldrich.herokuapp.com/";
+
     private OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
+    Double amountDobule= null;
+    private FirebaseAuth mAuth;
+    FirebaseFirestore mStore;
+    String name="";
+    String img_url = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+        mAuth = FirebaseAuth.getInstance();
+        mStore = FirebaseFirestore.getInstance();
+         amountDobule = getIntent().getDoubleExtra("amount", 0.0);
+        img_url = getIntent().getStringExtra("img_url");
+        name = getIntent().getStringExtra("name");
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -59,12 +75,23 @@ public class CheckoutActivity extends AppCompatActivity {
     private void startCheckout() {
         // Create a PaymentIntent by calling the server's endpoint.
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
-        String json = "{"
-                + "\"currency\":\"usd\","
-                + "\"items\":["
-                + "{\"id\":\"photo_subscription\"}"
-                + "]"
-                + "}";
+      //  String json = "{"
+               // + "\"currency\":\"usd\","
+              //  + "\"items\":["
+              //  + "{\"id\":\"photo_subscription\"}"
+              //  + "]"
+             //   + "}";
+
+        double amount=amountDobule;
+        Map<String,Object> payMap=new HashMap<>();
+        Map<String,Object> itemMap=new HashMap<>();
+        List<Map<String,Object>> itemList =new ArrayList<>();
+        payMap.put("currency","usd");
+        itemMap.put("id","photo_subscription");
+        itemMap.put("amount",amount);
+        itemList.add(itemMap);
+        payMap.put("items",itemList);
+        String json = new Gson().toJson(payMap);
         RequestBody body = RequestBody.create(json, mediaType);
         Request request = new Request.Builder()
                 .url(BACKEND_URL + "create-payment-intent")
@@ -72,6 +99,11 @@ public class CheckoutActivity extends AppCompatActivity {
                 .build();
         httpClient.newCall(request)
                 .enqueue(new PayCallback(this));
+
+
+
+
+
         // Hook up the pay button to the card widget and stripe instance
         Button payButton = findViewById(R.id.payButton);
         payButton.setOnClickListener((View view) -> {
@@ -151,10 +183,11 @@ public class CheckoutActivity extends AppCompatActivity {
             if (status == PaymentIntent.Status.Succeeded) {
                 // Payment completed successfully
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                activity.displayAlert(
+                Toast.makeText(activity, "Ordered Successfully", Toast.LENGTH_SHORT).show();
+               /* activity.displayAlert(
                         "Payment completed",
                         gson.toJson(paymentIntent)
-                );
+                );*/
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
                 // Payment failed – allow retrying using a different payment method
                 activity.displayAlert(
