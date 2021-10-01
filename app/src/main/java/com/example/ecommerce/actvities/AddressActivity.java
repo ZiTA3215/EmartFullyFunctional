@@ -69,6 +69,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         paymentBtn = findViewById(R.id.payment_btn);
         addAddress = findViewById(R.id.add_address_btn);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         addressModelList = new ArrayList<>();
         addressAdapter = new AddressAdapter(getApplicationContext(), addressModelList, this);
@@ -100,24 +101,36 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
             public void onClick(View v) {
 
                 double amount = 0.0;
+                String url="";
+                String name="";
 
 
                 if (obj instanceof MyCartModel) {
                     MyCartModel i = (MyCartModel) obj;
                     amount = i.getTotalPrice();
+                    name = i.getProductName();
+                    url = i.getImg_url();
+
+
                 }
                     if (obj instanceof NewProductsModel) {
                         NewProductsModel newProductsModel = (NewProductsModel) obj;
                         amount = newProductsModel.getPrice();
+                        url=newProductsModel.getImg_url();
+                        name=newProductsModel.getName();
                     }
                     if (obj instanceof PopularProductModel) {
                         PopularProductModel popularProductModel = (PopularProductModel) obj;
                         amount = popularProductModel.getPrice();
+                        url = popularProductModel.getImg_url();
+                        name=popularProductModel.getName();
 
                     }
                     if (obj instanceof ShowAllModel) {
                         ShowAllModel showAllModel = (ShowAllModel) obj;
                         amount = showAllModel.getPrice();
+                        url=showAllModel.getImg_url();
+                        name=showAllModel.getName();
                     }
 
 
@@ -131,6 +144,9 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                 } else {
                     Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
                     intent.putExtra("amount", amount);
+                    intent.putExtra("img_url",url);
+                    intent.putExtra("name",name);
+                    intent.putExtra("address",mAddress);
                     startActivity(intent);
                 }
             }

@@ -13,7 +13,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.adapters.MyCartAdapter;
+import com.example.ecommerce.models.MyCartModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,6 +46,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+
 public class CheckoutActivity extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
     //private static final String BACKEND_URL = "http://10.0.2.2:4242/";
@@ -52,9 +58,14 @@ public class CheckoutActivity extends AppCompatActivity {
     Double amountDobule= null;
     private FirebaseAuth mAuth;
     FirebaseFirestore mStore;
-    String name="";
-    String img_url = "";
+    static String name="";
+    static String img_url = "";
     Toolbar toolbar;
+
+    MyCartModel cartModel;
+    List<MyCartModel> list;
+    MyCartAdapter cartAdapter;
+
 
 
 
@@ -182,7 +193,7 @@ public class CheckoutActivity extends AppCompatActivity {
         );
         paymentIntentClientSecret = responseMap.get("clientSecret");
     }
-    private static final class PaymentResultCallback
+    private final class PaymentResultCallback
             implements ApiResultCallback<PaymentIntentResult> {
         @NonNull private final WeakReference<CheckoutActivity> activityRef;
         PaymentResultCallback(@NonNull CheckoutActivity activity) {
@@ -200,6 +211,33 @@ public class CheckoutActivity extends AppCompatActivity {
                 // Payment completed successfully
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 Toast.makeText(activity, "Ordered Successfully", Toast.LENGTH_SHORT).show();
+
+
+
+
+                Map<String,Object> mMap = new HashMap<>();
+                mMap.put("name",name);
+                mMap.put("img_url",img_url);
+                mMap.put("payment_id",paymentIntent.getPaymentMethodId());
+
+
+
+                mStore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                        .collection("Orders").add(mMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+
+
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+
+
+                        Intent intent=new Intent(CheckoutActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                });
+
+
                /* activity.displayAlert(
                         "Payment completed",
                         gson.toJson(paymentIntent)
@@ -230,5 +268,7 @@ public class CheckoutActivity extends AppCompatActivity {
         builder.setPositiveButton("Ok", null);
         builder.create().show();
     }
+
+
 }
 
