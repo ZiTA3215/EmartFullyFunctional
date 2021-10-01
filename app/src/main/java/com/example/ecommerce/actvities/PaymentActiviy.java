@@ -12,14 +12,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.models.MyCartModel;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PaymentActiviy extends AppCompatActivity {
     double amount=0.0;
     String name="";
     String img_url="";
+    List<MyCartModel> myCartModelList;
 
 
     Toolbar toolbar;
@@ -49,6 +54,15 @@ public class PaymentActiviy extends AppCompatActivity {
         name=getIntent().getStringExtra("name");
 
         amount = getIntent().getDoubleExtra("amount",0.0);
+        myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
+
+        if (myCartModelList != null && myCartModelList.size()>0){
+            amount = 0.0;
+            for (MyCartModel myCartModel: myCartModelList){
+                amount+=myCartModel.getTotalPrice();
+            }
+
+        }
 
 
         subTotal = findViewById(R.id.sub_total);
@@ -59,6 +73,7 @@ public class PaymentActiviy extends AppCompatActivity {
 
         subTotal.setText(amount+"$");
         total.setText(amount+"$");
+
 
         final Activity activity = PaymentActiviy.this;
 

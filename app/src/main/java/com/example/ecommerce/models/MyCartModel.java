@@ -2,7 +2,7 @@ package com.example.ecommerce.models;
 
 import java.io.Serializable;
 
-public class MyCartModel {
+public class MyCartModel implements Serializable {
 
 
     String productName;

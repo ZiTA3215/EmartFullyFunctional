@@ -33,17 +33,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
-int overAllTotalAmount;
+
     TextView overAllAmount;
 
 
     ImageView imageView;
-    int num = 0;
+
 
 
     Toolbar toolbar;
@@ -66,6 +67,7 @@ int overAllTotalAmount;
 
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        cartModelList = new ArrayList<>();
         toolbar = findViewById(R.id.my_cart_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -84,7 +86,6 @@ int overAllTotalAmount;
 
         imageView = (ImageView) findViewById(R.id.image_view1);
 
-        Object obj= getIntent().getSerializableExtra("price");
 
 
 
@@ -95,6 +96,22 @@ int overAllTotalAmount;
         cartAdapter = new MyCartAdapter(this, cartModelList);
         recyclerView.setAdapter(cartAdapter);
         cartAdapter.notifyDataSetChanged();
+
+        paymentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CartActivity.this,AddressActivity.class);
+                intent.putExtra("cartModelList", (Serializable) cartModelList);
+                startActivity(intent);
+
+
+
+
+
+
+
+            }
+        });
 
 
 
@@ -122,9 +139,8 @@ int overAllTotalAmount;
 
 
                 }
-                //get data from detaliled activity
 
-                Object obj= getIntent().getSerializableExtra("item");
+
 
                 firestore = FirebaseFirestore.getInstance();
                 auth = FirebaseAuth.getInstance();
@@ -154,19 +170,7 @@ int overAllTotalAmount;
 
 
 
-                paymentBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(CartActivity.this,AddressActivity.class));
 
-
-
-
-
-
-
-                    }
-                });
 
 
 
@@ -184,6 +188,8 @@ int overAllTotalAmount;
 
         overAllAmount.setText("Total Price: $" + totalAmount);
     }
+
+
 
 
 
