@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.ecommerce.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,12 +54,27 @@ public class CheckoutActivity extends AppCompatActivity {
     FirebaseFirestore mStore;
     String name="";
     String img_url = "";
+    Toolbar toolbar;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+        //Toolbar
+        toolbar = findViewById(R.id.checkou_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_244);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mAuth = FirebaseAuth.getInstance();
         mStore = FirebaseFirestore.getInstance();
          amountDobule = getIntent().getDoubleExtra("amount", 0.0);
