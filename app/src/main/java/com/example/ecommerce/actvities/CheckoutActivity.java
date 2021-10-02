@@ -59,6 +59,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore mStore;
     static String name="";
+    static String id="";
     static String img_url = "";
     Toolbar toolbar;
 
@@ -91,6 +92,7 @@ public class CheckoutActivity extends AppCompatActivity {
          amountDobule = getIntent().getDoubleExtra("amount", 0.0);
         img_url = getIntent().getStringExtra("img_url");
         name = getIntent().getStringExtra("name");
+        id = getIntent().getStringExtra("id");
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -218,6 +220,8 @@ public class CheckoutActivity extends AppCompatActivity {
                 Map<String,Object> mMap = new HashMap<>();
                 mMap.put("name",name);
                 mMap.put("img_url",img_url);
+                mMap.put("price",amountDobule);
+                mMap.put("id",id);
                 mMap.put("payment_id",paymentIntent.getPaymentMethodId());
 
 

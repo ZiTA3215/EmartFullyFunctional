@@ -57,7 +57,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
             }
         });
 
-        //get data from detaliled activity
+        //get data from detaliled activity and cart
 
         Object obj = getIntent().getSerializableExtra("item");
         List<MyCartModel> cartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
@@ -103,6 +103,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                 double amount = 0.0;
                 String url="";
                 String name="";
+                String id = "";
 
 
                 if (obj instanceof MyCartModel) {
@@ -110,6 +111,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                     amount = i.getTotalPrice();
                     name = i.getProductName();
                     url = i.getImg_url();
+                    id = i.getDocumentId();
 
 
                 }
@@ -146,6 +148,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                     intent.putExtra("amount", amount);
                     intent.putExtra("img_url",url);
                     intent.putExtra("name",name);
+                    intent.putExtra("id",id);
                     intent.putExtra("address",mAddress);
                     startActivity(intent);
                 }

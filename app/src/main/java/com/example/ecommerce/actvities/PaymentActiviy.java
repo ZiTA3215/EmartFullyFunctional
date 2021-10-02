@@ -24,6 +24,7 @@ public class PaymentActiviy extends AppCompatActivity {
     double amount=0.0;
     String name="";
     String img_url="";
+    String id="";
     List<MyCartModel> myCartModelList;
 
 
@@ -52,6 +53,7 @@ public class PaymentActiviy extends AppCompatActivity {
 
         img_url=getIntent().getStringExtra("img_url");
         name=getIntent().getStringExtra("name");
+       id=getIntent().getStringExtra("id");
 
         amount = getIntent().getDoubleExtra("amount",0.0);
         myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
@@ -60,6 +62,9 @@ public class PaymentActiviy extends AppCompatActivity {
             amount = 0.0;
             for (MyCartModel myCartModel: myCartModelList){
                 amount+=myCartModel.getTotalPrice();
+                id+=myCartModel.getDocumentId();
+                name+=myCartModel.getProductName();
+                img_url+=myCartModel.getImg_url();
             }
 
         }
@@ -118,6 +123,7 @@ public class PaymentActiviy extends AppCompatActivity {
         intent.putExtra("amount",amount);
         intent.putExtra("name",name);
         intent.putExtra("img_url",img_url);
+        intent.putExtra("id",id);
 
         startActivity(intent);
     }
