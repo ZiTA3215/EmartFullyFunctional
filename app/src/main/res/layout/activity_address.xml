@@ -11,11 +11,13 @@
         android:id="@+id/address_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
          >
 
 
@@ -26,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="72dp"
             android:gravity="center"
-            android:text="Select Address"
+            android:text="Your Address"
             android:textColor="@color/black"
             android:textSize="23dp"
             android:textStyle="bold" />
@@ -49,35 +51,35 @@
 
     <Button
         android:id="@+id/add_address_btn"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
 
         android:text="Add Address"
         android:textColor="@color/white"
         android:outlineAmbientShadowColor="@color/black"
-
         app:layout_constraintTop_toBottomOf="@id/address_recycler"
-
+        app:layout_constraintBottom_toTopOf="@id/payment_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintVertical_bias="0.146" />
+       />
 
     <Button
         android:id="@+id/payment_btn"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-
+        android:layout_margin="10dp"
+        android:padding="15dp"
         android:background="@color/black"
         android:text="Continue to payment"
         android:outlineAmbientShadowColor="@color/black"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_address_btn"
-        app:layout_constraintVertical_bias="0.146" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

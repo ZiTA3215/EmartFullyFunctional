@@ -155,11 +155,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="72dp"
                 android:gravity="center"
-                android:text=""
+                android:text="Add Address"
                 android:textColor="@color/black"
                 android:textSize="23dp"
                 android:textStyle="bold"
-                android:visibility="invisible"/>
+                />
 
         </androidx.appcompat.widget.Toolbar>
 

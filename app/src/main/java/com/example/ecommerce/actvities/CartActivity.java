@@ -71,7 +71,7 @@ public class CartActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.my_cart_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_244);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

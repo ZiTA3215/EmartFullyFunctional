@@ -49,6 +49,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         toolbar = findViewById(R.id.address_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_244);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
