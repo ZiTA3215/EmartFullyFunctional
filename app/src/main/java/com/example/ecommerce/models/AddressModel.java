@@ -1,6 +1,8 @@
 package com.example.ecommerce.models;
 
-public class AddressModel {
+import java.io.Serializable;
+
+public class AddressModel implements Serializable {
 
     String userAddress;
     String documentId;

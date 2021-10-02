@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.AddressAdapter;
@@ -63,6 +66,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         Object obj = getIntent().getSerializableExtra("item");
         List<MyCartModel> cartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
 
+
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -97,9 +101,13 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         });
 
 
+
+
+
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 double amount = 0.0;
                 String url="";
@@ -141,6 +149,8 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                 if (cartModelList != null && cartModelList.size() > 0) {
                     Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
                     intent.putExtra("cartModelList", (Serializable) cartModelList);
+                    intent.putExtra("address",mAddress);
+                    intent.putExtra("addressModelList", (Serializable) addressModelList);
                     startActivity(intent);
 
 
@@ -151,13 +161,17 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                     intent.putExtra("name",name);
                     intent.putExtra("id",id);
                     intent.putExtra("address",mAddress);
+                    intent.putExtra("addressModelList", (Serializable) addressModelList);
                     startActivity(intent);
+
+
                 }
             }
 
 
         });
 
+        
 
         addAddress.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.models.AddressModel;
 import com.example.ecommerce.models.MyCartModel;
 
 import org.json.JSONObject;
@@ -25,7 +26,9 @@ public class PaymentActiviy extends AppCompatActivity {
     String name="";
     String img_url="";
     String id="";
+    String address="";
     List<MyCartModel> myCartModelList;
+    private List<AddressModel> addressModelList;
 
 
     Toolbar toolbar;
@@ -54,9 +57,11 @@ public class PaymentActiviy extends AppCompatActivity {
         img_url=getIntent().getStringExtra("img_url");
         name=getIntent().getStringExtra("name");
        id=getIntent().getStringExtra("id");
+       address = getIntent().getStringExtra("address");
 
         amount = getIntent().getDoubleExtra("amount",0.0);
         myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
+        addressModelList =(ArrayList<AddressModel>) getIntent().getSerializableExtra("addressModelList");
 
         if (myCartModelList != null && myCartModelList.size()>0){
             amount = 0.0;
@@ -65,9 +70,22 @@ public class PaymentActiviy extends AppCompatActivity {
                 id+=myCartModel.getDocumentId();
                 name+=myCartModel.getProductName();
                 img_url+=myCartModel.getImg_url();
+
+
             }
 
         }
+        if (addressModelList != null && addressModelList.size()>0){
+
+            for (AddressModel addressModel: addressModelList){
+               address+=addressModel.getUserAddress();
+
+            }
+
+        }
+
+
+
 
 
         subTotal = findViewById(R.id.sub_total);
@@ -124,6 +142,7 @@ public class PaymentActiviy extends AppCompatActivity {
         intent.putExtra("name",name);
         intent.putExtra("img_url",img_url);
         intent.putExtra("id",id);
+        intent.putExtra("address",address);
 
         startActivity(intent);
     }

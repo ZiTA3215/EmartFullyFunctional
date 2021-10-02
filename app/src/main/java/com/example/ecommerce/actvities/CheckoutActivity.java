@@ -16,10 +16,15 @@ import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.MyCartAdapter;
 import com.example.ecommerce.models.MyCartModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -61,6 +66,7 @@ public class CheckoutActivity extends AppCompatActivity {
     static String name="";
     static String id="";
     static String img_url = "";
+    static String address = "";
     Toolbar toolbar;
 
     MyCartModel cartModel;
@@ -93,6 +99,7 @@ public class CheckoutActivity extends AppCompatActivity {
         img_url = getIntent().getStringExtra("img_url");
         name = getIntent().getStringExtra("name");
         id = getIntent().getStringExtra("id");
+        address= getIntent().getStringExtra("address");
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -222,6 +229,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 mMap.put("img_url",img_url);
                 mMap.put("price",amountDobule);
                 mMap.put("id",id);
+                mMap.put("address",address);
                 mMap.put("payment_id",paymentIntent.getPaymentMethodId());
 
 
@@ -232,6 +240,10 @@ public class CheckoutActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                        
+
+
 
 
                         Intent intent=new Intent(CheckoutActivity.this,MainActivity.class);
