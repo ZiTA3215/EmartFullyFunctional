@@ -43,24 +43,7 @@
                 android:layout_marginTop="4dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_baseline_attach_money_24"
-                    app:layout_constraintEnd_toStartOf="@+id/shipping_price"
-                    app:layout_constraintTop_toTopOf="@+id/shipping_price" />
 
-                <TextView
-                    android:id="@+id/shipping_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="180"
-                    android:layout_marginRight="10dp"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/shipping_time"

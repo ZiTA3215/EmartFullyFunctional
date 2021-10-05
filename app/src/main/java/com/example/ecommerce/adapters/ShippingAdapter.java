@@ -50,7 +50,6 @@ public class ShippingAdapter extends RecyclerView.Adapter<ShippingAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.date.setText(list.get(position).getCurrentDate());
-        holder.price.setText(String.valueOf(list.get(position).getPrice()));
         holder.time.setText(list.get(position).getCurrentTime());
         holder.paymentid.setText(list.get(position).getPayment_id());
     }
@@ -59,13 +58,13 @@ public class ShippingAdapter extends RecyclerView.Adapter<ShippingAdapter.ViewHo
     public  int getItemCount(){return list.size();}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView date,time,price,paymentid;
+        TextView date,time,paymentid;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             date = itemView.findViewById(R.id.payment_date);
             time =itemView.findViewById(R.id.shipping_time);
-            price = itemView.findViewById(R.id.shipping_price);
+
             paymentid = itemView.findViewById(R.id.payment_id);
 
         }
