@@ -27,6 +27,7 @@ public class PaymentActiviy extends AppCompatActivity {
     String img_url="";
     String id="";
     String address="";
+    String qty ="";
     List<MyCartModel> myCartModelList;
     private List<AddressModel> addressModelList;
 
@@ -58,6 +59,7 @@ public class PaymentActiviy extends AppCompatActivity {
         name=getIntent().getStringExtra("name");
        id=getIntent().getStringExtra("id");
        address = getIntent().getStringExtra("address");
+        qty = getIntent().getStringExtra("qty");
 
         amount = getIntent().getDoubleExtra("amount",0.0);
         myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
@@ -70,6 +72,7 @@ public class PaymentActiviy extends AppCompatActivity {
                 id+=myCartModel.getDocumentId();
                 name+=myCartModel.getProductName();
                 img_url+=myCartModel.getImg_url();
+                qty+=myCartModel.getTotalQuantity();
 
 
             }
@@ -143,6 +146,7 @@ public class PaymentActiviy extends AppCompatActivity {
         intent.putExtra("img_url",img_url);
         intent.putExtra("id",id);
         intent.putExtra("address",address);
+        intent.putExtra("qty",qty);
 
         startActivity(intent);
     }

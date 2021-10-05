@@ -38,6 +38,7 @@ public class AddAddressActivity extends AppCompatActivity {
     String name2="";
     String img_url="";
     String id="";
+    String qty="";
     List<MyCartModel> myCartModelList;
 
 
@@ -64,6 +65,7 @@ public class AddAddressActivity extends AppCompatActivity {
         img_url=getIntent().getStringExtra("img_url");
         name2=getIntent().getStringExtra("name");
         id=getIntent().getStringExtra("id");
+        qty=getIntent().getStringExtra("qty");
 
 
 
@@ -78,6 +80,7 @@ public class AddAddressActivity extends AppCompatActivity {
                 id+=myCartModel.getDocumentId();
                 name2+=myCartModel.getProductName();
                 img_url+=myCartModel.getImg_url();
+                qty+=myCartModel.getTotalQuantity();
 
 
             }
@@ -159,6 +162,7 @@ public class AddAddressActivity extends AppCompatActivity {
                                     name2 = i.getProductName();
                                     img_url = i.getImg_url();
                                     id = i.getDocumentId();
+                                    qty=i.getTotalQuantity();
 
 
                                 }
@@ -194,6 +198,7 @@ public class AddAddressActivity extends AppCompatActivity {
                                     intent.putExtra("img_url", img_url);
                                     intent.putExtra("name", name2);
                                     intent.putExtra("id", id);
+                                    intent.putExtra("qty", qty);
 
 
                                     startActivity(intent);

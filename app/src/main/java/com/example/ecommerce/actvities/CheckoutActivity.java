@@ -69,6 +69,7 @@ public class CheckoutActivity extends AppCompatActivity {
     static String id="";
     static String img_url = "";
     static String address = "";
+    static String qty = "";
     Toolbar toolbar;
 
     MyCartModel cartModel;
@@ -102,6 +103,7 @@ public class CheckoutActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         id = getIntent().getStringExtra("id");
         address= getIntent().getStringExtra("address");
+       qty= getIntent().getStringExtra("qty");
 
 
 
@@ -240,6 +242,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
                 Map<String,Object> mMap = new HashMap<>();
                 mMap.put("name",name);
+                mMap.put("qty",qty);
                 mMap.put("img_url",img_url);
                 mMap.put("price",amountDobule);
                 mMap.put("id",id);

@@ -1,14 +1,26 @@
 package com.example.ecommerce.actvities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.adapters.MyCartAdapter;
+import com.example.ecommerce.adapters.ShippingAdapter;
 import com.example.ecommerce.models.AddressModel;
 import com.example.ecommerce.models.MyCartModel;
+import com.example.ecommerce.models.ShippingModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +28,21 @@ import java.util.List;
 public class ShippingActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    double amount=0.0;
-    String name="";
-    String img_url="";
-    String id="";
-    String address="";
-    List<MyCartModel> myCartModelList;
-    private List<AddressModel> addressModelList;
+    List<ShippingModel> shippingModelList;
+    ShippingAdapter shippingAdapter;
+    private FirebaseAuth auth;
+    private FirebaseFirestore firestore;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipping);
 
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
+        shippingModelList = new ArrayList<>();
         toolbar = findViewById(R.id.my_shipping_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -42,35 +55,38 @@ public class ShippingActivity extends AppCompatActivity {
             }
         });
 
+        recyclerView = findViewById(R.id.shipping_rec);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        shippingModelList = new ArrayList<>();
+        shippingAdapter = new ShippingAdapter(this, shippingModelList);
+        recyclerView.setAdapter(shippingAdapter);
+        shippingAdapter.notifyDataSetChanged();
 
-        img_url=getIntent().getStringExtra("img_url");
-        name=getIntent().getStringExtra("name");
-        id=getIntent().getStringExtra("id");
-        address = getIntent().getStringExtra("address");
+        firestore.collection("CurrentUser").document(auth.getCurrentUser().getUid())
+                .collection("Orders").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-        amount = getIntent().getDoubleExtra("amount",0.0);
-        myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
-        addressModelList =(ArrayList<AddressModel>) getIntent().getSerializableExtra("addressModelList");
-        if (myCartModelList != null && myCartModelList.size()>0){
-            amount = 0.0;
-            for (MyCartModel myCartModel: myCartModelList){
-                amount+=myCartModel.getTotalPrice();
-                id+=myCartModel.getDocumentId();
-                name+=myCartModel.getProductName();
-                img_url+=myCartModel.getImg_url();
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot doc : task.getResult().getDocuments()) {
 
+                        String documentId = doc.getId();
+
+
+                        ShippingModel shippingModel = doc.toObject(ShippingModel.class);
+                        shippingModel.setDocumentId(documentId);
+                        shippingModelList.add(shippingModel);
+                        shippingAdapter.notifyDataSetChanged();
+                    }
+                }
 
             }
 
-        }
-        if (addressModelList != null && addressModelList.size()>0){
+        });
 
-            for (AddressModel addressModel: addressModelList){
-                address+=addressModel.getUserAddress();
 
-            }
+    }}
 
-        }
 
-    }
-}
+
+

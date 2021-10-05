@@ -3,44 +3,12 @@ package com.example.ecommerce.models;
 public class ShippingModel {
 
 
-    String productName;
-    String totalQuantity;
-    int totalPrice;
-    String img_url;
-
+String payment_id;
+int price;
+String currentDate;
+String currentTime;
+String address;
     String documentId;
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getTotalQuantity() {
-        return totalQuantity;
-    }
-
-    public void setTotalQuantity(String totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getImg_url() {
-        return img_url;
-    }
-
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
-    }
 
     public String getDocumentId() {
         return documentId;
@@ -51,7 +19,46 @@ public class ShippingModel {
     }
 
     public ShippingModel() {
+    }
 
+    public String getPayment_id() {
+        return payment_id;
+    }
 
+    public void setPayment_id(String payment_id) {
+        this.payment_id = payment_id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(String currentDate) {
+        this.currentDate = currentDate;
+    }
+
+    public String getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(String currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
+

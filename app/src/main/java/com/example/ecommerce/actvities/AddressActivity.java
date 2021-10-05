@@ -48,6 +48,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
     String name="";
     String img_url="";
     String id="";
+    String qty="";
 
 
     @Override
@@ -72,6 +73,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         img_url=getIntent().getStringExtra("img_url");
         name=getIntent().getStringExtra("name");
         id=getIntent().getStringExtra("id");
+        qty=getIntent().getStringExtra("qty");
         amount = getIntent().getDoubleExtra("amount",0.0);
 
 
@@ -127,6 +129,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                                                   name = i.getProductName();
                                                   img_url = i.getImg_url();
                                                   id = i.getDocumentId();
+                                                  qty = i.getTotalQuantity();
 
 
                                               }
@@ -135,6 +138,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                                                   amount = newProductsModel.getPrice();
                                                   img_url = newProductsModel.getImg_url();
                                                   name = newProductsModel.getName();
+
                                               }
                                               if (obj instanceof PopularProductModel) {
                                                   PopularProductModel popularProductModel = (PopularProductModel) obj;
@@ -166,6 +170,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                                                   intent.putExtra("name", name);
                                                   intent.putExtra("id", id);
                                                   intent.putExtra("address", mAddress);
+                                                  intent.putExtra("qty", qty);
                                                   intent.putExtra("addressModelList", (Serializable) addressModelList);
                                                   startActivity(intent);
 
@@ -195,6 +200,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                         name = i.getProductName();
                         img_url = i.getImg_url();
                         id = i.getDocumentId();
+                        intent.putExtra("qty", qty);
                         intent.putExtra("push", i);
 
 
