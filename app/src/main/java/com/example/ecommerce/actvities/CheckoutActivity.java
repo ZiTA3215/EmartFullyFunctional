@@ -38,7 +38,9 @@ import com.stripe.android.view.CardInputWidget;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +102,9 @@ public class CheckoutActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         id = getIntent().getStringExtra("id");
         address= getIntent().getStringExtra("address");
+
+
+
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -221,6 +226,15 @@ public class CheckoutActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 Toast.makeText(activity, "Ordered Successfully", Toast.LENGTH_SHORT).show();
 
+                String saveCurrentTime, saveCurrentDate;
+                Calendar callForDate = Calendar.getInstance();
+
+
+                SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
+                saveCurrentDate = currentDate.format(callForDate.getTime());
+
+                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+                saveCurrentTime = currentTime.format(callForDate.getTime());
 
 
 
@@ -231,6 +245,9 @@ public class CheckoutActivity extends AppCompatActivity {
                 mMap.put("id",id);
                 mMap.put("address",address);
                 mMap.put("payment_id",paymentIntent.getPaymentMethodId());
+                mMap.put("currentTime", saveCurrentTime);
+                mMap.put("currentDate", saveCurrentDate);
+
 
 
 
