@@ -94,7 +94,7 @@
                     android:layout_weight="0.1"
                     android:fontFamily="@font/amethysta"
                     android:text="Payment ID:"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -104,7 +104,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/amethysta"
                     android:text="Total Quantity"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
 
