@@ -14,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce"
         tools:replace="allowBackup, label">
-        <activity android:name=".actvities.VerifyActivity"></activity>
-        <activity android:name=".actvities.DialogActivity2"></activity>
+        <activity android:name=".actvities.MessagesActivity"></activity>
+        <activity android:name=".actvities.ShippingActivity" />
+        <activity android:name=".actvities.VerifyActivity" />
+        <activity android:name=".actvities.DialogActivity2" />
         <activity android:name=".actvities.ChangePassword" />
         <activity android:name=".actvities.ResetPassword" />
         <activity android:name=".actvities.RegistrationActivity" />
@@ -43,16 +45,13 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <service android:name=".actvities.PushNotifications" android:exported="false">
+        <service
+            android:name=".actvities.PushNotifications"
+            android:exported="false">
             <intent-filter>
-
-
-                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE"></action>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
             </intent-filter>
-
-
         </service>
-
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.firebase.crashlytics'
 
 }
 
@@ -44,6 +45,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-firestore:23.0.1'
     implementation 'com.google.firebase:firebase-functions:20.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics:18.2.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     implementation 'com.google.firebase:firebase-storage:20.0.0'

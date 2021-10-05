@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
 
-                    case R.id.explore:
+                    case R.id.messages:
 
 
-                        startActivity(new Intent(MainActivity.this, ShowAllActivity.class));
+                        startActivity(new Intent(MainActivity.this, MessagesActivity.class));
 
                         return true;
 
@@ -71,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.account:
 
                         startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+
+
+                        return true;
+
+                    case R.id.shipping:
+
+                        startActivity(new Intent(MainActivity.this, ShippingActivity.class));
 
 
                         return true;
