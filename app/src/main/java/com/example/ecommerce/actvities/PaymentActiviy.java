@@ -22,7 +22,7 @@ import java.util.List;
 
 
 public class PaymentActiviy extends AppCompatActivity {
-    double amount=0.0;
+    double amount=0.00;
     String name="";
     String img_url="";
     String id="";
@@ -61,12 +61,12 @@ public class PaymentActiviy extends AppCompatActivity {
        address = getIntent().getStringExtra("address");
         qty = getIntent().getStringExtra("qty");
 
-        amount = getIntent().getDoubleExtra("amount",0.0);
+        amount = getIntent().getDoubleExtra("amount",0.00);
         myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
         addressModelList =(ArrayList<AddressModel>) getIntent().getSerializableExtra("addressModelList");
 
         if (myCartModelList != null && myCartModelList.size()>0){
-            amount = 0.0;
+            amount = 0.00;
             for (MyCartModel myCartModel: myCartModelList){
                 amount+=myCartModel.getTotalPrice();
                 id+=myCartModel.getDocumentId();
@@ -97,8 +97,8 @@ public class PaymentActiviy extends AppCompatActivity {
         total = findViewById(R.id.total_amt);
         paymentBtn = findViewById(R.id.pay_btn);
 
-        subTotal.setText(amount+"$");
-        total.setText(amount+"$");
+        subTotal.setText("$"+amount+0);
+        total.setText("$"+amount+0);
 
 
         final Activity activity = PaymentActiviy.this;

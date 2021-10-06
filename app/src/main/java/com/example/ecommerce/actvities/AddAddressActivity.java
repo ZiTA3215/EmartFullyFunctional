@@ -34,7 +34,7 @@ public class AddAddressActivity extends AppCompatActivity {
     EditText name,address,city,postalCode,phoneNumber;
     Toolbar toolbar;
     Button addAddressBtn;
-    double amount=0.0;
+    double amount=0.00;
     String name2="";
     String img_url="";
     String id="";
@@ -70,11 +70,11 @@ public class AddAddressActivity extends AppCompatActivity {
 
 
 
-        amount = getIntent().getDoubleExtra("amount", 0.0);
+        amount = getIntent().getDoubleExtra("amount", 0.00);
         Object obj = getIntent().getSerializableExtra("push");
 
         if (myCartModelList != null && myCartModelList.size()>0){
-            amount = 0.0;
+            amount = 0.00;
             for (MyCartModel myCartModel: myCartModelList){
                 amount+=myCartModel.getTotalPrice();
                 id+=myCartModel.getDocumentId();
@@ -150,7 +150,7 @@ public class AddAddressActivity extends AppCompatActivity {
 
 
                                 Toast.makeText(AddAddressActivity.this, "Address Added", Toast.LENGTH_SHORT).show();
-                                double amount = 0.0;
+                                double amount = 0.00;
                                 String img_url = "";
                                 String name2 = "";
                                 String id = "";

@@ -180,13 +180,13 @@ public class CartActivity extends AppCompatActivity {
 
     private void calculateTotalAmount(List<MyCartModel> cartModelList) {
 
-        double totalAmount = 0.0;
+        double totalAmount = 0.00;
         for (MyCartModel myCartModel : cartModelList) {
 
             totalAmount += myCartModel.getTotalPrice();
         }
 
-        overAllAmount.setText("Total Price: $" + totalAmount);
+        overAllAmount.setText("Total Price: $" + totalAmount+0);
     }
 
 
