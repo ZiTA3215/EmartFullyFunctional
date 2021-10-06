@@ -49,23 +49,26 @@ public class ShippingAdapter extends RecyclerView.Adapter<ShippingAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.date.setText(list.get(position).getCurrentDate());
-        holder.time.setText(list.get(position).getCurrentTime());
-        holder.paymentid.setText(list.get(position).getPayment_id());
+        holder.name.setText(list.get(position).getShippingname());
+        holder.tracking.setText(list.get(position).getTracking());
+        Glide.with(context).load(list.get(position).getShippinglogourl()).into(holder.shipping_logo);
+        Glide.with(context).load(list.get(position).getShippingurl()).into(holder.shipping_round);
     }
 
     @Override
     public  int getItemCount(){return list.size();}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView date,time,paymentid;
+        TextView name,tracking;
+        ImageView shipping_round, shipping_logo;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            date = itemView.findViewById(R.id.payment_date);
-            time =itemView.findViewById(R.id.shipping_time);
+            name = itemView.findViewById(R.id.shipping_name);
+            tracking =itemView.findViewById(R.id.tracking);
 
-            paymentid = itemView.findViewById(R.id.payment_id);
+            shipping_round= itemView.findViewById(R.id.shipping_round);
+            shipping_logo= itemView.findViewById(R.id.shipping_logo);
 
         }
     }

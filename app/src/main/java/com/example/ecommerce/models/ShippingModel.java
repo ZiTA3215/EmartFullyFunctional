@@ -9,6 +9,43 @@ String currentDate;
 String currentTime;
 String address;
     String documentId;
+    String shippingname;
+    String Tracking;
+    String shippingurl;
+    String shippinglogourl;
+
+
+    public String getShippingname() {
+        return shippingname;
+    }
+
+    public void setShippingname(String shippingname) {
+        this.shippingname = shippingname;
+    }
+
+    public String getTracking() {
+        return Tracking;
+    }
+
+    public void setTracking(String tracking) {
+        Tracking = tracking;
+    }
+
+    public String getShippingurl() {
+        return shippingurl;
+    }
+
+    public void setShippingurl(String shippingurl) {
+        this.shippingurl = shippingurl;
+    }
+
+    public String getShippinglogourl() {
+        return shippinglogourl;
+    }
+
+    public void setShippinglogourl(String shippinglogourl) {
+        this.shippinglogourl = shippinglogourl;
+    }
 
     public String getDocumentId() {
         return documentId;

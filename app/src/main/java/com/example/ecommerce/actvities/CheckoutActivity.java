@@ -250,6 +250,10 @@ public class CheckoutActivity extends AppCompatActivity {
                 mMap.put("payment_id",paymentIntent.getPaymentMethodId());
                 mMap.put("currentTime", saveCurrentTime);
                 mMap.put("currentDate", saveCurrentDate);
+                mMap.put("shippingname","");
+                mMap.put("Tracking","");
+                mMap.put("shippinglogourl","");
+                mMap.put("shippingurl","");
 
 
 
