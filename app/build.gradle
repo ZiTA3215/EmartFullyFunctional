@@ -64,6 +64,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging'
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.robinhood.ticker:ticker:2.0.3'
+
 
 
     /*this is data for payment method later i will learn how to implment paypal
