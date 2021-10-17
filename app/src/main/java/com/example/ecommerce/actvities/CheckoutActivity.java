@@ -59,10 +59,12 @@ public class CheckoutActivity extends AppCompatActivity {
     //private static final String BACKEND_URL = "http://10.0.2.2:4242/";
     private static final String BACKEND_URL = "https://emart-backend-oldrich.herokuapp.com/";
 
-    private OkHttpClient httpClient = new OkHttpClient();
-    private String paymentIntentClientSecret;
-    private Stripe stripe;
+     OkHttpClient httpClient = new OkHttpClient();
+     String paymentIntentClientSecret;
+     Stripe stripe;
     Double amountDobule= null;
+    Double discount= null;
+    Double discountamount= null;
     private FirebaseAuth mAuth;
     FirebaseFirestore mStore;
     static String name="";
@@ -99,6 +101,8 @@ public class CheckoutActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mStore = FirebaseFirestore.getInstance();
          amountDobule = getIntent().getDoubleExtra("amount", 0.0);
+        discount = getIntent().getDoubleExtra("discount", 0.0);
+        discountamount = getIntent().getDoubleExtra("discountamount", 0.0);
         img_url = getIntent().getStringExtra("img_url");
         name = getIntent().getStringExtra("name");
         id = getIntent().getStringExtra("id");
@@ -125,13 +129,17 @@ public class CheckoutActivity extends AppCompatActivity {
               //  + "]"
              //   + "}";
 
+        double discount2=discount;
         double amount=amountDobule;
+
+
         Map<String,Object> payMap=new HashMap<>();
         Map<String,Object> itemMap=new HashMap<>();
         List<Map<String,Object>> itemList =new ArrayList<>();
         payMap.put("currency","usd");
         itemMap.put("id","photo_subscription");
         itemMap.put("amount",amount);
+        itemMap.put("discount2",discount2);
         itemList.add(itemMap);
         payMap.put("items",itemList);
         String json = new Gson().toJson(payMap);
@@ -245,6 +253,8 @@ public class CheckoutActivity extends AppCompatActivity {
                 mMap.put("qty",qty);
                 mMap.put("img_url",img_url);
                 mMap.put("price",amountDobule);
+                mMap.put("pricediscount",discount);
+                mMap.put("discountamount",discountamount);
                 mMap.put("id",id);
                 mMap.put("address",address);
                 mMap.put("payment_id",paymentIntent.getPaymentMethodId());

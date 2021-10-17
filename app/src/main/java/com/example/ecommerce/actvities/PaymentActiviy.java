@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -48,6 +49,10 @@ public class PaymentActiviy extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
     DiscountModel discountModel;
+
+    double discountbtn = 0.00;
+    double discountamount = 0.00;
+
 
 
 
@@ -95,7 +100,9 @@ public class PaymentActiviy extends AppCompatActivity {
         editText = findViewById(R.id.discountcodefill);
         apply = findViewById(R.id.pay_btndiscount);
 
+
         amount = getIntent().getDoubleExtra("amount", 0.00);
+
         myCartModelList = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("cartModelList");
         addressModelList = (ArrayList<AddressModel>) getIntent().getSerializableExtra("addressModelList");
 
@@ -129,6 +136,12 @@ public class PaymentActiviy extends AppCompatActivity {
         subTotal.setText("$" + amount + 0);
         total.setText("$" + amount + 0 );
 
+        discountbtn = amount  - amount/100*10;
+        discountamount = amount/100*10;
+
+
+
+
         apply.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
@@ -141,8 +154,13 @@ public class PaymentActiviy extends AppCompatActivity {
                                              tickerView.setAnimationInterpolator(new OvershootInterpolator());
 
 
+
+
+
+
                                              tickerView.setText(("$" +amount/1000+0*10));
-                                             total.setText(("$"+amount/1));
+                                             total.setText("$" + discountbtn+0);
+
 
                                          } else {
                                              Toast.makeText(getApplicationContext(), "Discount code is incorrect", Toast.LENGTH_SHORT).show();
@@ -154,7 +172,8 @@ public class PaymentActiviy extends AppCompatActivity {
 
 
 
-                    final Activity activity = PaymentActiviy.this;
+
+        final Activity activity = PaymentActiviy.this;
 
                     try {
                         JSONObject options = new JSONObject();
@@ -172,6 +191,7 @@ public class PaymentActiviy extends AppCompatActivity {
                         amount = amount * 100;
                         //amount
                         options.put("amount", amount);
+                        options.put("discount", discountbtn);
                         JSONObject preFill = new JSONObject();
                         //email
                         preFill.put("email", "emart@oldrichllc.com");
@@ -190,6 +210,8 @@ public class PaymentActiviy extends AppCompatActivity {
                 public void payWithStripe (View view){
                     Intent intent = new Intent(PaymentActiviy.this, CheckoutActivity.class);
                     intent.putExtra("amount", amount);
+                    intent.putExtra("discount", discountbtn);
+                    intent.putExtra("discountamount", discountamount);
                     intent.putExtra("name", name);
                     intent.putExtra("img_url", img_url);
                     intent.putExtra("id", id);
