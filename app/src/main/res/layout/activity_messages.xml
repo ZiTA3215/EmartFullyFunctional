@@ -18,6 +18,8 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
 
+
+
         <TextView
             android:id="@+id/carttoolbartitle"
             android:layout_width="match_parent"
@@ -31,5 +33,49 @@
 
 
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Request a private chat and we will send you a link via email. Once you verify your email you can enter the chatroom"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_shipping_toolbar"/>
+    <Button
+        android:id="@+id/submit1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        android:stateListAnimator="@null"
+        android:text="Enter Chatroom"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/submit1" />
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:stateListAnimator="@null"
+        android:text="Request Private Chat"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/submit1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

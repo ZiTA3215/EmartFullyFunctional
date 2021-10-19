@@ -84,11 +84,7 @@ public class PaymentActiviy extends AppCompatActivity {
         });
 
 
-        final String coupon = "123";
-
-
-
-
+        final String coupon = "eWealth$";
 
 
         img_url = getIntent().getStringExtra("img_url");
