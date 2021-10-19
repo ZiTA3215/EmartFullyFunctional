@@ -59,7 +59,7 @@ public class MessagesActivity extends AppCompatActivity {
         enterchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.chatzy.com/sign.htm";
+                String url = "https://www.chatzy.com/rooms.htm";
 
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
