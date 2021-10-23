@@ -13,13 +13,16 @@
         android:title="My Account"
        android:iconTint="@color/white"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:actionLayout="@layout/notification_badge"/>
 
     <item
         android:id="@+id/menu_logout"
         android:title="Logout"
         android:icon="@drawable/ic_baseline_loginout"
         app:showAsAction="always"/>
+
+
 
 
 

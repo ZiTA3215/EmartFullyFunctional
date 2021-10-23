@@ -56,7 +56,10 @@ public class DetailedActivity extends AppCompatActivity {
 
     ImageView imagehome;
 
+    MainActivity mainActivity;
+
     Context context;
+    int pending = 0;
 
     ImageView imageView1, imageView2, imageView3;
     TextView rating, name, description, price, quantity;
@@ -723,8 +726,10 @@ public class DetailedActivity extends AppCompatActivity {
 
         addToCart.setOnClickListener(new View.OnClickListener() {
 
+
             @Override
             public void onClick(View v) {
+                pending++;
                 addToCart();
 
             }
@@ -852,6 +857,8 @@ public class DetailedActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentReference> task) {
 
                 Toast.makeText(DetailedActivity.this, "Added To Cart", Toast.LENGTH_SHORT).show();
+
+
 
                 finish();
 

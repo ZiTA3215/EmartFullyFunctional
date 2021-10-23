@@ -65,6 +65,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.robinhood.ticker:ticker:2.0.3'
+    implementation 'com.nex3z:notification-badge:1.0.4'
+
 
 
 
