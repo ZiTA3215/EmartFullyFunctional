@@ -14,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce"
         tools:replace="allowBackup, label">
+        <activity android:name=".actvities.eWealthlink"></activity>
+        <activity android:name=".Webview" />
         <activity android:name=".actvities.MessagesActivity" />
         <activity android:name=".actvities.ShippingActivity" />
         <activity android:name=".actvities.VerifyActivity" />

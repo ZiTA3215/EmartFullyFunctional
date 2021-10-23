@@ -50,11 +50,7 @@ public class DialogActivity2 extends AppCompatActivity {
         ewealth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://play.google.com/store/apps/details?id=com.ewealthapp";
-
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                startActivity(new Intent(DialogActivity2.this, eWealthlink.class));
             }
         });
     }

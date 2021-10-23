@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.Webview;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,11 +60,7 @@ public class MessagesActivity extends AppCompatActivity {
         enterchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.chatzy.com/rooms.htm";
-
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                startActivity(new Intent(MessagesActivity.this, Webview.class));
             }
         });
 
