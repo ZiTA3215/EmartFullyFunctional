@@ -1,9 +1,12 @@
 package com.example.ecommerce.actvities;
 
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -266,7 +269,34 @@ public class CheckoutActivity extends AppCompatActivity {
                 mMap.put("shippingurl","");
 
 
+                mStore.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
+                        .collection("User").document().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG,"onSuccess:");
 
+                    }
+                });
+
+
+                mStore.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
+                        .collection("User").whereEqualTo("onPay", "Delete").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        WriteBatch b =FirebaseFirestore.getInstance().batch();
+                        List<DocumentSnapshot> s = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot: s)
+                        {
+                            b.delete(snapshot.getReference());
+                        }
+                        b.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+
+                            }
+                        });
+                    }
+                });
 
                 mStore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
                         .collection("Orders").add(mMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -274,6 +304,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
+
 
                         
 

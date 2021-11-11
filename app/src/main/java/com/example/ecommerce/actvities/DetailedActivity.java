@@ -59,7 +59,7 @@ public class DetailedActivity extends AppCompatActivity {
     MainActivity mainActivity;
 
     Context context;
-    int pending = 0;
+
 
     ImageView imageView1, imageView2, imageView3;
     TextView rating, name, description, price, quantity;
@@ -729,8 +729,10 @@ public class DetailedActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                pending++;
+
                 addToCart();
+
+
 
             }
         });
@@ -842,6 +844,8 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
         cartMap.put("img_url" , imgurl);
+        cartMap.put("onPay" , "Delete");
+
 
 
 

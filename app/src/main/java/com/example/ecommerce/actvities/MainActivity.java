@@ -36,7 +36,7 @@ Context context;
 MenuItem menuItem;
     Toolbar toolbar;
 TextView badgecounter;
-    int pendingnotifications = 0 ;
+    int pendingnotifications ;
 
     BottomNavigationView bottomNavigationView;
 
