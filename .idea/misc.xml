@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/drawable/zitaa_background.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/layout/activity_detailed.xml" value="0.1" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/layout/detailrecycle.xml" value="0.1" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/layout/images_detailed.xml" value="0.1" />
+        <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/menu/bottom_menu.xml" value="0.5" />
+        <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/menu/main_menu.xml" value="0.14666666666666667" />
       </map>
     </option>
   </component>

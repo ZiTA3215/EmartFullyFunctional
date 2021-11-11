@@ -48,6 +48,7 @@ TextView badgecounter;
         auth = FirebaseAuth.getInstance();
         toolbar = findViewById(R.id.home_toolbar);
         bottomNavigationView = findViewById(R.id.bottombar);
+        bottomNavigationView.setItemIconTintList(null);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.emart7_launcher_round);
