@@ -14,7 +14,24 @@
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf= "parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:id="@+id/carttoolbartitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="72dp"
+            android:gravity="center"
+            android:text="eMart"
+            android:textColor="@color/black"
+            android:textSize="23dp"
+            android:visibility="invisible"
+            android:textStyle="bold" />
+
+
+    </androidx.appcompat.widget.Toolbar>
 
 
 
