@@ -227,25 +227,11 @@
             android:textColor="@android:color/white"
             android:padding="15dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/pay_btn2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pay_btndiscount" />
-
-        <Button
-            android:id="@+id/pay_btn2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            android:onClick="payWithStripe"
-            android:outlineAmbientShadowColor="@color/black"
-            android:text="Checkout with Discount"
-            android:textColor="@android:color/white"
-            android:padding="15dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pay_btndiscount" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

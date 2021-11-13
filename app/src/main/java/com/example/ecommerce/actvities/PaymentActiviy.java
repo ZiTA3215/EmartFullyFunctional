@@ -33,17 +33,18 @@ import com.robinhood.ticker.TickerView;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class PaymentActiviy extends AppCompatActivity {
-    double amount=0.00;
-    String name="";
-    String img_url="";
-    String id="";
-    String address="";
-    String qty ="";
+    double amount = 0.00;
+    String name = "";
+    String img_url = "";
+    String id = "";
+    String address = "";
+    String qty = "";
     List<MyCartModel> myCartModelList;
     private List<AddressModel> addressModelList;
     private FirebaseAuth auth;
@@ -54,16 +55,13 @@ public class PaymentActiviy extends AppCompatActivity {
     double discountamount = 0.00;
 
 
-
-
-
     Toolbar toolbar;
-    TextView subTotal,shipping,total;
+    TextView subTotal, shipping, total;
     TickerView discount;
     Button paymentBtn;
-    Button paymentBtn2;
     Button apply;
     EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +86,7 @@ public class PaymentActiviy extends AppCompatActivity {
         final String coupon = "eWealth$";
 
 
+
         img_url = getIntent().getStringExtra("img_url");
         name = getIntent().getStringExtra("name");
         id = getIntent().getStringExtra("id");
@@ -96,6 +95,7 @@ public class PaymentActiviy extends AppCompatActivity {
 
         editText = findViewById(R.id.discountcodefill);
         apply = findViewById(R.id.pay_btndiscount);
+
 
 
         amount = getIntent().getDoubleExtra("amount", 0.00);
@@ -129,83 +129,54 @@ public class PaymentActiviy extends AppCompatActivity {
         shipping = findViewById(R.id.textView18);
         total = findViewById(R.id.total_amt);
         paymentBtn = findViewById(R.id.pay_btn);
-        paymentBtn2=findViewById(R.id.pay_btn2);
+
 
         subTotal.setText("$" + amount + 0);
-        total.setText("$" + amount + 0 );
+        total.setText("$" + amount + 0);
 
-        discountbtn = amount  - amount/100*10;
-        discountamount = amount/100*10;
-
-
+        discountbtn = amount - amount / 100 * 10;
+        discountamount = amount / 100 * 10;
 
 
         apply.setOnClickListener(new View.OnClickListener() {
-                                     @Override
-                                     public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
 
-                                         if (editText.getText().toString().equals(coupon)) {
-                                            final TickerView tickerView = findViewById(R.id.textView17);
-                                             tickerView.setCharacterLists(TickerUtils.provideNumberList());
-                                             tickerView.setAnimationDuration(2000);
-                                             tickerView.setAnimationInterpolator(new OvershootInterpolator());
+                if (editText.getText().toString().equals(coupon)) {
+                    final TickerView tickerView = findViewById(R.id.textView17);
+                    tickerView.setCharacterLists(TickerUtils.provideNumberList());
+                    tickerView.setAnimationDuration(2000);
+                    tickerView.setAnimationInterpolator(new OvershootInterpolator());
 
 
+                    tickerView.setText(("$" + amount / 1000 + 0 * 10));
+                    total.setText("$" + discountbtn + 0);
 
 
+                } else {
+                    Toast.makeText(getApplicationContext(), "Discount code is incorrect", Toast.LENGTH_SHORT).show();
 
-
-                                             tickerView.setText(("$" +amount/1000+0*10));
-                                             total.setText("$" + discountbtn+0);
-
-
-                                         } else {
-                                             Toast.makeText(getApplicationContext(), "Discount code is incorrect", Toast.LENGTH_SHORT).show();
-
-                                         }
-                                     }
-
-                                 });
-
-
-
-
-        final Activity activity = PaymentActiviy.this;
-
-                    try {
-                        JSONObject options = new JSONObject();
-                        //Set Company Name
-                        options.put("name", "eMart");
-                        //Ref no
-                        options.put("description", "Reference No. #123456");
-                        //Image to be display
-                        options.put("image", "https://firebasestorage.googleapis.com/v0/b/ecommerce-project-emart.appspot.com/o/emartfinal.jpg?alt=media&token=76416cb9-8a58-456e-96ea-890c83de684b");
-                        //options.put("order_id", "order_9A33XWu170gUtm");
-                        // Currency type
-                        options.put("currency", "usd");
-                        //double total = Double.parseDouble(mAmountText.getText().toString());
-                        //multiply with 100 to get exact amount in rupee
-                        amount = amount * 100;
-                        //amount
-                        options.put("amount", amount);
-                        options.put("discount", discountbtn);
-                        JSONObject preFill = new JSONObject();
-                        //email
-                        preFill.put("email", "emart@oldrichllc.com");
-                        //contact
-                        preFill.put("contact", "2142540698");
-
-                        options.put("prefill", preFill);
-
-
-                    } catch (Exception e) {
-                        Log.e("TAG", "", e);
-                    }
                 }
+            }
+
+        });
+
+        paymentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editText.getText().toString().equals(coupon)) {
+                    Intent intent = new Intent(PaymentActiviy.this, CheckoutActivity.class);
+                    intent.putExtra("amount", amount - amount / 100 * 10);
+                    intent.putExtra("name", name);
+                    intent.putExtra("img_url", img_url);
+                    intent.putExtra("id", id);
+                    intent.putExtra("address", address);
+                    intent.putExtra("qty", qty);
+                    startActivity(intent);
 
 
-                public void payWithStripe (View view){
+                } else {
                     Intent intent = new Intent(PaymentActiviy.this, CheckoutActivity.class);
                     intent.putExtra("amount", amount);
                     intent.putExtra("discount", discountbtn);
@@ -219,6 +190,49 @@ public class PaymentActiviy extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+        });
+
+
+
+
+        final Activity activity = PaymentActiviy.this;
+
+        try {
+            JSONObject options = new JSONObject();
+            //Set Company Name
+            options.put("name", "eMart");
+            //Ref no
+            options.put("description", "Reference No. #123456");
+            //Image to be display
+            options.put("image", "https://firebasestorage.googleapis.com/v0/b/ecommerce-project-emart.appspot.com/o/emartfinal.jpg?alt=media&token=76416cb9-8a58-456e-96ea-890c83de684b");
+            //options.put("order_id", "order_9A33XWu170gUtm");
+            // Currency type
+            options.put("currency", "usd");
+            //double total = Double.parseDouble(mAmountText.getText().toString());
+            //multiply with 100 to get exact amount in rupee
+            amount = amount * 100;
+            //amount
+            options.put("amount", amount);
+            options.put("discount", discountbtn);
+            JSONObject preFill = new JSONObject();
+            //email
+            preFill.put("email", "emart@oldrichllc.com");
+            //contact
+            preFill.put("contact", "2142540698");
+
+            options.put("prefill", preFill);
+
+
+        } catch (Exception e) {
+            Log.e("TAG", "", e);
+        }
+    }
+
+    }
+
+
+
+
 
 
 
