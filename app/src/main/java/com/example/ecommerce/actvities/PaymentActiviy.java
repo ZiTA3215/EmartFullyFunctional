@@ -61,6 +61,7 @@ public class PaymentActiviy extends AppCompatActivity {
     TextView subTotal,shipping,total;
     TickerView discount;
     Button paymentBtn;
+    Button paymentBtn2;
     Button apply;
     EditText editText;
     @Override
@@ -128,6 +129,7 @@ public class PaymentActiviy extends AppCompatActivity {
         shipping = findViewById(R.id.textView18);
         total = findViewById(R.id.total_amt);
         paymentBtn = findViewById(R.id.pay_btn);
+        paymentBtn2=findViewById(R.id.pay_btn2);
 
         subTotal.setText("$" + amount + 0);
         total.setText("$" + amount + 0 );
