@@ -75,8 +75,9 @@ public class CartActivity extends AppCompatActivity {
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void onClick(View v){
+                Intent intent = new Intent(CartActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -180,10 +181,10 @@ public class CartActivity extends AppCompatActivity {
 
     private void calculateTotalAmount(List<MyCartModel> cartModelList) {
 
-        double totalAmount = 0.00;
-        for (MyCartModel myCartModel : cartModelList) {
+            double totalAmount = 0.00;
+            for (MyCartModel myCartModel : cartModelList) {
 
-            totalAmount += myCartModel.getTotalPrice();
+                totalAmount += myCartModel.getTotalPrice();
         }
 
         overAllAmount.setText("Total Price: $" + totalAmount+0);

@@ -9,6 +9,7 @@ public class MyCartModel implements Serializable {
     String totalQuantity;
     int totalPrice;
     String img_url;
+    int cartbadge;
 
     String documentId;
 
@@ -17,12 +18,22 @@ public class MyCartModel implements Serializable {
 
 
 
-    public MyCartModel(String productName, String totalQuantity, int totalPrice, String img_url) {
+    public MyCartModel(String productName, String totalQuantity, int totalPrice,int cartbadge, String img_url) {
 
         this.productName = productName;
         this.totalQuantity = totalQuantity;
         this.totalPrice = totalPrice;
+        this.cartbadge = cartbadge;
         this.img_url = img_url;
+
+    }
+
+    public int getCartbadge() {
+        return cartbadge;
+    }
+
+    public void setCartbadge(int cartbadge) {
+        this.cartbadge = cartbadge;
     }
 
     public String getDocumentId() {

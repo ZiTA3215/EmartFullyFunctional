@@ -59,6 +59,7 @@ public class DetailedActivity extends AppCompatActivity {
     MainActivity mainActivity;
 
     Context context;
+    int cartbadge = 1;
 
 
     ImageView imageView1, imageView2, imageView3;
@@ -734,6 +735,7 @@ public class DetailedActivity extends AppCompatActivity {
 
 
 
+
             }
         });
 
@@ -844,7 +846,9 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("totalQuantity", quantity.getText().toString());
         cartMap.put("totalPrice", totalPrice);
         cartMap.put("img_url" , imgurl);
+        cartMap.put("cartbadge" , cartbadge);
         cartMap.put("onPay" , "Delete");
+
 
 
 
@@ -862,7 +866,8 @@ public class DetailedActivity extends AppCompatActivity {
 
                 Toast.makeText(DetailedActivity.this, "Added To Cart", Toast.LENGTH_SHORT).show();
 
-
+                Intent intent = new Intent(DetailedActivity.this, MainActivity.class);
+                startActivity(intent);
 
                 finish();
 
