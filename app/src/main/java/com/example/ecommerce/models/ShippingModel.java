@@ -11,9 +11,18 @@ String address;
     String documentId;
     String shippingname;
     String Tracking;
+    String TrackingTitle;
+
     String shippingurl;
     String shippinglogourl;
 
+    public String getTrackingTitle() {
+        return TrackingTitle;
+    }
+
+    public void setTrackingTitle(String trackingTitle) {
+        TrackingTitle = trackingTitle;
+    }
 
     public String getShippingname() {
         return shippingname;

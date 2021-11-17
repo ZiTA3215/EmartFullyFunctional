@@ -265,6 +265,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 mMap.put("currentDate", saveCurrentDate);
                 mMap.put("shippingname","");
                 mMap.put("Tracking","");
+                mMap.put("TrackingTitle","");
                 mMap.put("shippinglogourl","");
                 mMap.put("shippingurl","");
 
