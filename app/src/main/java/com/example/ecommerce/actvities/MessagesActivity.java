@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.ecommerce.R;
@@ -29,9 +30,10 @@ import java.util.Map;
 public class MessagesActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    ImageView imageView;
 
     Button enterchat;
-    Button request;
+
 
     FirebaseFirestore firestore;
     FirebaseAuth auth;
@@ -45,7 +47,7 @@ public class MessagesActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         enterchat = findViewById(R.id.submit1);
-        request = findViewById(R.id.submit);
+        imageView = findViewById(R.id.imageView);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_244);
@@ -64,47 +66,5 @@ public class MessagesActivity extends AppCompatActivity {
             }
         });
 
-        request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String saveCurrentTime, saveCurrentDate;
-                Calendar callForDate = Calendar.getInstance();
-
-
-                SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
-                saveCurrentDate = currentDate.format(callForDate.getTime());
-
-                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-                saveCurrentTime = currentTime.format(callForDate.getTime());
-
-
-
-                Map<String,Object> mMap = new HashMap<>();
-                mMap.put("date",saveCurrentDate);
-                mMap.put("time",saveCurrentTime);
-                firestore.collection("eMartChatroom").document(auth.getCurrentUser().getUid())
-                        .collection("UserRequest").add(mMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(MessagesActivity.this, "Request Successful", Toast.LENGTH_SHORT).show();
-
-                            startActivity(new Intent(MessagesActivity.this, MainActivity.class));
-
-                        } else {
-
-                            Toast.makeText(MessagesActivity.this, "Error" + task.getException(), Toast.LENGTH_SHORT).show();
-                        }
-
-
-                    }
-
-                });
-
-            }
-        });
     }
-
-
 }
