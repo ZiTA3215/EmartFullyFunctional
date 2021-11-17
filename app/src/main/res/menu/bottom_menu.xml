@@ -10,7 +10,7 @@
 
     <item android:id="@+id/messages"
         android:title="Messages"
-        android:icon="@drawable/zita_5"
+        android:icon="@drawable/zita_large"
         app:showAsAction="always"/>
 
 
