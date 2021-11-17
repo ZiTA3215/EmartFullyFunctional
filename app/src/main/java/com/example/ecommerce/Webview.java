@@ -21,7 +21,7 @@ Toolbar toolbar;
         setContentView(R.layout.activity_webview);
         webview = findViewById(R.id.webview);
         webview.setWebViewClient(new WebViewClient());
-        webview.loadUrl("https://direct.lc.chat/13290213/");
+        webview.loadUrl("https://direct.lc.chat/13290273/");
         WebSettings webSettings = webview.getSettings();
        webSettings.setJavaScriptEnabled(true);
         toolbar = findViewById(R.id.my_cart_toolbar);
