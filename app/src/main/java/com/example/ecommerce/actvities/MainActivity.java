@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.Webview;
 import com.example.ecommerce.adapters.MyCartAdapter;
 import com.example.ecommerce.fragments.HomeFragment;
 import com.example.ecommerce.models.MyCartModel;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.messages:
 
 
-                        startActivity(new Intent(MainActivity.this, MessagesActivity.class));
+                        startActivity(new Intent(MainActivity.this, Webview.class));
 
                         return true;
 
