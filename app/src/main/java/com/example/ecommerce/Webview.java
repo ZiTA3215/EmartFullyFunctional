@@ -3,11 +3,15 @@ package com.example.ecommerce;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.ecommerce.actvities.MainActivity;
+import com.example.ecommerce.actvities.ShippingActivity;
 
 public class Webview extends AppCompatActivity {
 Toolbar toolbar;
@@ -32,7 +36,7 @@ Toolbar toolbar;
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(Webview.this, MainActivity.class));
             }
         });
 

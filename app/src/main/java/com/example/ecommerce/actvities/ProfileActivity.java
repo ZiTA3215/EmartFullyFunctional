@@ -77,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
             }
         });
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())

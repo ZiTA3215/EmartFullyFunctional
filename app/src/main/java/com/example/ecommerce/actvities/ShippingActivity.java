@@ -6,10 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.Webview;
 import com.example.ecommerce.adapters.MyCartAdapter;
 import com.example.ecommerce.adapters.ShippingAdapter;
 import com.example.ecommerce.models.AddressModel;
@@ -51,7 +53,7 @@ public class ShippingActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(ShippingActivity.this, MainActivity.class));
             }
         });
 
