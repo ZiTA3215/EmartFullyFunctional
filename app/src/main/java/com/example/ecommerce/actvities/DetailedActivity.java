@@ -54,9 +54,9 @@ public class DetailedActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    ImageView imagehome;
 
-    MainActivity mainActivity;
+
+
 
     Context context;
     int cartbadge = 1;
@@ -67,12 +67,14 @@ public class DetailedActivity extends AppCompatActivity {
     String imgurl, imgurl2, imgurl3;
     Button addToCart, buyNow;
     ImageView addItems, removeItems;
-    RecyclerView recyclerView;
+
+  //show all on detail view may implement in the future
+   /* RecyclerView recyclerView;
     ShowAllAdapter showAllAdapter;
     List<ShowAllModel> showAllModelList;
+*/
 
 
-    BottomNavigationView bottomNavigationView;
 
     int totalQuantity = 1;
     int totalPrice = 0;
@@ -96,7 +98,7 @@ public class DetailedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed);
-        imagehome = findViewById(R.id.homebutton);
+
 
 
         toolbar = findViewById(R.id.my_detailtoolbar);
@@ -111,8 +113,8 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
-
-        String type = getIntent().getStringExtra("type");
+//this is for show all on detail view
+       // String type = getIntent().getStringExtra("type");
 
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -144,12 +146,14 @@ public class DetailedActivity extends AppCompatActivity {
         addItems = findViewById(R.id.add_item);
         removeItems = findViewById(R.id.remove_item);
 
-        recyclerView = findViewById(R.id.show_all_rec);
+
+//for similar items on detail view
+      /*  recyclerView = findViewById(R.id.show_all_rec);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         showAllModelList = new ArrayList<>();
         showAllAdapter = new ShowAllAdapter(this, showAllModelList);
         recyclerView.setAdapter(showAllAdapter);
-
+*/
         context = this;
 
 
@@ -564,8 +568,8 @@ public class DetailedActivity extends AppCompatActivity {
 
         }
 
-
-        if (type == null || type.isEmpty()) {
+// for similar items on detail view
+   /*     if (type == null || type.isEmpty()) {
 
             firestore.collection("ShowAll")
                     .get()
@@ -698,7 +702,7 @@ public class DetailedActivity extends AppCompatActivity {
                     });
 
         }
-
+*/
 
         //Buy Now
         buyNow.setOnClickListener(new View.OnClickListener() {
@@ -781,16 +785,7 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
 
-        imagehome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(DetailedActivity.this, MainActivity.class);
-                startActivity(intent);
-
-
-            }
-        });
 
 
     }

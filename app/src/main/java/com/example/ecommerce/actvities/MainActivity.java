@@ -1,5 +1,8 @@
 package com.example.ecommerce.actvities;
 
+import static a.a.a.a.b.f.s;
+
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -7,21 +10,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.ecommerce.R;
 import com.example.ecommerce.Webview;
 import com.example.ecommerce.adapters.MyCartAdapter;
+import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.fragments.HomeFragment;
 import com.example.ecommerce.models.MyCartModel;
+import com.example.ecommerce.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -53,12 +67,14 @@ public class MainActivity extends AppCompatActivity {
     MyCartAdapter cartAdapter;
 
     BottomNavigationView bottomNavigationView;
+    
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         auth = FirebaseAuth.getInstance();
         toolbar = findViewById(R.id.home_toolbar);
         bottomNavigationView = findViewById(R.id.bottombar);
@@ -76,9 +92,14 @@ public class MainActivity extends AppCompatActivity {
 
         homeFragment = new HomeFragment();
         loadFragment(homeFragment);
+        
 
 
-        bottomNavigationView = findViewById(R.id.bottombar);
+
+
+
+
+    bottomNavigationView = findViewById(R.id.bottombar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -89,6 +110,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                         startActivity(new Intent(MainActivity.this, Webview.class));
+
+                        return true;
+
+                    case R.id.home:
+
+
+                        startActivity(new Intent(MainActivity.this, MainActivity.class));
 
                         return true;
 
@@ -118,12 +146,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     private void loadFragment(Fragment homeFragment) {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.home_container, homeFragment);
         transaction.commit();
     }
+
 
 
     @Override
@@ -155,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
+
+
 
             private void calculateTotalAmount(List<MyCartModel> cartModelList) {
                 int totalAmount = 0;
@@ -192,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -218,7 +253,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
 }
+
+
+
+
 
 
 

@@ -114,7 +114,6 @@ public class HomeFragment extends Fragment {
         catShowAll = root.findViewById(R.id.popular_see_all);
         popularShowAll = root.findViewById(R.id.popular_see_all);
        newProductShowAll = root.findViewById(R.id.newProducts_see_all);
-       catShowAll = root.findViewById(R.id.category_see_all);
         popularShowAll = root.findViewById(R.id.popular_see_all);
         newProductShowAll = root.findViewById(R.id.newProducts_see_all);
 
@@ -261,11 +260,12 @@ public class HomeFragment extends Fragment {
                 });
 
         ///////SearchView
+
         recyclerViewSearch = root.findViewById(R.id.search_rec);
         search_box = root.findViewById(R.id.search_box);
         showAllModelList = new ArrayList<>();
         showAllAdapter = new ShowAllAdapter(getContext(),showAllModelList);
-        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearch.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         recyclerViewSearch.setAdapter(showAllAdapter);
         recyclerViewSearch.setHasFixedSize(true);
         search_box.addTextChangedListener(new TextWatcher() {
@@ -299,7 +299,7 @@ public class HomeFragment extends Fragment {
     private void searchProdcut(String type) {
 
         if (!type.isEmpty()){
-            db.collection("AllProducts").whereEqualTo("type", type).get()
+            db.collection("ShowAll").whereEqualTo("type", type).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
