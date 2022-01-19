@@ -30,10 +30,15 @@
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/layout/popular_items.xml" value="0.1" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/menu/bottom_menu.xml" value="0.6" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/menu/main_menu.xml" value="0.14666666666666667" />
+        <entry key="app/src/main/res/drawable/buttons.xml" value="0.2671875" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/ic_baseline_local_shipping_24.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/input_designs.xml" value="0.2671875" />
+        <entry key="app/src/main/res/drawable/menu_shopping.xml" value="0.2671875" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2824074074074074" />
+        <entry key="app/src/main/res/layout/activity_payment_activiy.xml" value="0.24717948717948718" />
+        <entry key="app/src/main/res/layout/new_product.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="2.0" />
       </map>
     </option>
