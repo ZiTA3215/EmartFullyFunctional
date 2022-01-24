@@ -1,11 +1,17 @@
 package com.example.ecommerce.actvities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.ecommerce.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +29,28 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         auth = FirebaseAuth.getInstance();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (!isConnected()) {
+            new AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Internet Connection Error")
+                    .setMessage("Please Check Your Internet Connection\n  .Turn On WIFI\n  .Turn On Mobile Data\n  .Try Again Later")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
+        } else {
+
+
+        }
+
+
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
             Intent i = new Intent(StartActivity.this, MainActivity.class);
@@ -47,6 +74,13 @@ public class StartActivity extends AppCompatActivity {
 
         Intent intent = new Intent(StartActivity.this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    public boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+
     }
 
 }

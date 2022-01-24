@@ -1,12 +1,17 @@
 package com.example.ecommerce.actvities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -55,6 +60,23 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
+        if (!isConnected()) {
+            new AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Internet Connection Error")
+                    .setMessage("Please Check Your Internet Connection\n  .Turn On WIFI\n  .Turn On Mobile Data\n  .Try Again Later")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
+        } else {
+
+
+        }
 
         toolbar = findViewById(R.id.address_toolbar);
         setSupportActionBar(toolbar);
@@ -252,6 +274,13 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
     public void setAddress(String address) {
 
         mAddress = address;
+
+    }
+
+    public boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
 
     }
 }

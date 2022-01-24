@@ -2,7 +2,10 @@ package com.example.ecommerce.fragments;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +25,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -33,6 +37,7 @@ import com.example.ecommerce.R;
 import com.example.ecommerce.actvities.ChangePassword;
 import com.example.ecommerce.actvities.ProfileActivity;
 import com.example.ecommerce.actvities.ShowAllActivity;
+import com.example.ecommerce.actvities.StartActivity;
 import com.example.ecommerce.adapters.CategoryAdapter;
 import com.example.ecommerce.adapters.ImageSliderAdapter;
 import com.example.ecommerce.adapters.NewProductsAdapter;
@@ -109,6 +114,25 @@ public class ProfileFragment extends Fragment {
         password = root.findViewById(R.id.profile_password);
         // Getting application context
         Context context = getActivity();
+
+
+        if (!isConnected()) {
+            new AlertDialog.Builder(getActivity())
+                    .setCancelable(false)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Internet Connection Error")
+                    .setMessage("Please Check Your Internet Connection\n  .Turn On WIFI\n  .Turn On Mobile Data\n  .Try Again Later")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            getActivity();
+                        }
+                    })
+                    .show();
+        } else {
+
+
+        }
 
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -220,7 +244,12 @@ public class ProfileFragment extends Fragment {
             });
 
 
+    public boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
 
+    }
 
 
 }

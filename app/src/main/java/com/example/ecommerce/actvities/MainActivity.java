@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
@@ -29,6 +30,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ecommerce.R;
 import com.example.ecommerce.Webview;
@@ -74,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
     MyCartAdapter cartAdapter;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 new HomeFragment()).commit();
 
 
-
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.emart7_launcher_round);
@@ -106,13 +103,20 @@ public class MainActivity extends AppCompatActivity {
         cartAdapter = new MyCartAdapter(this, cartModelList);
 
 
-        homeFragment = new HomeFragment();
+
+
+    homeFragment = new HomeFragment();
         loadFragment(homeFragment);
 
 
-
-
     }
+
+
+
+
+
+
+
 
 
 private BottomNavigationView.OnNavigationItemSelectedListener navListner =

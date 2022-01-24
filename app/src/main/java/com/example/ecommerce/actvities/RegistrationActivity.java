@@ -1,7 +1,11 @@
 package com.example.ecommerce.actvities;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ecommerce.R;
@@ -47,7 +52,28 @@ public class RegistrationActivity extends AppCompatActivity {
         password = findViewById(R.id.Password);
 
 
+        if (!isConnected()) {
+            new AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Internet Connection Error")
+                    .setMessage("Please Check Your Internet Connection\n  .Turn On WIFI\n  .Turn On Mobile Data\n  .Try Again Later")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
+        } else {
+
+
+        }
+
     }
+
+
+
 
         public void signup(View view) {
 
@@ -111,5 +137,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void signin (View view){
                     startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
                 }
+
+    public boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+
+    }
 
             }
