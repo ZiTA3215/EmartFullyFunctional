@@ -5,9 +5,11 @@
 
     <item android:id="@+id/home"
         android:title="Home"
+        android:enabled="true"
         android:iconTint="@color/white"
         android:icon="@drawable/ic_baseline_home_24"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        />
 
     <item android:id="@+id/shipping"
         android:title="Tracking"
@@ -16,7 +18,7 @@
         app:showAsAction="always"/>
 
     <item android:id="@+id/messages"
-        android:title="Messages"
+        android:title="Chat"
         android:icon="@drawable/zita_10"
         app:showAsAction="always"/>
 

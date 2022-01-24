@@ -1,48 +1,77 @@
-package com.example.ecommerce.actvities;
+package com.example.ecommerce.fragments;
+
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.ecommerce.R;
-import com.example.ecommerce.Webview;
+import com.example.ecommerce.actvities.ChangePassword;
+import com.example.ecommerce.actvities.ProfileActivity;
+import com.example.ecommerce.actvities.ShowAllActivity;
+import com.example.ecommerce.adapters.CategoryAdapter;
+import com.example.ecommerce.adapters.ImageSliderAdapter;
+import com.example.ecommerce.adapters.NewProductsAdapter;
+import com.example.ecommerce.adapters.PopularProductAdapter;
+import com.example.ecommerce.adapters.ShowAllAdapter;
+import com.example.ecommerce.models.CategoryModel;
+import com.example.ecommerce.models.NewProductsModel;
+import com.example.ecommerce.models.PopularProductModel;
+import com.example.ecommerce.models.ShowAllModel;
 import com.example.ecommerce.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProfileActivity extends AppCompatActivity {
+
+public class ProfileFragment extends Fragment {
 
     CircleImageView profileimg;
 
-    Button update;
+    Button update, changepassword;
     Button password;
     ImageView update2;
     EditText name, email;
@@ -55,81 +84,32 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
 
-    BottomNavigationView bottomNavigationView;
 
-    UserModel userModel;
+    public ProfileFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        bottomNavigationView = findViewById(R.id.bottombar);
-        bottomNavigationView.setItemIconTintList(null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.activity_profile, container, false);
+
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        update2 = findViewById(R.id.update2);
-        update = findViewById(R.id.update);
-        profileimg = findViewById(R.id.profile_image);
-        name = findViewById(R.id.profile_name);
-        email = findViewById(R.id.profile_email);
+        changepassword = root.findViewById(R.id.profile_password);
+        update2 = root.findViewById(R.id.update2);
+        update = root.findViewById(R.id.update);
+        profileimg = root.findViewById(R.id.profile_image);
+        name = root.findViewById(R.id.profile_name);
+        email = root.findViewById(R.id.profile_email);
         email.setEnabled(false);
-        password = findViewById(R.id.profile_password);
+        password = root.findViewById(R.id.profile_password);
+        // Getting application context
+        Context context = getActivity();
 
-
-
-
-        bottomNavigationView = findViewById(R.id.bottombar);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-
-                    case R.id.messages:
-
-
-                        startActivity(new Intent(ProfileActivity.this, Webview.class));
-
-                        return true;
-
-                    case R.id.home:
-
-
-                        startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-
-                        return true;
-
-
-                    case R.id.account:
-
-                        startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));
-
-
-                        return true;
-
-                    case R.id.shipping:
-
-                        startActivity(new Intent(ProfileActivity.this, ShippingActivity.class));
-
-
-                        return true;
-
-
-                    default:
-                        return false;
-                }
-
-
-            }
-        });
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-            }
-        });
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -140,15 +120,13 @@ public class ProfileActivity extends AppCompatActivity {
                         name.setText(userModel.getUsername());
 
 
-
-                        Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(profileimg);
+                        Glide.with(getContext()).load(userModel.getProfileImg()).into(profileimg);
 
 
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
 
 
                     }
@@ -176,22 +154,25 @@ public class ProfileActivity extends AppCompatActivity {
                 String useremail = email.getText().toString();
 
 
-
                 database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                         .child("username").setValue(username);
-                Toast.makeText(getBaseContext(), "Your Account Has Been Updated", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
+                Toast.makeText(getActivity(),"Your account has been updated",Toast.LENGTH_SHORT).show();
 
 
             }
         });
 
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ChangePassword.class);
+                startActivity(intent);
 
+            }
+        });
+
+
+        return root;
 
     }
 
@@ -210,14 +191,14 @@ public class ProfileActivity extends AppCompatActivity {
             reference.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getBaseContext(), "Uploaded successfully your User account will be updated shortly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Uploaded successfully your account will be updated shortly! ",Toast.LENGTH_SHORT).show();
 
                     reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                                     .child("profileImg").setValue(uri.toString());
-                            Toast.makeText(getBaseContext(), "Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),"Profile picture uploaded!",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -231,7 +212,7 @@ public class ProfileActivity extends AppCompatActivity {
             new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri result) {
-                    if(result != null){
+                    if (result != null) {
                         profileimg.setImageURI(result);
                         imageURI = result;
                     }
@@ -240,4 +221,24 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

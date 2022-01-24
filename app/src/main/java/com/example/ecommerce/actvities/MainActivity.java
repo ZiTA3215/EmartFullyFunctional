@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +35,9 @@ import com.example.ecommerce.Webview;
 import com.example.ecommerce.adapters.MyCartAdapter;
 import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.fragments.HomeFragment;
+import com.example.ecommerce.fragments.MesseagesFragment;
+import com.example.ecommerce.fragments.ProfileFragment;
+import com.example.ecommerce.fragments.ShippingFragment;
 import com.example.ecommerce.models.MyCartModel;
 import com.example.ecommerce.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,9 +54,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.joery.animatedbottombar.AnimatedBottomBar;
+
 public class MainActivity extends AppCompatActivity {
 
     Fragment homeFragment;
+    BottomNavigationView bottomNavigationView;
 
     FirebaseAuth auth;
     private FirebaseFirestore firestore;
@@ -66,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
     List<MyCartModel> cartModelList;
     MyCartAdapter cartAdapter;
 
-    BottomNavigationView bottomNavigationView;
-    
+
+
 
 
     @Override
@@ -79,6 +86,15 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.home_toolbar);
         bottomNavigationView = findViewById(R.id.bottombar);
         bottomNavigationView.setItemIconTintList(null);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,
+                new HomeFragment()).commit();
+
+
+
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.emart7_launcher_round);
@@ -92,58 +108,47 @@ public class MainActivity extends AppCompatActivity {
 
         homeFragment = new HomeFragment();
         loadFragment(homeFragment);
-        
 
 
 
 
+    }
 
 
-    bottomNavigationView = findViewById(R.id.bottombar);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+private BottomNavigationView.OnNavigationItemSelectedListener navListner =
+        new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+              switch (item.getItemId()){
+                  case R.id.home:
+                     selectedFragment = new HomeFragment();
+                      break;
 
-                switch (item.getItemId()) {
-
-                    case R.id.messages:
-
-
-                        startActivity(new Intent(MainActivity.this, Webview.class));
-
-                        return true;
-
-                    case R.id.home:
+                  case R.id.shipping:
+                      selectedFragment = new ShippingFragment();
+                      break;
 
 
-                        startActivity(new Intent(MainActivity.this, MainActivity.class));
-
-                        return true;
-
-
-                    case R.id.account:
-
-                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                  case R.id.messages:
+                      selectedFragment = new MesseagesFragment();
+                      break;
 
 
-                        return true;
-
-                    case R.id.shipping:
-
-                        startActivity(new Intent(MainActivity.this, ShippingActivity.class));
+                  case R.id.account:
+                      selectedFragment = new ProfileFragment();
+                      break;
 
 
-                        return true;
 
+              }
 
-                    default:
-                        return false;
-                }
+              getSupportFragmentManager().beginTransaction().replace(R.id.home_container,
+                      selectedFragment).commit();
 
-
+              return true;
             }
-        });
-    }
+        };
 
 
 

@@ -67,6 +67,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.robinhood.ticker:ticker:2.0.3'
     implementation 'com.nex3z:notification-badge:1.0.4'
+    implementation 'nl.joery.animatedbottombar:library:1.1.0'
+
 
 
 

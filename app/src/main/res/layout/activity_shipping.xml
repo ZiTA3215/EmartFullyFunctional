@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,41 +7,24 @@
     tools:context=".actvities.ShippingActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_shipping_toolbar"
+    <LinearLayout
+        android:id="@+id/shippinglayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/carttoolbartitle"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shipping_rec"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="72dp"
-            android:gravity="center"
-            android:text="Tracking"
-            android:textColor="@color/black"
-            android:textSize="23dp"
-            android:textStyle="bold" />
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
+            tools:listitem="@layout/shipping_item"/>
 
 
-    </androidx.appcompat.widget.Toolbar>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/shipping_rec"
-        android:layout_width="0dp"
-        app:layout_constraintWidth_percent=".9"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_shipping_toolbar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/shipping_item"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

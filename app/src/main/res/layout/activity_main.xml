@@ -35,6 +35,7 @@
 
 
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:id="@+id/bottombar"
@@ -43,7 +44,13 @@
         android:background="@color/black"
         app:itemIconTint="@color/white"
         android:layout_alignParentBottom="true"
-        android:layout_height="56dp">
+        android:layout_height="56dp"
+        android:scrollIndicators="top"
+        android:isScrollContainer="true"
+
+
+        >
+
 
 
 
