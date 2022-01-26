@@ -64,7 +64,7 @@ import okhttp3.Response;
 public class CheckoutActivity extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
     //private static final String BACKEND_URL = "http://10.0.2.2:4242/";
-    private static final String BACKEND_URL = "https://emart-backend-oldrich.herokuapp.com/";
+    private static final String BACKEND_URL = "https://fast-gorge-25323.herokuapp.com/";
 
      OkHttpClient httpClient = new OkHttpClient();
      String paymentIntentClientSecret;
@@ -139,7 +139,7 @@ public class CheckoutActivity extends AppCompatActivity {
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
-                Objects.requireNonNull("pk_test_51J53C8AarcQmncWNN0aLaP1pnLs1DwkZeqbyy36URxCVddKjia32v7ZGlpVnvFPOUdWzHMWgTUI1CqvjdwFiw93M0064J9WiuB")
+                Objects.requireNonNull("pk_live_51KM50aF5AccEkStguZriKGHl7Be4AhjDhJalTMYErDbIPdMc9FjF0iaMDupucY7yyBAwYxj2nr6jliY0tmEYeqcE00oK9jttRs")
         );
         startCheckout();
     }
