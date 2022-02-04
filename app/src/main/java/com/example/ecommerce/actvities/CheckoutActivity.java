@@ -220,6 +220,8 @@ public class CheckoutActivity extends AppCompatActivity {
                     Toast.makeText(
                             activity, "Error: " + e.toString(), Toast.LENGTH_LONG
                     ).show()
+
+
             );
         }
         @Override
@@ -234,6 +236,7 @@ public class CheckoutActivity extends AppCompatActivity {
                         Toast.makeText(
                                 activity, "Error: " + response.toString(), Toast.LENGTH_LONG
                         ).show()
+
                 );
             } else {
                 activity.onPaymentSuccess(response);
@@ -357,6 +360,7 @@ public class CheckoutActivity extends AppCompatActivity {
             } else if (status == PaymentIntent.Status.RequiresPaymentMethod) {
                 // Payment failed – allow retrying using a different payment method
                 activity.displayAlert(
+
                         "Payment failed",
                         Objects.requireNonNull(paymentIntent.getLastPaymentError()).getMessage()
                 );
@@ -370,6 +374,7 @@ public class CheckoutActivity extends AppCompatActivity {
             }
             // Payment request failed – allow retrying using the same payment method
             activity.displayAlert("Error", e.toString());
+            progressBar.setVisibility(View.INVISIBLE);
         }
     }
     private void displayAlert(@NonNull String title,

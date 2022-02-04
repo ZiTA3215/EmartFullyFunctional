@@ -86,12 +86,14 @@ public class RegistrationActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(username)) {
 
                 Toast.makeText(this, "Enter Name!", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
                 return;
 
 
             }
             if (TextUtils.isEmpty(useremail)) {
                 Toast.makeText(this, "Enter Email!", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
                 return;
 
             }
@@ -102,6 +104,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             if (TextUtils.isEmpty(userpasswrord)) {
                 Toast.makeText(this, "Enter Password!", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
                 return;
 
             }
@@ -112,6 +115,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (userpasswrord.length() < 6) {
 
                     Toast.makeText(this, "Password too short, enter minimum 6 characters", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.INVISIBLE);
                     return;
                 }
 
@@ -129,7 +133,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
             }else {
 
-                Toast.makeText(RegistrationActivity.this, "Registration Failed" + task.getException(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationActivity.this, "Registration Failed" , Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.INVISIBLE);
             }
 
         }

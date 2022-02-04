@@ -76,7 +76,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
             if (TextUtils.isEmpty(useremail)) {
+
                 Toast.makeText(this, "Enter Email!", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
+
                 return;
 
             }
@@ -84,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (TextUtils.isEmpty(userpasswrord)) {
                 Toast.makeText(this, "Enter Password!", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
                 return;
 
             }
@@ -92,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             if (userpasswrord.length() < 6) {
 
                 Toast.makeText(this, "Password too short, enter minimum 6 characters", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
                 return;
             }
 
@@ -107,7 +112,8 @@ public class LoginActivity extends AppCompatActivity {
 
                             } else {
 
-                                Toast.makeText(LoginActivity.this, "Error" + task.getException(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Incorrect Username or Password please try again." , Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.INVISIBLE);
                             }
 
                         }
