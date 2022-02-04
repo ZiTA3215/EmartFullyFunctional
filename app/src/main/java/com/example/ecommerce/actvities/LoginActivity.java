@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +23,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Timer;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText name, email, password;
     TextView passwordreset;
     private FirebaseAuth auth;
+    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
         passwordreset = findViewById(R.id.text_view_forget_password);
+        progressBar = findViewById(R.id.PBar);
+
+
 
 
         if (!isConnected()) {
@@ -61,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
         public void signin(View view) {
+            progressBar.setVisibility(View.VISIBLE);
 
             String useremail = email.getText().toString();
             String userpasswrord = password.getText().toString();
@@ -91,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
                                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));

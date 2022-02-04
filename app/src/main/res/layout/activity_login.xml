@@ -8,20 +8,35 @@
     android:background="@color/black"
     tools:context=".actvities.LoginActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        android:id="@+id/PBar"
+        android:visibility="invisible"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/white"/>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <ImageView
-            android:layout_marginRight="7dp"
+            android:id="@+id/emart"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/emart2"
-            android:id="@+id/emart"/>
+            android:layout_marginRight="7dp"
+            android:src="@drawable/emart2" />
 
         <!-- Include other widget or layout tags here. These are considered
                 "child views" or "children" of the linear layout -->

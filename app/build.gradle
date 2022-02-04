@@ -68,7 +68,8 @@ dependencies {
     implementation 'com.robinhood.ticker:ticker:2.0.3'
     implementation 'com.nex3z:notification-badge:1.0.4'
     implementation 'nl.joery.animatedbottombar:library:1.1.0'
-
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 

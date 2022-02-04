@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -30,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText name, email, password;
     private FirebaseAuth auth;
 
-
+    ProgressBar progressBar;
 
     FirebaseDatabase database;
 
@@ -50,6 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
+        progressBar = findViewById(R.id.PBar);
 
 
         if (!isConnected()) {
@@ -76,6 +78,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         public void signup(View view) {
+            progressBar.setVisibility(View.VISIBLE);
 
             String username = name.getText().toString();
             String useremail = email.getText().toString();
