@@ -28,11 +28,10 @@
         <activity android:name=".actvities.VerifyActivity" />
         <activity android:name=".actvities.DialogActivity2" />
         <activity android:name=".actvities.ChangePassword" />
+        <activity android:name=".actvities.PaymentActiviy" />
         <activity android:name=".actvities.ResetPassword" />
         <activity android:name=".actvities.RegistrationActivity" />
         <activity android:name=".actvities.ProfileActivity" />
-        <activity android:name=".actvities.CheckoutActivity" />
-        <activity android:name=".actvities.PaymentActiviy" />
         <activity android:name=".actvities.AddAddressActivity" />
         <activity android:name=".actvities.AddressActivity" />
         <activity android:name=".actvities.StartActivity">
@@ -62,6 +61,16 @@
                 <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
             </intent-filter>
         </service>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/picker_provider_paths" />
+        </provider>
     </application>
 
 </manifest>

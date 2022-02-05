@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,6 +66,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.smarteist.autoimageslider.SliderView;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.listeners.IPickResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,7 +148,7 @@ public class ProfileFragment extends Fragment {
                         name.setText(userModel.getUsername());
 
 
-                        Glide.with(getContext()).load(userModel.getProfileImg()).into(profileimg);
+                        Glide.with(requireContext()).load(userModel.getProfileImg()).into(profileimg);
 
 
                     }
@@ -159,8 +163,8 @@ public class ProfileFragment extends Fragment {
         update2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mGetContent.launch("image/*");
-
+                //  mGetContent.launch("image/*");
+                loadImageFromGallerCamera();
 
             }
         });
@@ -200,6 +204,24 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    private void loadImageFromGallerCamera()
+    {
+
+
+        PickImageDialog.build(new IPickResult()
+        {
+            @Override
+            public void onPickResult (PickResult r) {
+
+
+                if (r.getError() == null) {
+                    profileimg.setImageURI(r.getUri());
+                    imageURI = r.getUri();
+                }
+            }
+        }).show( getActivity());
+    }
+
     private void updateUserProfile() {
 
 
@@ -215,7 +237,7 @@ public class ProfileFragment extends Fragment {
             reference.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getActivity(),"Uploaded successfully your account will be updated shortly! ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(),"Uploaded successfully your account will be updated shortly! ",Toast.LENGTH_SHORT).show();
 
                     reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
