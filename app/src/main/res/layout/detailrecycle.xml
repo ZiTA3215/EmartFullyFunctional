@@ -227,11 +227,11 @@
                         android:id="@+id/buy_now"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:outlineAmbientShadowColor="#C119870D"
+                        android:backgroundTint="#C119870D"
                         android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
+                        android:outlineAmbientShadowColor="#C119870D"
                         android:text="Buy Now"
-                        android:textAllCaps="false"
-                        android:backgroundTint="#C119870D"/>
+                        android:textAllCaps="false" />
 
 
 

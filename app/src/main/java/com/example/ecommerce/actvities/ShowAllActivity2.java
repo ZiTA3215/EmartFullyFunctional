@@ -5,9 +5,7 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,9 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.ecommerce.R;
 import com.example.ecommerce.adapters.ShowAllAdapter;
 import com.example.ecommerce.adapters.ShowAllAdapter2;
@@ -33,7 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowAllActivity extends AppCompatActivity {
+public class ShowAllActivity2 extends AppCompatActivity {
 
 
     RecyclerView recyclerView;
@@ -47,7 +42,7 @@ public class ShowAllActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_all);
+        setContentView(R.layout.activity_show_all2);
 
         if (!isConnected()) {
             new AlertDialog.Builder(this)

@@ -49,6 +49,9 @@
         <activity
             android:name=".actvities.ShowAllActivity"
             android:label="@string/title_activity_show_all" />
+        <activity
+            android:name=".actvities.ShowAllActivity2"
+            android:label="ShowAllActivity2" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
         <meta-data

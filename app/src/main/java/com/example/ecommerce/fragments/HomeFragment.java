@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -32,6 +33,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.ecommerce.R;
 import com.example.ecommerce.actvities.ShowAllActivity;
+import com.example.ecommerce.actvities.ShowAllActivity2;
 import com.example.ecommerce.adapters.CategoryAdapter;
 import com.example.ecommerce.adapters.ImageSliderAdapter;
 import com.example.ecommerce.adapters.NewProductsAdapter;
@@ -59,6 +61,8 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
+    ProgressBar progressBar;
+
     TextView catShowAll, popularShowAll, newProductShowAll;
 
     SliderView sliderView;
@@ -76,7 +80,7 @@ public class HomeFragment extends Fragment {
     List<CategoryModel> categoryModelList;
 
     ///////////////////////////Search View
-    EditText search_box;
+   Button search_box;
     private List<ShowAllModel> showAllModelList;
     private RecyclerView recyclerViewSearch;
     private ShowAllAdapter showAllAdapter;
@@ -128,6 +132,9 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+        progressBar = root.findViewById(R.id.PBar);
+        search_box = root.findViewById(R.id.search_box);
+
         sliderView = root.findViewById(R.id.imageSlider);
 
         progressDialog = new ProgressBar(getActivity());
@@ -148,6 +155,7 @@ public class HomeFragment extends Fragment {
                 TotalCounts= counts.intValue();
 
                 sliderView.setSliderAdapter(new ImageSliderAdapter(HomeFragment.this,TotalCounts));
+                progressBar.setVisibility(View.INVISIBLE);
 
             }
 
@@ -157,11 +165,21 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        search_box.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ShowAllActivity2.class);
+                startActivity(intent);
+
+
+            }
+        });
+
 
        catShowAll.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-           Intent intent = new Intent(getContext(), ShowAllActivity.class);
+           Intent intent = new Intent(getContext(), ShowAllActivity2.class);
            startActivity(intent);
            }
 
@@ -171,7 +189,7 @@ public class HomeFragment extends Fragment {
         newProductShowAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                Intent intent = new Intent(getContext(), ShowAllActivity2.class);
                 startActivity(intent);
             }
 
@@ -181,7 +199,7 @@ public class HomeFragment extends Fragment {
         popularShowAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ShowAllActivity.class);
+                Intent intent = new Intent(getContext(), ShowAllActivity2.class);
                 startActivity(intent);
             }
 
@@ -214,6 +232,7 @@ public class HomeFragment extends Fragment {
                                 categoryAdapter.notifyDataSetChanged();
 
                                 linearLayout.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.INVISIBLE);
 
 
 
@@ -243,6 +262,7 @@ public class HomeFragment extends Fragment {
                                 NewProductsModel newProductsModel = document.toObject(NewProductsModel.class);
                                 newProductsModelList.add(newProductsModel);
                                 newProductsAdapter.notifyDataSetChanged();
+                                progressBar.setVisibility(View.INVISIBLE);
 
                             }
                         } else {
@@ -272,6 +292,7 @@ public class HomeFragment extends Fragment {
                                 PopularProductModel popularProductModel = document.toObject(PopularProductModel.class);
                                popularProductModelList.add(popularProductModel);
                                 popularProductAdapter.notifyDataSetChanged();
+                                progressBar.setVisibility(View.INVISIBLE);
 
                             }
                         } else {
@@ -282,66 +303,16 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-        ///////SearchView
 
-        recyclerViewSearch = root.findViewById(R.id.search_rec);
-        search_box = root.findViewById(R.id.search_box);
-        showAllModelList = new ArrayList<>();
-        showAllAdapter = new ShowAllAdapter(getContext(),showAllModelList);
-        recyclerViewSearch.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        recyclerViewSearch.setAdapter(showAllAdapter);
-        recyclerViewSearch.setHasFixedSize(true);
-        search_box.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (s.toString().isEmpty()){
-                    showAllModelList.clear();
-                    showAllAdapter.notifyDataSetChanged();
-                }else{
-
-                    searchProdcut(s.toString());
-                }
-
-            }
-        });
 
         return root;
     }
 
-    private void searchProdcut(String type) {
 
-        if (!type.isEmpty()){
-            db.collection("ShowAll").whereEqualTo("type", type).get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                            if (task.isSuccessful() && task.getResult()!= null){
 
-                                showAllModelList.clear();
-                                showAllAdapter.notifyDataSetChanged();
-                                for(DocumentSnapshot doc : task.getResult().getDocuments()){
-                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
-                                    showAllModelList.add(showAllModel);
-                                    showAllAdapter.notifyDataSetChanged();
-                                }
 
-                            }
-                        }
-                    });
-        }
-    }
+
 
     public boolean isConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);

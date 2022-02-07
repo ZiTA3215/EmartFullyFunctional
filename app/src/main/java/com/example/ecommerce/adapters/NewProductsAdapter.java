@@ -1,5 +1,6 @@
 package com.example.ecommerce.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Layout;
@@ -36,7 +37,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull Viewholder holder, @SuppressLint("RecyclerView") int position) {
 
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.newImg);
         holder.newPrice.setText(String.valueOf(list.get(position).getPrice()));

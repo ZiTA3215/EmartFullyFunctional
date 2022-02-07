@@ -13,36 +13,31 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:focusable="true"
-                android:focusableInTouchMode="true">
 
 
-                <EditText
+
+                <Button
                     android:id="@+id/search_box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:textColor="@color/black"
+                    android:textAllCaps="false"
                     android:drawableLeft="@android:drawable/ic_search_category_default"
                     android:drawableTint="@color/black"
-                    android:background="@drawable/input_designs"
+                    app:cornerRadius="20dp"
+                    android:textSize="20dp"
                     android:backgroundTint="@color/white"
                     android:elevation="3dp"
-                    android:textColorHint="@color/black"
-                    android:hint="Search by Category"/>
+                    android:gravity="left|center_vertical"
+                    android:text="Search..."
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/search_rec"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"/>
 
-            </LinearLayout>
+                    />
+
+
+
+
 
 
 
@@ -63,6 +58,16 @@
                 app:sliderIndicatorUnselectedColor="#FFF"
                 app:sliderScrollTimeInSec="2"
                 app:sliderStartAutoCycle="true" />
+
+            <ProgressBar
+                android:id="@+id/PBar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:indeterminate="true"
+                android:layout_marginLeft="150dp"
+                android:indeterminateTint="@color/white"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="visible" />
 
             <LinearLayout
                 android:layout_width="match_parent"

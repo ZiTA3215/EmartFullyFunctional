@@ -1,5 +1,6 @@
 package com.example.ecommerce.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Glide.with(context).load(popularProductModelList.get(position).getImg_url()).into(holder.imageView);
         holder.price.setText(String.valueOf(popularProductModelList.get(position).getPrice()));
