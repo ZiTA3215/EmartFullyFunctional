@@ -61,7 +61,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    ProgressBar progressBar;
+
 
     TextView catShowAll, popularShowAll, newProductShowAll;
 
@@ -132,7 +132,7 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
-        progressBar = root.findViewById(R.id.PBar);
+
         search_box = root.findViewById(R.id.search_box);
 
         sliderView = root.findViewById(R.id.imageSlider);
@@ -155,7 +155,7 @@ public class HomeFragment extends Fragment {
                 TotalCounts= counts.intValue();
 
                 sliderView.setSliderAdapter(new ImageSliderAdapter(HomeFragment.this,TotalCounts));
-                progressBar.setVisibility(View.INVISIBLE);
+
 
             }
 
@@ -232,7 +232,7 @@ public class HomeFragment extends Fragment {
                                 categoryAdapter.notifyDataSetChanged();
 
                                 linearLayout.setVisibility(View.VISIBLE);
-                                progressBar.setVisibility(View.INVISIBLE);
+
 
 
 
@@ -262,7 +262,7 @@ public class HomeFragment extends Fragment {
                                 NewProductsModel newProductsModel = document.toObject(NewProductsModel.class);
                                 newProductsModelList.add(newProductsModel);
                                 newProductsAdapter.notifyDataSetChanged();
-                                progressBar.setVisibility(View.INVISIBLE);
+
 
                             }
                         } else {
@@ -292,7 +292,7 @@ public class HomeFragment extends Fragment {
                                 PopularProductModel popularProductModel = document.toObject(PopularProductModel.class);
                                popularProductModelList.add(popularProductModel);
                                 popularProductAdapter.notifyDataSetChanged();
-                                progressBar.setVisibility(View.INVISIBLE);
+
 
                             }
                         } else {

@@ -59,15 +59,7 @@
                 app:sliderScrollTimeInSec="2"
                 app:sliderStartAutoCycle="true" />
 
-            <ProgressBar
-                android:id="@+id/PBar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:indeterminate="true"
-                android:layout_marginLeft="150dp"
-                android:indeterminateTint="@color/white"
-                android:indeterminateTintMode="src_atop"
-                android:visibility="visible" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
