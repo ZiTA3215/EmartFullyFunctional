@@ -37,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="3"
+                android:textColor="@color/black"
 
                 android:singleLine="false"
                 android:text="Name"
@@ -72,9 +73,6 @@
                     android:layout_weight="0.2"
                     android:fontFamily="@font/amethysta"
                     android:text="Tracking"
-                    android:clickable="true"
-                    android:linksClickable="true"
-                    android:autoLink="all"
                     android:textSize="12sp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -87,11 +85,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:fontFamily="@font/amethysta"
+                    android:singleLine="true"
                     android:text="https.google.com"
                     android:clickable="true"
                     android:linksClickable="true"
                     android:autoLink="all"
-                    android:textSize="9sp"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
