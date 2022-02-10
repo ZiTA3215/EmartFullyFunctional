@@ -43,6 +43,8 @@ import com.stripe.android.model.ConfirmPaymentIntentParams;
 import com.stripe.android.model.PaymentIntent;
 import com.stripe.android.model.PaymentMethodCreateParams;
 import com.stripe.android.view.CardInputWidget;
+import com.stripe.android.view.CardMultilineWidget;
+
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
@@ -66,6 +68,8 @@ public class CheckoutActivity extends AppCompatActivity {
     // 10.0.2.2 is the Android emulator's alias to localhost
     //private static final String BACKEND_URL = "http://10.0.2.2:4242/";
     private static final String BACKEND_URL = "https://fast-gorge-25323.herokuapp.com/";
+
+    CardMultilineWidget cardMultilineWidget;
 
      OkHttpClient httpClient = new OkHttpClient();
      String paymentIntentClientSecret;
@@ -188,7 +192,7 @@ public class CheckoutActivity extends AppCompatActivity {
         Button payButton = findViewById(R.id.payButton);
         payButton.setOnClickListener((View view) -> {
 
-            CardInputWidget cardInputWidget = findViewById(R.id.cardInputWidget);
+            CardMultilineWidget cardInputWidget = findViewById(R.id.cardInputWidget);
             PaymentMethodCreateParams params = cardInputWidget.getPaymentMethodCreateParams();
             if (params != null) {
                 progressBar.setVisibility(View.VISIBLE);
