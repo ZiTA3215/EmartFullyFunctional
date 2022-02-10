@@ -138,67 +138,74 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
 
 
         paymentBtn.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
 
 
 
 
-                                              if (obj instanceof MyCartModel) {
-                                                  MyCartModel i = (MyCartModel) obj;
-                                                  amount = i.getTotalPrice();
-                                                  name = i.getProductName();
-                                                  img_url = i.getImg_url();
-                                                  id = i.getDocumentId();
-                                                  qty = i.getTotalQuantity();
+                if (obj instanceof MyCartModel) {
+                    MyCartModel i = (MyCartModel) obj;
+                    amount = i.getTotalPrice();
+                    name = i.getProductName();
+                    img_url = i.getImg_url();
+                    id = i.getDocumentId();
+                    qty = i.getTotalQuantity();
 
 
-                                              }
-                                              if (obj instanceof NewProductsModel) {
-                                                  NewProductsModel newProductsModel = (NewProductsModel) obj;
-                                                  amount = newProductsModel.getPrice();
-                                                  img_url = newProductsModel.getImg_url();
-                                                  name = newProductsModel.getName();
+                }
+                if (obj instanceof NewProductsModel) {
+                    NewProductsModel newProductsModel = (NewProductsModel) obj;
+                    amount = newProductsModel.getPrice();
+                    img_url = newProductsModel.getImg_url();
+                    name = newProductsModel.getName();
 
-                                              }
-                                              if (obj instanceof PopularProductModel) {
-                                                  PopularProductModel popularProductModel = (PopularProductModel) obj;
-                                                  amount = popularProductModel.getPrice();
-                                                  img_url = popularProductModel.getImg_url();
-                                                  name = popularProductModel.getName();
+                }
+                if (obj instanceof PopularProductModel) {
+                    PopularProductModel popularProductModel = (PopularProductModel) obj;
+                    amount = popularProductModel.getPrice();
+                    img_url = popularProductModel.getImg_url();
+                    name = popularProductModel.getName();
 
-                                              }
-                                              if (obj instanceof ShowAllModel) {
-                                                  ShowAllModel showAllModel = (ShowAllModel) obj;
-                                                  amount = showAllModel.getPrice();
-                                                  img_url = showAllModel.getImg_url();
-                                                  name = showAllModel.getName();
-                                              }
-
-
-                                              if (cartModelList != null && cartModelList.size() > 0) {
-                                                  Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
-                                                  intent.putExtra("cartModelList", (Serializable) cartModelList);
-                                                  intent.putExtra("address", mAddress);
-                                                  intent.putExtra("addressModelList", (Serializable) addressModelList);
-                                                  startActivity(intent);
+                }
+                if (obj instanceof ShowAllModel) {
+                    ShowAllModel showAllModel = (ShowAllModel) obj;
+                    amount = showAllModel.getPrice();
+                    img_url = showAllModel.getImg_url();
+                    name = showAllModel.getName();
+                }
 
 
-                                              } else {
-                                                  Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
-                                                  intent.putExtra("amount", amount);
-                                                  intent.putExtra("img_url", img_url);
-                                                  intent.putExtra("name", name);
-                                                  intent.putExtra("id", id);
-                                                  intent.putExtra("address", mAddress);
-                                                  intent.putExtra("qty", qty);
-                                                  intent.putExtra("addressModelList", (Serializable) addressModelList);
-                                                  startActivity(intent);
+                if (cartModelList != null && cartModelList.size() > 0) {
 
-                                              }
-                                          }
-                                      });
+
+                    if(isAddressEmpty())
+                        return;
+                    Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
+                    intent.putExtra("cartModelList", (Serializable) cartModelList);
+                    intent.putExtra("address", mAddress);
+                    intent.putExtra("addressModelList", (Serializable) addressModelList);
+                    startActivity(intent);
+
+
+                } else {
+
+                    if(isAddressEmpty())
+                        return;
+                    Intent intent = new Intent(AddressActivity.this, PaymentActiviy.class);
+                    intent.putExtra("amount", amount);
+                    intent.putExtra("img_url", img_url);
+                    intent.putExtra("name", name);
+                    intent.putExtra("id", id);
+                    intent.putExtra("address", mAddress);
+                    intent.putExtra("qty", qty);
+                    intent.putExtra("addressModelList", (Serializable) addressModelList);
+                    startActivity(intent);
+
+                }
+            }
+        });
 
 
 
@@ -208,11 +215,16 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
 
 
                 if (cartModelList != null && cartModelList.size() > 0) {
+
+                    if(isAddressEmpty())
+                        return;
                     Intent intent = new Intent(AddressActivity.this, AddAddressActivity.class);
                     intent.putExtra("cartModelList", (Serializable) cartModelList);
                     intent.putExtra("address", mAddress);
                     intent.putExtra("addressModelList", (Serializable) addressModelList);
                     startActivity(intent);
+
+
                 } else {
                     Intent intent = new Intent(AddressActivity.this, AddAddressActivity.class);
 
@@ -256,18 +268,19 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
             }
 
 
-
-
-
-
-
-
-
-
         });
 
     }
 
+    private boolean isAddressEmpty() {
+
+        if(mAddress.isEmpty())
+        {
+            Toast.makeText(AddressActivity.this,"Please select an address",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
 
 
     @Override
