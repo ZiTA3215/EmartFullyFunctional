@@ -35,9 +35,10 @@
         android:layout_height="30dp"
         android:background="@drawable/ic_baseline_add_a_photo_24"
         android:backgroundTint="@color/black"
-        android:translationY="30dp"
+        android:translationY="10dp"
         app:layout_constraintEnd_toEndOf="@id/profile_image"
 
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
         app:layout_constraintTop_toTopOf="parent" />
 
 
