@@ -25,9 +25,8 @@
         app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/update2"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent=".8"/>
-
 
     <ImageView
         android:id="@+id/update2"
@@ -35,11 +34,11 @@
         android:layout_height="30dp"
         android:background="@drawable/ic_baseline_add_a_photo_24"
         android:backgroundTint="@color/black"
-        android:translationY="10dp"
-        app:layout_constraintEnd_toEndOf="@id/profile_image"
+        android:translationY="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toStartOf="@+id/profile_image" />
 
-        app:layout_constraintStart_toStartOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 
@@ -54,14 +53,14 @@
         android:background="@drawable/edit_text_bg"
         android:hint="Your Name"
         android:padding="13dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:drawableTint="@color/black"
         android:drawableLeft="@drawable/ic_baseline_account_circle"
         android:drawablePadding="10dp"
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/update2"
         app:layout_constraintWidth_percent=".8"/>
 
     <EditText
