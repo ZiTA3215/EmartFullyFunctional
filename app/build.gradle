@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.firebase.crashlytics'
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 }
 
@@ -49,7 +50,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     implementation 'com.google.firebase:firebase-storage:20.0.0'
-
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.firebase:firebase-database:20.0.1'
