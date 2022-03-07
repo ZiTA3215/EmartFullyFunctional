@@ -2,11 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/EmartFullyFunctionalDEMO" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/EmartFullyFunctionalFIVERR" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/EmartFullyFunctionalTEST" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/EmartFullyFunctionalTESTforandriod" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/FianlupdateperCEO" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/test" vcs="Git" />
   </component>
 </project>

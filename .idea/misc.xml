@@ -30,8 +30,22 @@
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/layout/popular_items.xml" value="0.1" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/menu/bottom_menu.xml" value="0.6" />
         <entry key="..\:/Users/Kent High/StudioProjects/EmartFullyFunctional/app/src/main/res/menu/main_menu.xml" value="0.14666666666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable-v24/ic_stat_onesignal_default0.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable-v24/ic_stat_onesignal_default1.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_circle.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" value="0.15185185185185185" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/ic_baseline_local_shipping_24.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/ic_baseline_loginout.xml" value="0.15185185185185185" />
+        <entry key="app/src/main/res/drawable/ic_baseline_remove_circle_outline_24.xml" value="0.15185185185185185" />
+        <entry key="app/src/main/res/drawable/ic_baseline_textsms_24.xml" value="0.15185185185185185" />
+        <entry key="app/src/main/res/drawable/ic_stat_onesignal_default1_background.xml" value="0.15185185185185185" />
+        <entry key="app/src/main/res/drawable/ic_stat_onesignal_default_background.xml" value="0.15185185185185185" />
         <entry key="app/src/main/res/drawable/input_designs.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_cart.xml" value="0.1234375" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.16927083333333334" />
@@ -59,6 +73,9 @@
         <entry key="app/src/main/res/layout/wifi.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.45" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_stat_onesignal_default.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_stat_onesignal_default1.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_stat_onesignal_default1_round.xml" value="0.18385416666666668" />
       </map>
     </option>
   </component>
