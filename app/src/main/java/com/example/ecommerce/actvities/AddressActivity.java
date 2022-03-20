@@ -216,8 +216,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
 
                 if (cartModelList != null && cartModelList.size() > 0) {
 
-                    if(isAddressEmpty())
-                        return;
+
                     Intent intent = new Intent(AddressActivity.this, AddAddressActivity.class);
                     intent.putExtra("cartModelList", (Serializable) cartModelList);
                     intent.putExtra("address", mAddress);
