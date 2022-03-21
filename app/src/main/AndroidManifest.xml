@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ecommerce">
+    package="com.oldrich.ecommerce">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,36 +21,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce"
         tools:replace="allowBackup, label">
-        <activity android:name=".actvities.eWealthlink" />
-        <activity android:name=".Webview" />
-        <activity android:name=".actvities.MessagesActivity" />
-        <activity android:name=".actvities.ShippingActivity" />
-        <activity android:name=".actvities.VerifyActivity" />
-        <activity android:name=".actvities.DialogActivity2" />
-        <activity android:name=".actvities.ChangePassword" />
-        <activity android:name=".actvities.ResetPassword" />
-        <activity android:name=".actvities.RegistrationActivity" />
-        <activity android:name=".actvities.ProfileActivity" />
-        <activity android:name=".actvities.CheckoutActivity" />
-        <activity android:name=".actvities.PaymentActiviy" />
-        <activity android:name=".actvities.AddAddressActivity" />
-        <activity android:name=".actvities.AddressActivity" />
-        <activity android:name=".actvities.StartActivity">
+        <activity android:name="com.oldrich.ecommerce.actvities.eWealthlink" />
+        <activity android:name="com.oldrich.ecommerce.Webview" />
+        <activity android:name="com.oldrich.ecommerce.actvities.MessagesActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.ShippingActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.VerifyActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.DialogActivity2" />
+        <activity android:name="com.oldrich.ecommerce.actvities.ChangePassword" />
+        <activity android:name="com.oldrich.ecommerce.actvities.ResetPassword" />
+        <activity android:name="com.oldrich.ecommerce.actvities.RegistrationActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.ProfileActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.CheckoutActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.PaymentActiviy" />
+        <activity android:name="com.oldrich.ecommerce.actvities.AddAddressActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.AddressActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".actvities.LoginActivity" />
-        <activity android:name=".actvities.MainActivity" />
-        <activity android:name=".actvities.DetailedActivity" />
-        <activity android:name=".actvities.CartActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.LoginActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.MainActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.DetailedActivity" />
+        <activity android:name="com.oldrich.ecommerce.actvities.CartActivity" />
         <activity
-            android:name=".actvities.ShowAllActivity"
+            android:name="com.oldrich.ecommerce.actvities.ShowAllActivity"
             android:label="@string/title_activity_show_all" />
         <activity
-            android:name=".actvities.ShowAllActivity2"
+            android:name="com.oldrich.ecommerce.actvities.ShowAllActivity2"
             android:label="ShowAllActivity2" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
@@ -59,7 +59,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <service
-            android:name=".actvities.PushNotifications"
+            android:name="com.oldrich.ecommerce.actvities.PushNotifications"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />

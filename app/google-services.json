@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1063611842719",
+    "firebase_url": "https://ecommerce-project-emart-default-rtdb.firebaseio.com",
     "project_id": "ecommerce-project-emart",
     "storage_bucket": "ecommerce-project-emart.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1063611842719-hpr7nk3hen2be5ifr8r1be04bgucdt9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ecommerce",
+            "certificate_hash": "a8d77433eed56cb1aa298fd0a205baf7e3fba22c"
+          }
+        },
         {
           "client_id": "1063611842719-03roat1g8hqkdpvpgc6k0mcgqpgrcati.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +38,57 @@
             {
               "client_id": "1063611842719-03roat1g8hqkdpvpgc6k0mcgqpgrcati.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1063611842719-acpib7cm2s314tabpjln4oklgv6lh6v3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oldrichllc.eMart"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063611842719:android:215d851344b5f805ff62aa",
+        "android_client_info": {
+          "package_name": "com.oldrich.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063611842719-1dpl9be03ufbrnu5asf9b8f0s158r9hs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oldrich.ecommerce",
+            "certificate_hash": "3887ef7571234f5d2e96f5549e505f605bbf64b4"
+          }
+        },
+        {
+          "client_id": "1063611842719-03roat1g8hqkdpvpgc6k0mcgqpgrcati.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMBEZMhxXJsALkRYuPzt56HxDHdxDQxJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063611842719-03roat1g8hqkdpvpgc6k0mcgqpgrcati.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1063611842719-acpib7cm2s314tabpjln4oklgv6lh6v3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oldrichllc.eMart"
+              }
             }
           ]
         }
